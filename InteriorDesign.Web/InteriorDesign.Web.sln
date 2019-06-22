@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29009.5
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InteriorDesign.Web", "InteriorDesign.Web\InteriorDesign.Web.csproj", "{20AE8C4D-3052-4B32-AEE5-7569ABCECA57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InteriorDesign.Data", "InteriorDesign.Data\InteriorDesign.Data.csproj", "{34B2C993-2370-4535-AE82-263765DACCED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{20AE8C4D-3052-4B32-AEE5-7569ABCECA57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20AE8C4D-3052-4B32-AEE5-7569ABCECA57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20AE8C4D-3052-4B32-AEE5-7569ABCECA57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20AE8C4D-3052-4B32-AEE5-7569ABCECA57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34B2C993-2370-4535-AE82-263765DACCED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34B2C993-2370-4535-AE82-263765DACCED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34B2C993-2370-4535-AE82-263765DACCED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34B2C993-2370-4535-AE82-263765DACCED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4168C7F1-A6D4-489F-807D-1743013375EF}
+	EndGlobalSection
+EndGlobal
