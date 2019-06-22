@@ -12080,11 +12080,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\C# WEB\\ASP.NET Core\\InteriorDesign.git\\InteriorDesign.Web\\InteriorDesign.Web\\InteriorDesign.Web.csproj",
+      "projectUniqueName": "E:\\C# WEB\\ASP.NET Core\\InteriorDesign\\InteriorDesign.Web\\InteriorDesign.Web\\InteriorDesign.Web.csproj",
       "projectName": "InteriorDesign.Web",
-      "projectPath": "E:\\C# WEB\\ASP.NET Core\\InteriorDesign.git\\InteriorDesign.Web\\InteriorDesign.Web\\InteriorDesign.Web.csproj",
+      "projectPath": "E:\\C# WEB\\ASP.NET Core\\InteriorDesign\\InteriorDesign.Web\\InteriorDesign.Web\\InteriorDesign.Web.csproj",
       "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-      "outputPath": "E:\\C# WEB\\ASP.NET Core\\InteriorDesign.git\\InteriorDesign.Web\\InteriorDesign.Web\\obj\\",
+      "outputPath": "E:\\C# WEB\\ASP.NET Core\\InteriorDesign\\InteriorDesign.Web\\InteriorDesign.Web\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

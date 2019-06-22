@@ -692,11 +692,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\C# WEB\\ASP.NET Core\\InteriorDesign.git\\InteriorDesign.Web\\InteriorDesign.Data\\InteriorDesign.Data.csproj",
+      "projectUniqueName": "E:\\C# WEB\\ASP.NET Core\\InteriorDesign\\InteriorDesign.Web\\InteriorDesign.Data\\InteriorDesign.Data.csproj",
       "projectName": "InteriorDesign.Data",
-      "projectPath": "E:\\C# WEB\\ASP.NET Core\\InteriorDesign.git\\InteriorDesign.Web\\InteriorDesign.Data\\InteriorDesign.Data.csproj",
+      "projectPath": "E:\\C# WEB\\ASP.NET Core\\InteriorDesign\\InteriorDesign.Web\\InteriorDesign.Data\\InteriorDesign.Data.csproj",
       "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-      "outputPath": "E:\\C# WEB\\ASP.NET Core\\InteriorDesign.git\\InteriorDesign.Web\\InteriorDesign.Data\\obj\\",
+      "outputPath": "E:\\C# WEB\\ASP.NET Core\\InteriorDesign\\InteriorDesign.Web\\InteriorDesign.Data\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
