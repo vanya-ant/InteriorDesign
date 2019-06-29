@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Interior Design</title>
+    <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--Favicons -->
+    <link rel="shortcut icon" href="images/favicon.png">
+
+    <!--styles -->
+    <link href="~/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/fontawesome/font-awesome.css" rel="stylesheet">
+    <link href="~/js/owl-carousel/owl.carousel.css" rel="stylesheet">
+    <link href="~/js/owl-carousel/owl.theme.css" rel="stylesheet">
+    <link href="~/js/owl-carousel/owl.transitions.css" rel="stylesheet">
+    <link href="~/css/magnific-popup.css" rel="stylesheet">
+    <link href="~/css/animate.css" type="text/css" rel="stylesheet">
+    <link href="~/css/style.css" type="text/css" rel="stylesheet" />
+</head>
+<body data-spy="scroll" data-target="#main-menu">
+    <!--Start Navigation-->
+    <header id="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="fa fa-bars"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!--Start Logo -->
+                    <div class="logo-nav">
+                        <a href="index.html">
+                            <img src="images/logo.png" alt="Company logo" />
+                        </a>
+                    </div>
+                    <!--End Logo -->
+                    <div class="clear-toggle"></div>
+                    <div id="main-menu" class="collapse scroll navbar-right">
+                        <ul class="nav">
+                            <li class="active"> <a href="#home">Home</a> </li>
+
+                            <li> <a href="#services">Services</a> </li>
+
+                            <li> <a href="#portfolio">Portfolio</a> </li>
+
+                            <li> <a href="#team">Team</a> </li>
+
+                            <li> <a href="#projcectCalculator">Project Calculator</a> </li>
+
+                            <li> <a href="#clients">Clients</a> </li>
+
+                            <li> <a href="#login">Customer Area</a></li>
+
+                            <li> <a href="#contact">Contact</a> </li>
+
+                        </ul>
+                    </div><!-- End main-menu -->
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--End Navigation-->
+
+    <div class="container-fluid">
+        <partial name="_CookieConsentPartial" />
+        <main role="main" class="pb-3">
+            @this.RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container-fluid">
+            &copy; @DateTime.Now.Year - InteriorDesign - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <environment names="Development">
+        <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js" asp-append-version="true"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.min.js" asp-append-version="true"></script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @this.RenderSection("Scripts", required: false)
+</body>
+</html>

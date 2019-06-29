@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Contacts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--Start Contact-->
+<section id="contact" class="section parallax section-white">
+    <div class="overlayc"></div>
+    <div class="container">
+        <div class="row">
+
+            <!--Start heading-->
+            <div class="col-md-offset-2 col-md-8  wow zoomIn" data-wow-duration="700ms" data-wow-delay="300ms">
+                <div class="section-header">
+                    <h2 class="smt"><span><img src="images/leftw.png"> Contact <img src="images/rightw.png"></span></h2>
+                </div>
+            </div>
+            <!--End heading-->
+            <!--Start contact form-->
+            <div class="col-md-7 contact-form wow zoomIn" data-wow-duration="700ms" data-wow-delay="300ms">
+                <div class="contact-form">
+                    <form method="post" action="">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input class="form-control" name="name" id="name" placeholder="Full Name" type="text">
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" name="email" placeholder="Your Email" type="email">
+                            </div>
+                            <div class="col-md-12">
+                                <input class="form-control" name="subject" placeholder="Subject" type="text">
+                            </div>
+                            <div class="col-md-12">
+                                <textarea class="form-control" name="message" rows="5" placeholder="Your Message"></textarea>
+                            </div>
+                            <div class="col-md-12 text-right">
+                                <button type="submit" name="submit" class="btn btn-default btn-lg">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div> <!--/.contact-form-->
+            </div>
+            <!--contact form-->
+            <!--Start contact information -->
+            <div class="col-md-4 contact-address wow zoomIn" data-wow-duration="700ms" data-wow-delay="400ms">
+                <p> <i class="fa fa-map-marker"></i>  <span>123, Lorem ipsum dolor sit amet</span></p>
+                <p> <i class="fa fa-envelope"></i> <span>support@domain.net</span></p>
+                <p> <i class="fa fa-phone"></i> <span>(000) 000 0000 </span></p>
+                <p> <i class="fa fa-clock-o"></i> <span>Monday - Friday: <strong>9:00 am - 10:00 pm</strong></span></p>
+                <p> <i class="fa fa-clock-o"></i> <span>Saturday - Sunday: <strong>Closed</strong></span></p>
+            </div>
+            <!--End contact information -->
+        </div> <!--/.row-->
+    </div> <!--/.container-->
+</section>
+<!--End Contact-->
