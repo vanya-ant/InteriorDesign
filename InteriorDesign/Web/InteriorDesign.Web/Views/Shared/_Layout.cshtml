@@ -62,6 +62,18 @@
 
                             <li> <a href="#contact">Contact</a> </li>
 
+                            @if (this.User.Identity.IsAuthenticated)
+                            {
+                                if (this.User.IsInRole("Admin"))
+                                {
+                                    <li> <a href="#all-active-projects">Contact</a> </li>
+                                }
+                                else 
+                                {
+                                    <li> <a href="#my-active-projects">Contact</a> </li>
+                                }
+                            }
+
                         </ul>
                     </div><!-- End main-menu -->
                 </div>
