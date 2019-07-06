@@ -4,6 +4,7 @@
     using System.Diagnostics;
     using System.IO;
 
+    using CommandLine;
     using InteriorDesign.Data;
     using InteriorDesign.Data.Common;
     using InteriorDesign.Data.Common.Repositories;
@@ -12,15 +13,13 @@
     using InteriorDesign.Data.Seeding;
     using InteriorDesign.Services.Data;
     using InteriorDesign.Services.Messaging;
-
-    using CommandLine;
-
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Identity.UI.Services;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
+
 
     public static class Program
     {

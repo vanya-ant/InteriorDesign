@@ -1,10 +1,7 @@
 ﻿namespace InteriorDesign.Services
 {
-    using System;
-
+    using InteriorDesign.Models.InputModels;
     using InteriorDesign.Services.Contracts;
-
-    using Models.InteriorDesign.InputModels;
 
     public class ProjectCalculatorService : IProjectCalculatorService
     {

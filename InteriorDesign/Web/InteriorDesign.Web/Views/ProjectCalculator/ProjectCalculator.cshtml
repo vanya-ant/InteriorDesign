@@ -1,134 +1,133 @@
-﻿
+﻿@using InteriorDesign.Data.Models
+
+@model InteriorDesign.Models.InputModels.ProjectCalculatorInputModel;
+
 @{
     ViewData["Title"] = "Project Calculator";
-}
+    Layout = "~/Views/Shared/_Layout.cshtml";
+},
+
 @*<!--Start pricing-->
-<section id="pricing" class="section parallax" id="pricing">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row">
+    <section id="pricing" class="section parallax" id="pricing">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
 
-            <!--Start heading-->
-            <div class="col-md-offset-2 col-md-8 wow fadeInUp" data-wow-duration="700ms" data-wow-delay="300ms">
-                <div class="section-header">
-                    <h2 class="smt"><span><img src="images/left.png"> Pricing <img src="images/right.png"></span></h2>
-                </div>
-            </div>
-            <!--End heading-->
-            <!-- Price detail #1-->
-            <div class="col-md-4 wow fadeInUp" data-wow-duration="700ms" data-wow-delay="500ms">
-                <div class="pricing-table">
-                    <h1>Basic</h1>
-                    <h2>$99 <small>Per month</small></h2>
-
-                    <div class="feature-list">
-                        <ul>
-                            <li>10 GB Storage</li>
-                            <li>Linux Server</li>
-                            <li>Free Live Support</li>
-                            <li>Enhanced SSL Security</li>
-                            <li>Free Upgrades</li>
-                        </ul>
-                    </div>
-                    <div class="price-signup">
-                        <a href="#" class="btn btn-primary btn-lg">Purchase Now</a>
+                <!--Start heading-->
+                <div class="col-md-offset-2 col-md-8 wow fadeInUp" data-wow-duration="700ms" data-wow-delay="300ms">
+                    <div class="section-header">
+                        <h2 class="smt"><span><img src="images/left.png"> Pricing <img src="images/right.png"></span></h2>
                     </div>
                 </div>
-            </div>
+                <!--End heading-->
+                <!-- Price detail #1-->
+                <div class="col-md-4 wow fadeInUp" data-wow-duration="700ms" data-wow-delay="500ms">
+                    <div class="pricing-table">
+                        <h1>Basic</h1>
+                        <h2>$99 <small>Per month</small></h2>
 
-            <!-- Price detail #2-->
-            <div class="col-md-4 wow fadeInUp" data-wow-duration="700ms" data-wow-delay="600ms">
-                <div class="pricing-table">
-                    <h1>Professional</h1>
-                    <h2>$199 <small>Per month</small></h2>
-
-                    <div class="feature-list">
-                        <ul>
-                            <li>10 GB Storage</li>
-                            <li>Linux Server</li>
-                            <li>Free Live Support</li>
-                            <li>Enhanced SSL Security</li>
-                            <li>Free Upgrades</li>
-                        </ul>
-                    </div>
-                    <div class="price-signup">
-                        <a href="#" class="btn btn-primary btn-lg">Purchase Now</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Price detail #3-->
-            <div class="col-md-4 wow fadeInUp" data-wow-duration="700ms" data-wow-delay="700ms">
-                <div class="pricing-table">
-                    <h1>Business</h1>
-                    <h2>$499 <small>Per month</small></h2>
-
-                    <div class="feature-list">
-                        <ul>
-                            <li>10 GB Storage</li>
-                            <li>Linux Server</li>
-                            <li>Free Live Support</li>
-                            <li>Enhanced SSL Security</li>
-                            <li>Free Upgrades</li>
-                        </ul>
-                    </div>
-                    <div class="price-signup">
-                        <a href="#" class="btn btn-primary btn-lg">Purchase Now</a>
+                        <div class="feature-list">
+                            <ul>
+                                <li>10 GB Storage</li>
+                                <li>Linux Server</li>
+                                <li>Free Live Support</li>
+                                <li>Enhanced SSL Security</li>
+                                <li>Free Upgrades</li>
+                            </ul>
+                        </div>
+                        <div class="price-signup">
+                            <a href="#" class="btn btn-primary btn-lg">Purchase Now</a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-        </div> <!--/.row-->
-    </div>
-</section>
-<!-- End Pricing-->*@
+                <!-- Price detail #2-->
+                <div class="col-md-4 wow fadeInUp" data-wow-duration="700ms" data-wow-delay="600ms">
+                    <div class="pricing-table">
+                        <h1>Professional</h1>
+                        <h2>$199 <small>Per month</small></h2>
+
+                        <div class="feature-list">
+                            <ul>
+                                <li>10 GB Storage</li>
+                                <li>Linux Server</li>
+                                <li>Free Live Support</li>
+                                <li>Enhanced SSL Security</li>
+                                <li>Free Upgrades</li>
+                            </ul>
+                        </div>
+                        <div class="price-signup">
+                            <a href="#" class="btn btn-primary btn-lg">Purchase Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Price detail #3-->
+                <div class="col-md-4 wow fadeInUp" data-wow-duration="700ms" data-wow-delay="700ms">
+                    <div class="pricing-table">
+                        <h1>Business</h1>
+                        <h2>$499 <small>Per month</small></h2>
+
+                        <div class="feature-list">
+                            <ul>
+                                <li>10 GB Storage</li>
+                                <li>Linux Server</li>
+                                <li>Free Live Support</li>
+                                <li>Enhanced SSL Security</li>
+                                <li>Free Upgrades</li>
+                            </ul>
+                        </div>
+                        <div class="price-signup">
+                            <a href="#" class="btn btn-primary btn-lg">Purchase Now</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div> <!--/.row-->
+        </div>
+    </section>
+    <!-- End Pricing-->*@
 
 <h2>Project Calculator</h2>
-<form>
-    <div class="form-group">
-        <label for="exampleFormControlInput1">Email address</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-    </div>
-    <div class="form-group">
-        <label for="exampleFormControlSelect1">Type of property</label>
-        <select class="form-control" id="type-of-property">
-            <option>Apartment</option>
-            <option>Studio</option>
-            <option>House</option>
-            <option>Office</option>
-            <option>Retail property</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="exampleFormControlSelect2">Type of project</label>
-        <select multiple class="form-control" id="exampleFormControlSelect2">
-            <option>Basic Interior design project</option>
-            <option>Full Interior design project</option>
-            <option>Consultation</option>
-            <option>Consultation in-home</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="number-of-bedrooms">Enter number of berdooms</label>
-        <input class="form-control" id="number-of-bedrooms" type="number" />
-    </div>
-    <div class="form-group">
-        <label for="number-of-bathrooms">Enter number of bathrooms</label>
-        <input class="form-control" id="number-of-bedrooms" type="number" />
-    </div>
-    <div class="form-group">
-        <label for="haousing-area">Enter housing area /sq.m./</label>
-        <input class="form-control" id="number-of-bedrooms" type="number" step="0.1"/>
-    </div>
-    <div class="form-group">
-        <label for="descriotion">Enter additional description</label>
-        <textarea class="form-control" id="descripion" rows="3"></textarea>
-    </div>
-    <div class="form-group">
-        <button type="submit" id="submitProjectCalculator>">Calculate</button>
-    </div>
-    <div>
-        <label for="project-cost-evaluation">Approximate Project Expenses</label>
-        <textarea clas="form-control" id="approximate-project-cost">@Model.Result</textarea>
-    </div>
-</form>
+@if (this.User.Identity.IsAuthenticated)
+{
+    <form asp-controller="ProjectCalculator" asp-action="ProjectCalculator" method="post" >
+        <div class="form-group">
+            <label asp-for="Property">Type of property</label>
+            <select class="form-control" id="type-of-property"  name="typeOfProperty" asp-items="Html.GetEnumSelectList<TypeOfProperty>()">
+            </select>
+        </div>
+        <div class="form-group">
+            <label asp-for="Project">Type of project</label>
+            <select multiple class="form-control" id="type-of-project" name="typeOfProject" asp-items="Html.GetEnumSelectList<TypeOfProject>()">
+            </select>
+        </div>
+        <div class="form-group">
+            <label asp-for="NumberOfBedrooms">Enter number of berdooms</label>
+            <input class="form-control" id="number-of-bedrooms" type="number"  name="numberOfBedrooms" />
+        </div>
+        <div class="form-group">
+            <label asp-for="NumberOfBathrooms">Enter number of bathrooms</label>
+            <input class="form-control" id="number-of-bedrooms" type="number"  name="numberOfBathrooms"/>
+        </div>
+        <div class="form-group">
+            <label asp-for="HousingArea">Enter housing area /sq.m./</label>
+            <input class="form-control" id="number-of-bedrooms" type="number" step="0.1" name="housingArea"/>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description">Enter additional description</label>
+            <textarea class="form-control" id="descripion" rows="3" name="description"></textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit" id="submitProjectCalculator>">Calculate</button>
+        </div>
+        <div>
+            <label for="project-cost-evaluation">Approximate Project Expenses</label>
+            <textarea clas="form-control" id="approximate-project-cost">@Model.HousingArea</textarea>
+        </div>
+    </form>
+}
+else
+{
+    
+}

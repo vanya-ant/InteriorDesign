@@ -1,6 +1,6 @@
 ﻿namespace InteriorDesign.Services.Contracts
 {
-    using Models.InteriorDesign.InputModels;
+    using InteriorDesign.Models.InputModels;
 
     public interface IProjectCalculatorService
     {

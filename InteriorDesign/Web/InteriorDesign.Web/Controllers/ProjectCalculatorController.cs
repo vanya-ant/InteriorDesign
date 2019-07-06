@@ -1,9 +1,9 @@
 ﻿namespace InteriorDesign.Web.Controllers
 {
+    using InteriorDesign.Models.InputModels;
     using InteriorDesign.Services.Contracts;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
-    using Models.InteriorDesign.InputModels;
 
     public class ProjectCalculatorController : BaseController
     {
