@@ -24,58 +24,69 @@
     <link href="~/css/animate.css" type="text/css" rel="stylesheet">
     <link href="~/css/style.css" type="text/css" rel="stylesheet" />
 </head>
-<body data-spy="scroll" data-target="#main-menu">
+<body data-spy="scroll">
     <!--Start Navigation-->
     <header id="header">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="fa fa-bars"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
                     <!--Start Logo -->
                     <div class="logo-nav">
-                        <a href="index.html">
-                            <img src="images/logo.png" alt="Company logo" />
+                        <a href="/Home/Index">
+                            <img src="~/images/logo.png" alt="Company logo" />
                         </a>
                     </div>
                     <!--End Logo -->
                     <div class="clear-toggle"></div>
                     <div id="main-menu" class="collapse scroll navbar-right">
-                        <ul class="nav">
+                        <ul class="navbar-nav">
                             <li class="active"> <a href="/Home/Index">Home</a> </li>
+                            <li class="nav-item">
+                                <a href="/Services/All">Services</a>
+                            </li>
 
-                            <li> <a href="/Services">Services</a> </li>
+                            <li class="nav-item">
+                                <a href="/Portfolio">Portfolio</a>
+                            </li>
 
-                            <li> <a href="/Portfolio">Portfolio</a> </li>
+                            <li class="nav-item">
+                                <a href="/Team">Team</a>
+                            </li>
 
-                            <li> <a href="/Team">Team</a> </li>
+                            <li class="nav-item">
+                                <a href="/ProjectCalculator">Project Calculator</a>
+                            </li>
 
-                            <li> <a href="/ProjectCalculator">Project Calculator</a> </li>
+                            <li class="nav-item">
+                                <a href="/Clients">Clients</a>
+                            </li>
 
-                            <li> <a href="/Clients">Clients</a> </li>
+                            <li class="nav-item">
+                                <a href="/Identity/Account/Login">Customer Area</a>
+                            </li>
 
-                            <li> <a href="/Account/Identity/Login">Customer Area</a></li>
-
-                            <li> <a href="/Contacts">Contact</a> </li>
+                            <li class="nav-item">
+                                <a href="/Contacts">Contact</a>
+                            </li>
 
                             @if (this.User.Identity.IsAuthenticated)
                             {
                                 if (this.User.IsInRole("Admin"))
                                 {
-                                    <li> <a href="#all-active-projects">Contact</a> </li>
+                                    <li class="nav-item">
+                                    <a href="/Admin/Create/User">Contact</a> 
+                                    </li>
                                 }
-                                else 
+                                else
                                 {
-                                    <li> <a href="#my-active-projects">Contact</a> </li>
+                                    <li class="nav-item">
+                                    <a href="/Admin/Create/Project">Contact</a>
+                                    </li>
                                 }
                             }
 
                         </ul>
-                    </div><!-- End main-menu -->
+</div><!-- End main-menu -->
                 </div>
             </div>
         </div>
@@ -84,13 +95,13 @@
 
     <div class="container-fluid">
         <partial name="_CookieConsentPartial" />
-        <main role="main" class="pb-3">
+        <main role="main" class="container-fluid">
             @this.RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container-fluid">
+    <footer class="footer">
+        <div class="footer">
             &copy; @DateTime.Now.Year - InteriorDesign - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>

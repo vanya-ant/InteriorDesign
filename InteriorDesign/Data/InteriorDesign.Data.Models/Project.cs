@@ -26,5 +26,9 @@
 
         public ICollection<ProjectFile> ProjectFiles { get; set; }
 
+        public string ProjectReviewId { get; set; }
+
+        public ProjectReview ProjectReview { get; set; }
+
     }
 }
