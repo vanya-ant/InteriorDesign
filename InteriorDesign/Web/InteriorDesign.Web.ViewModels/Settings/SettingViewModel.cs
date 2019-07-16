@@ -1,9 +1,8 @@
 ﻿namespace InteriorDesign.Web.ViewModels.Settings
 {
+    using AutoMapper;
     using InteriorDesign.Data.Models;
     using InteriorDesign.Services.Mapping;
-
-    using AutoMapper;
 
     public class SettingViewModel : IMapFrom<Setting>, IHaveCustomMappings
     {

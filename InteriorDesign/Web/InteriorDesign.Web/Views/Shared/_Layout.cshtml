@@ -54,7 +54,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a href="/ProjectCalculator">Project Calculator</a>
+                                <a href="/ProjectCalculator/ProjectCalculator">Project Calculator</a>
                             </li>
 
                             <li class="nav-item">
@@ -93,16 +93,15 @@
     </header>
     <!--End Navigation-->
 
-    <div class="container-fluid">
-        <partial name="_CookieConsentPartial" />
-        <main role="main" class="container-fluid">
-            @this.RenderBody()
+        <main>
+            <div class="container-fluid">
+                @this.RenderBody()
+            </div>
         </main>
-    </div>
 
-    <footer class="footer">
-        <div class="footer">
-            &copy; @DateTime.Now.Year - InteriorDesign - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer>
+        <div class="container text-center">
+            &copy; @DateTime.Now.Year - InteriorDesign - <a asp-area="" asp-controller="" asp-action="Identity/Account/Privacy">Privacy</a>
         </div>
     </footer>
 

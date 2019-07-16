@@ -8,6 +8,8 @@
     using InteriorDesign.Data.Models;
     using InteriorDesign.Data.Repositories;
     using InteriorDesign.Data.Seeding;
+    using InteriorDesign.Services;
+    using InteriorDesign.Services.Contracts;
     using InteriorDesign.Services.Data;
     using InteriorDesign.Services.Mapping;
     using InteriorDesign.Services.Messaging;
@@ -89,6 +91,7 @@
             // Identity stores
             services.AddTransient<IUserStore<ApplicationUser>, ApplicationUserStore>();
             services.AddTransient<IRoleStore<ApplicationRole>, ApplicationRoleStore>();
+            services.AddTransient<IProjectCalculatorService, ProjectCalculatorService>();
 
             // Data repositories
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));

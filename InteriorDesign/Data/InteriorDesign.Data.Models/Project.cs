@@ -29,6 +29,5 @@
         public string ProjectReviewId { get; set; }
 
         public ProjectReview ProjectReview { get; set; }
-
     }
 }

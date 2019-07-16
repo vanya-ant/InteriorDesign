@@ -2,7 +2,7 @@
 namespace InteriorDesign.Data.Models
 {
     using System;
-    using System.Collections.Generic;
+
     using InteriorDesign.Data.Common.Models;
 
     using Microsoft.AspNetCore.Identity;
@@ -26,7 +26,6 @@ namespace InteriorDesign.Data.Models
 
         public bool IsDeleted { get; set; }
 
-        public DateTime? DeletedOn { get; set; }     
-
+        public DateTime? DeletedOn { get; set; }
     }
 }

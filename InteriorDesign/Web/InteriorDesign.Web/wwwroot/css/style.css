@@ -1,23 +1,23 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic);
 
 html, body {
-	height: 100%;
-	width: 100%;
-	padding: 0;
-	margin: 0;
-	font-family: "Lato",sans-serif;
-	font-size: 15px;
-	line-height: 1;
-	font-weight: 400;
-	border: none;
-	color:#747474;
-	position: relative; 
+    background-image: url(/images/works/img1.jpg);
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: "Lato",sans-serif;
+    font-size: 15px;
+    line-height: 1;
+    font-weight: 400;
+    border: none;
+    color: #BFB9B9;
 }
 
 h1, h2, h3, h4, h5, h6 {
 	text-transform:uppercase;
 	 font-family: "Lato",sans-serif;
-	color:#332F2F;
+	color:#F5F5F5;
 	margin-top:0;
 }
 
@@ -81,7 +81,7 @@ input[type="color"],
     margin-bottom:20px;
     font-size: 15px;
     line-height: 25px;
-    color: #FFF;
+    color: #d48629;
     height:46px;
 	width:100%;
     vertical-align: middle;
@@ -641,7 +641,6 @@ html[xmlns] .slides {
 	text-transform: uppercase; 
 	-webkit-transition: all .25s ease;
 	-moz-transition: all .25s ease;
-	-ms-transition: all .25s ease; 
 	-o-transition: all .25s ease;
 	transition: all .25s ease;
 }
@@ -1984,6 +1983,10 @@ li.comment ol.comment-sub {
 
 
 footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width:100%;
 	padding:45px 0 30px;
 	background:#1B1C1F;
 }
@@ -1993,42 +1996,6 @@ footer p {
 	font-size: 16px;
 	letter-spacing: 0.9px;
 }
-
-footer ul.footer-social {
-	margin-bottom: 20px;
-}
-
-footer ul.footer-social li {
-	line-height:48px;
-	font-size:20px;
-	padding:0px;
-}
-
-footer ul.footer-social li a {
-	color: #FFF;
-	text-align: center;
-	border: 1px solid  #FFF;
-	display: inline-block;
-	height :50px;
-	margin-bottom: 10px;
-	width: 50px;
-	margin-right: 5px;
-	border-radius:20%;
-}
-
-footer ul.footer-social li a  {
-	transition: all 700ms;
-}
-
-footer ul.footer-social li a:hover {
-	border: 1px solid #FFF;
-	background:#FFF;
-	color:#ffc107;
-}
-
-footer ul.footer-social li:last-child a {
-	margin-right: 0px;
-}	
 
 
 /*-----------------------------------------------------------------*/

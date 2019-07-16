@@ -2,9 +2,8 @@
 {
     public enum TypeOfProject
     {
-        BasicInteriorDesignProject = 1,
-        FullInteriorDesignProject = 2,
+        Basic = 1,
+        Full = 2,
         Consultation = 3,
-        ConsultationInHome = 4,
     }
 }
