@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
@@ -19,6 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Data\InteriorDesign.Data.Models\InteriorDesign.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Data\InteriorDesign.Data\InteriorDesign.Data.csproj" />
     <ProjectReference Include="..\..\Models\InteriorDesign.Models.csproj" />
   </ItemGroup>
 

@@ -20,7 +20,6 @@
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
 
-
     public static class Program
     {
         public static int Main(string[] args)

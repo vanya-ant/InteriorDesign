@@ -27,7 +27,7 @@
 <body data-spy="scroll">
     <!--Start Navigation-->
     <header id="header">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12">
                     <!--Start Logo -->
@@ -74,13 +74,13 @@
                                 if (this.User.IsInRole("Admin"))
                                 {
                                     <li class="nav-item">
-                                    <a href="/Admin/Create/User">Contact</a> 
+                                    <a href="/Admin/Create/User">Create Designer</a> 
                                     </li>
                                 }
                                 else
                                 {
                                     <li class="nav-item">
-                                    <a href="/Admin/Create/Project">Contact</a>
+                                    <a href="/Admin/Create/Project">Create Project</a>
                                     </li>
                                 }
                             }
@@ -99,7 +99,7 @@
             </div>
         </main>
 
-    <footer>
+    <footer class="d-sm-flex">
         <div class="container text-center">
             &copy; @DateTime.Now.Year - InteriorDesign - <a asp-area="" asp-controller="" asp-action="Identity/Account/Privacy">Privacy</a>
         </div>

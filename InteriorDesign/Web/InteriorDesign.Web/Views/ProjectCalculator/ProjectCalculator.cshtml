@@ -5,7 +5,7 @@
 @{
     ViewData["Title"] = "Project Calculator";
     Layout = "~/Views/Shared/_Layout.cshtml";
-},
+}
 
 @*<!--Start pricing-->
     <section id="pricing" class="section parallax" id="pricing">
@@ -89,7 +89,7 @@
     <!-- End Pricing-->*@
 
 <h2>Project Calculator</h2>
-<form asp-controller="ProjectCalculator" asp-action="ProjectCalculator" method="get">
+<form class="d-flex" asp-controller="ProjectCalculator" asp-action="ProjectCalculator" method="get">
     <div class="form-group">
         <label asp-for="Property">Type of property</label>
         <select class="form-control" bg="dark" id="type-of-property" name="typeOfProperty" asp-items="Html.GetEnumSelectList<TypeOfProperty>()"></select>
@@ -114,10 +114,10 @@
         <label asp-for="Description">Enter additional description</label>
         <textarea class="form-control" id="descripion" rows="3" name="description"></textarea>
     </div>
-    <div class="form-group">
-        <button type="submit" id="submitProjectCalculator>">Calculate</button>
+    <div class="form-group text-center">
+        <button  class="btn btn-lg btn-primary btn-color-white" type="submit" id="submitProjectCalculator>">Calculate</button>
     </div>
-    <div>
+    <div class="text-center">
         <label for="project-cost-evaluation">Approximate Project Expenses</label>
         <textarea clas="form-control" id="approximate-project-cost"></textarea>
     </div>

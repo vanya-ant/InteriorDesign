@@ -10,9 +10,12 @@
         {
             this.ProjectFiles = new HashSet<ProjectFile>();
             this.DesignBoards = new HashSet<DesignBoard>();
+            this.ProjectReviews = new HashSet<ProjectReview>();
         }
 
         public ProjectStatus Status { get; set; }
+
+        public bool IsPublic { get; set; }
 
         public string CustomerId { get; set; }
 

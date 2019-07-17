@@ -2,8 +2,9 @@
 {
     using InteriorDesign.Data.Common.Models;
 
-    public class ProjectStatus : BaseModel<string>
+    public enum ProjectStatus
     {
-        public string Name { get; set; }
+        InProgress = 1,
+        Completed = 2,
     }
 }

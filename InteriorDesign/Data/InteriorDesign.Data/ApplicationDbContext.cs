@@ -30,8 +30,6 @@
 
         public DbSet<ProjectFile> ProjectFiles { get; set; }
 
-        public DbSet<ProjectStatus> ProjectStatuses { get; set; }
-
         public DbSet<DesignBoard> DesignBoards { get; set; }
 
         public DbSet<DesignReference> DesignReferences { get; set; }
@@ -115,6 +113,10 @@
 
             builder.Entity<Project>()
                .HasMany(e => e.DesignBoards)
+               .WithOne(e => e.Project);
+
+            builder.Entity<Project>()
+               .HasMany(e => e.ProjectReviews)
                .WithOne(e => e.Project);
 
             builder.Entity<DesignBoard>()
