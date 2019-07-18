@@ -10,7 +10,7 @@
     },
     "documentationRules": {
       "companyName": "InteriorDesign",
-      "copyrightText": "Copyright (c) {companyName}. All Rights Reserved.",
+      "copyrightText": "Copyright (c) {v-desing}. All Rights Reserved.",
       "documentInterfaces": false,
       "documentInternalElements": false
     },

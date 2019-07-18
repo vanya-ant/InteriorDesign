@@ -1,5 +1,6 @@
 ﻿namespace InteriorDesign.Web
 {
+    using System.Configuration;
     using System.Reflection;
 
     using InteriorDesign.Data;
@@ -96,6 +97,8 @@
             services.AddTransient<IAdminServise, AdminService>();
             services.AddTransient<IDesignerService, DesignerService>();
             services.AddTransient<ICustomerService, CustomerService>();
+
+           // services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
 
             // Data repositories
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
