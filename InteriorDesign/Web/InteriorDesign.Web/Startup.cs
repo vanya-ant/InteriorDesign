@@ -93,6 +93,9 @@
             services.AddTransient<IRoleStore<ApplicationRole>, ApplicationRoleStore>();
             services.AddTransient<IProjectCalculatorService, ProjectCalculatorService>();
             services.AddTransient<IPortfolioService, PortfolioService>();
+            services.AddTransient<IAdminServise, AdminService>();
+            services.AddTransient<IDesignerService, DesignerService>();
+            services.AddTransient<ICustomerService, CustomerService>();
 
             // Data repositories
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
