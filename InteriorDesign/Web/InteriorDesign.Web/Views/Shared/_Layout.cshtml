@@ -26,7 +26,7 @@
 </head>
 <body data-spy="scroll">
     <!--Start Navigation-->
-    <header id="header">
+    <nav id="header">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12">
@@ -39,58 +39,46 @@
                     <!--End Logo -->
                     <div class="clear-toggle"></div>
                     <div id="main-menu" class="collapse scroll navbar-right">
-                        <ul class="navbar-nav">
-                            <li class="active"> <a href="/Home/Index">Home</a> </li>
-                            <li class="nav-item">
-                                <a href="/Services/All">Services</a>
-                            </li>
+                        <ul class="nav">
+                            <li class="active"> <a href="/Home">Home</a> </li>
 
-                            <li class="nav-item">
-                                <a href="/Portfolio/Portfolio">Portfolio</a>
-                            </li>
+                            <li> <a href="/Services/Services">Services</a> </li>
 
-                            <li class="nav-item">
-                                <a href="/Team">Team</a>
-                            </li>
+                            <li> <a href="/Portfolio/Portfolio">Works</a> </li>
 
-                            <li class="nav-item">
-                                <a href="/ProjectCalculator/ProjectCalculator">Project Calculator</a>
-                            </li>
+                            <li> <a href="/Team">Team</a> </li>
 
-                            <li class="nav-item">
-                                <a href="/Clients">Clients</a>
-                            </li>
+                            <li> <a href="/ProjectCalculator/ProjectCalculator">Pricing</a> </li>
 
-                            <li class="nav-item">
-                                <a href="/Identity/Account/Login">Customer Area</a>
-                            </li>
+                            <li> <a href="/Clients">Clients</a> </li>
 
-                            <li class="nav-item">
-                                <a href="/Contacts">Contact</a>
-                            </li>
+                            <li> <a href="/Identity/Account/Login">Customer Area</a></li>
+
+                            <li> <a href="/Contacts">Contact</a> </li>
 
                             @if (this.User.Identity.IsAuthenticated)
                             {
                                 if (this.User.IsInRole("Admin"))
                                 {
                                     <li class="nav-item">
-                                    <a href="/Admin/Create/User">Create Designer</a> 
+                                        <a href="/Admin/Create/User">Create Designer</a>
                                     </li>
                                 }
                                 else
                                 {
                                     <li class="nav-item">
-                                    <a href="/Admin/Create/Project">Create Project</a>
+                                        <a href="/Admin/Create/Project">Create Project</a>
                                     </li>
                                 }
                             }
-
                         </ul>
+
+                    </div>
 </div><!-- End main-menu -->
                 </div>
             </div>
         </div>
-    </header>
+    </nav>
     <!--End Navigation-->
 
         <main>

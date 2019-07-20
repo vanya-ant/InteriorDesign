@@ -1,10 +1,11 @@
 ﻿namespace InteriorDesign.Services
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
     using InteriorDesign.Data;
     using InteriorDesign.Data.Models;
     using InteriorDesign.Services.Contracts;
-    using System.Collections.Generic;
-    using System.Linq;
 
     public class PortfolioService : IPortfolioService
     {

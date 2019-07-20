@@ -1,9 +1,8 @@
 ﻿namespace InteriorDesign.Services
 {
-    using InteriorDesign.Services.Contracts;
     using System;
-    using System.Collections.Generic;
-    using System.Text;
+
+    using InteriorDesign.Services.Contracts;
 
     public class CustomerService : ICustomerService
     {

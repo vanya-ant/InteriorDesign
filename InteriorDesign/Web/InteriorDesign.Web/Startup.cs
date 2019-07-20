@@ -97,6 +97,7 @@
             services.AddTransient<IAdminServise, AdminService>();
             services.AddTransient<IDesignerService, DesignerService>();
             services.AddTransient<ICustomerService, CustomerService>();
+            services.AddTransient<IProjectFileService, ProjectFileService>();
 
            // services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
 
