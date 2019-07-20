@@ -14,7 +14,7 @@ html, body {
     font-weight: 400;
     border: none;
     color: #F5F5F5;
-    background-size: cover
+    background-size: cover;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -48,8 +48,9 @@ a:hover,  a:active,  a:focus {
 }
 
 ::selection {
-	background:#ffc107;
-	color:#FFF;
+    background: #ffc107;
+    color: #FFF;
+    overflow-y: scroll;
 }
 
 ::-moz-selection{

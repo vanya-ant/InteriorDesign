@@ -19,6 +19,10 @@ namespace InteriorDesign.Data.Models
             this.Projects = new HashSet<Project>();
         }
 
+        public string FullName { get; set; }
+
+        public DateTime Birthday { get; set; }
+
         // Audit info
         public DateTime CreatedOn { get; set; }
 

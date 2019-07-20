@@ -15,7 +15,7 @@ namespace InteriorDesign.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
+                .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -60,6 +60,8 @@ namespace InteriorDesign.Data.Migrations
 
                     b.Property<int>("AccessFailedCount");
 
+                    b.Property<DateTime>("Birthday");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
@@ -71,6 +73,8 @@ namespace InteriorDesign.Data.Migrations
                         .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed");
+
+                    b.Property<string>("FullName");
 
                     b.Property<bool>("IsDeleted");
 
@@ -175,17 +179,17 @@ namespace InteriorDesign.Data.Migrations
 
                     b.Property<string>("DesignerId");
 
+                    b.Property<bool>("IsPublic");
+
                     b.Property<DateTime?>("ModifiedOn");
 
-                    b.Property<string>("StatusId");
+                    b.Property<int>("Status");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
 
                     b.HasIndex("DesignerId");
-
-                    b.HasIndex("StatusId");
 
                     b.ToTable("Projects");
                 });
@@ -207,6 +211,10 @@ namespace InteriorDesign.Data.Migrations
 
                     b.Property<string>("ProjectId");
 
+                    b.Property<string>("PublicId");
+
+                    b.Property<string>("Url");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ProjectId");
@@ -214,20 +222,28 @@ namespace InteriorDesign.Data.Migrations
                     b.ToTable("ProjectFiles");
                 });
 
-            modelBuilder.Entity("InteriorDesign.Data.Models.ProjectStatus", b =>
+            modelBuilder.Entity("InteriorDesign.Data.Models.ProjectReview", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("CreatedOn");
 
+                    b.Property<string>("CustomerId");
+
                     b.Property<DateTime?>("ModifiedOn");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("ProjectId");
+
+                    b.Property<string>("Review");
 
                     b.HasKey("Id");
 
-                    b.ToTable("ProjectStatuses");
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("ProjectId");
+
+                    b.ToTable("ProjectReviews");
                 });
 
             modelBuilder.Entity("InteriorDesign.Data.Models.Setting", b =>
@@ -372,16 +388,23 @@ namespace InteriorDesign.Data.Migrations
                     b.HasOne("InteriorDesign.Data.Models.ApplicationUser", "Designer")
                         .WithMany()
                         .HasForeignKey("DesignerId");
-
-                    b.HasOne("InteriorDesign.Data.Models.ProjectStatus", "Status")
-                        .WithMany()
-                        .HasForeignKey("StatusId");
                 });
 
             modelBuilder.Entity("InteriorDesign.Data.Models.ProjectFile", b =>
                 {
                     b.HasOne("InteriorDesign.Data.Models.Project", "Project")
                         .WithMany("ProjectFiles")
+                        .HasForeignKey("ProjectId");
+                });
+
+            modelBuilder.Entity("InteriorDesign.Data.Models.ProjectReview", b =>
+                {
+                    b.HasOne("InteriorDesign.Data.Models.ApplicationUser", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerId");
+
+                    b.HasOne("InteriorDesign.Data.Models.Project", "Project")
+                        .WithMany("ProjectReviews")
                         .HasForeignKey("ProjectId");
                 });
 

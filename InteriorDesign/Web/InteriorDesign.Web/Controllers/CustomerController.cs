@@ -2,7 +2,7 @@
 {
     using Microsoft.AspNetCore.Mvc;
 
-    public class CustomerController : Controller
+    public class CustomerController : BaseController
     {
         public IActionResult Index()
         {

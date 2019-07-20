@@ -99,7 +99,10 @@
             services.AddTransient<ICustomerService, CustomerService>();
             services.AddTransient<IProjectFileService, ProjectFileService>();
 
-           // services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
+            services.AddTransient<IEmailSender, SendGridEmailSender>(provider =>
+               new SendGridEmailSender(new LoggerFactory(), this.configuration["SendGridKey"], "interiorDesign@interiordesign.com", "InteriorDesign"));
+
+            services.Configure<CloudinarySettings>(this.configuration.GetSection("CloudinarySettings"));
 
             // Data repositories
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
