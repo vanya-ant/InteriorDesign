@@ -38,74 +38,76 @@
                     </div>
                     <!--End Logo -->
                     <div class="clear-toggle"></div>
-                    <div id="main-menu" class="collapse scroll navbar-right">
-                        <ul class="nav">
-                            @if (this.User.Identity.IsAuthenticated)
-                            {
-                                <li class="active"> <a href="/Home">Home</a> </li>
-
-                                <li> <a href="/Services/Services">Services</a> </li>
-
-                                <li> <a href="/Portfolio/Portfolio">Works</a> </li>
-
-                                <li> <a href="/Team">Team</a> </li>
-
-                                <li> <a href="/ProjectCalculator/ProjectCalculator">Pricing</a> </li>
-
-                                <li> <a href="/Clients">Clients</a> </li>
-
-                                <li> <a href="/Identity/Account/Login">Customer Area</a></li>
-
-                                <li> <a href="/Contacts">Contact</a> </li>
-                            }
-                            else
-                            {
-                                if (this.User.IsInRole("Administrator"))
-                                {
-                                    <li class="nav-item">
-                                        <a href="/Admin/Create/User">Create Designer</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="/Admin/Create/Project">Create Project</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="/Identity/Account/Logout">Logout</a>
-                                    </li>
-                                }
-                                else if (this.User.IsInRole("Designer"))
-                                {
-                                    <li class="nav-item">
-                                        <a href="/Admin/Create/Project">Create Project</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="/Projects/Current">Current projects</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="/Identity/Account/Logout">Logout</a>
-                                    </li>
-                                }
-                                else if (this.User.IsInRole("Customer"))
+                    <div id="main-menu">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-menu">
+                            </button>
+                            <ul class="nav">
+                                @if (this.User.Identity.IsAuthenticated)
                                 {
                                     <li class="active"> <a href="/Home">Home</a> </li>
 
-                                    <li class="nav-item"> <a href="/Services/Services">Services</a> </li>
+                                    <li> <a href="/Services/Services">Services</a> </li>
 
-                                    <li class="nav-item"> <a href="/Portfolio/Portfolio">Works</a> </li>
+                                    <li> <a href="/Portfolio/Portfolio">Works</a> </li>
 
-                                    <li class="nav-item"> <a href="/Team">Team</a> </li>
+                                    <li> <a href="/Team">Team</a> </li>
 
-                                    <li class="nav-item"> <a href="/ProjectCalculator/ProjectCalculator">Pricing</a> </li>
+                                    <li> <a href="/ProjectCalculator/ProjectCalculator">Pricing</a> </li>
 
-                                    <li class="nav-item"> <a href="/Clients">Clients</a> </li>
+                                    <li> <a href="/Clients">Clients</a> </li>
 
-                                    <li class="nav-item"> <a href="/Contacts">Contact</a> </li>
+                                    <li> <a href="/Identity/Account/Login">Customer Area</a></li>
 
-                                    <li class="nav-item">
-                                        <a href="/Identity/Account/Logout">Logout</a>
-                                    </li>
+                                    <li> <a href="/Contacts">Contact</a> </li>
                                 }
-                            }
-                        </ul>
+                                else
+                                {
+                                    if (this.User.IsInRole("Administrator"))
+                                    {
+                                        <li class="nav-item">
+                                            <a href="/Admin/Create/User">Create Designer</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="/Admin/Create/Project">Create Project</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="/Identity/Account/Logout">Logout</a>
+                                        </li>
+                                    }
+                                    else if (this.User.IsInRole("Designer"))
+                                    {
+                                        <li class="nav-item">
+                                            <a href="/Admin/Create/Project">Create Project</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="/Projects/Current">Current projects</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="/Identity/Account/Logout">Logout</a>
+                                        </li>
+                                    }
+                                    else if (this.User.IsInRole("Customer"))
+                                    {
+                                        <li class="active"> <a href="/Home">Home</a> </li>
+
+                                        <li class="nav-item"> <a href="/Services/Services">Services</a> </li>
+
+                                        <li class="nav-item"> <a href="/Portfolio/Portfolio">Works</a> </li>
+
+                                        <li class="nav-item"> <a href="/Team">Team</a> </li>
+
+                                        <li class="nav-item"> <a href="/ProjectCalculator/ProjectCalculator">Pricing</a> </li>
+
+                                        <li class="nav-item"> <a href="/Clients">Clients</a> </li>
+
+                                        <li class="nav-item"> <a href="/Contacts">Contact</a> </li>
+
+                                        <li class="nav-item">
+                                            <a href="/Identity/Account/Logout">Logout</a>
+                                        </li>
+                                    }
+                                }
+                            </ul>
                     </div>
                 </div>
             </div>
