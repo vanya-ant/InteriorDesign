@@ -1,10 +1,12 @@
 ﻿namespace InteriorDesign.Web.Areas.Identity.Pages.Account
 {
+    using System;
     using System.ComponentModel.DataAnnotations;
     using System.Text.Encodings.Web;
     using System.Threading.Tasks;
     using InteriorDesign.Common;
     using InteriorDesign.Data.Models;
+    using InteriorDesign.Web.Attributes;
     using InteriorDesign.Web.Common;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
@@ -91,6 +93,16 @@
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
+
+            [Required]
+            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
+            [Display(Name = "Username")]
+            public string Username { get; set; }
+
+            [Required]
+            [BirthdayValidationAttribute(ErrorMessage = "Age is restricted between 18 and 90.")]
+            [Display(Name = "Birthday")]
+            public DateTime Birthday { get; set; }
 
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]

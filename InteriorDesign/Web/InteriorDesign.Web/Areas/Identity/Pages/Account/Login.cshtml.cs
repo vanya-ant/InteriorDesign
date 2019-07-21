@@ -67,7 +67,7 @@
                 if (result.Succeeded)
                 {
                     this.logger.LogInformation("User logged in.");
-                    return this.LocalRedirect(returnUrl);
+                    return this.LocalRedirect("/Home/IndexLoggedin");
                 }
 
                 if (result.RequiresTwoFactor)
