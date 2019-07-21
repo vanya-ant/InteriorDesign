@@ -3,9 +3,9 @@
     using System.ComponentModel.DataAnnotations;
     using System.Text.Encodings.Web;
     using System.Threading.Tasks;
-
+    using InteriorDesign.Common;
     using InteriorDesign.Data.Models;
-
+    using InteriorDesign.Web.Common;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Identity.UI.Services;
@@ -56,6 +56,8 @@
                 {
                     this.logger.LogInformation("User created a new account with password.");
 
+                    await this.userManager.AddToRoleAsync(user, GlobalConstants.CustomerRoleName);
+
                     var code = await this.userManager.GenerateEmailConfirmationTokenAsync(user);
                     var callbackUrl = this.Url.Page(
                         "/Account/ConfirmEmail",
@@ -63,10 +65,11 @@
                         values: new { userId = user.Id, code = code },
                         protocol: this.Request.Scheme);
 
+                    var emailContent = callbackUrl.GetConfirmationEmailContent();
                     await this.emailSender.SendEmailAsync(
                         this.Input.Email,
                         "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                        emailContent);
 
                     await this.signInManager.SignInAsync(user, isPersistent: false);
                     return this.LocalRedirect(returnUrl);

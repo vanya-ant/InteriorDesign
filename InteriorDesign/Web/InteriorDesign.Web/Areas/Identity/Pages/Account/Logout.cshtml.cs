@@ -31,14 +31,16 @@
         public async Task<IActionResult> OnPost(string returnUrl = null)
         {
             await this.signInManager.SignOutAsync();
+
             this.logger.LogInformation("User logged out.");
+
             if (returnUrl != null)
             {
                 return this.LocalRedirect(returnUrl);
             }
             else
             {
-               return this.Page();
+               return this.Redirect("Index");
             }
         }
     }
