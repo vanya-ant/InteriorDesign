@@ -62,6 +62,10 @@ img{
 	max-width:100%;
 }
 
+.main-wrapper {
+    height: 100vh;
+}
+
 select,
 textarea,
 input[type="text"],
@@ -1995,21 +1999,12 @@ li.comment ol.comment-sub {
 /*-----------------------------------------------------------------*/
 
 
-footer{
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width:100%;
-	padding:45px 0 30px;
-	background:#1B1C1F;
+footer {
+    float: left;
+    width: 100%;
+    padding: 45px 0 30px;
+    background: #1B1C1F;
 }
-
-footer p {
-	color: #FFF;
-	font-size: 16px;
-	letter-spacing: 0.9px;
-}
-
 
 /*-----------------------------------------------------------------*/
 /*  Media queries
