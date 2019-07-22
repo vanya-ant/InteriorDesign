@@ -2,7 +2,7 @@
 {
     using System.Configuration;
     using System.Reflection;
-
+    using AutoMapper;
     using InteriorDesign.Data;
     using InteriorDesign.Data.Common;
     using InteriorDesign.Data.Common.Repositories;
@@ -60,6 +60,14 @@
                 .AddRoleStore<ApplicationRoleStore>()
                 .AddDefaultTokenProviders()
                 .AddDefaultUI(UIFramework.Bootstrap4);
+
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());
+            });
+
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
 
             services
                 .AddMvc()
@@ -145,9 +153,11 @@
                 app.UseHsts();
             }
 
+            //app.UseResponseCompression();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            //app.UseSession();
             app.UseAuthentication();
             app.UseSetAdminMiddleware();
 

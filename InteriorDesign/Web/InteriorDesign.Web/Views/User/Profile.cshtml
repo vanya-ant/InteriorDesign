@@ -1,0 +1,33 @@
+﻿@model InteriorDesign.Models.ViewModels.UserDetailsViewModel
+
+@{
+    ViewData["Title"] = "Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Profile</h2>
+
+<div class="main-wrapper">
+    <h4>Personal data</h4>
+    <hr />
+    <dl class="dl-horizontal">
+    </dl>
+    <div>
+        <ul>
+            <li>@Model.Email</li>
+
+            @if (Model.FullName == null)
+            {
+                <li> Add full name</li>
+            }
+            else if (Model.Birtday == null)
+            {
+                <li> Add birthday </li>
+            }
+        </ul>
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

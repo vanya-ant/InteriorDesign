@@ -1,11 +1,19 @@
 ﻿namespace InteriorDesign.Web.Controllers
 {
+    using InteriorDesign.Data.Models;
     using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using System.Security.Claims;
 
     public class HomeController : BaseController
     {
+        private readonly UserManager<ApplicationUser> userManager;
+
+        public HomeController(UserManager<ApplicationUser> userManager)
+        {
+            this.userManager = userManager;
+        }
+
         [AllowAnonymous]
         public IActionResult Index()
         {
@@ -21,7 +29,10 @@
         [Authorize]
         public IActionResult IndexLoggedin()
         {
-            return this.View();
+           var userId = this.userManager.GetUserId(this.HttpContext.User);
+           ApplicationUser userFromDb = this.userManager.FindByIdAsync(userId).Result;
+
+           return this.View(userFromDb);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
