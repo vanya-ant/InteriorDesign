@@ -27,6 +27,7 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
+    using UnravelTravel.Web.Middlewares;
 
     public class Startup
     {
@@ -148,6 +149,7 @@
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseAuthentication();
+            app.UseSetAdminMiddleware();
 
             app.UseMvc(routes =>
             {

@@ -1,9 +1,5 @@
 ﻿namespace InteriorDesign.Web.Areas.Identity.Pages.Account
 {
-    using System;
-    using System.ComponentModel.DataAnnotations;
-    using System.Text.Encodings.Web;
-    using System.Threading.Tasks;
     using InteriorDesign.Common;
     using InteriorDesign.Data.Models;
     using InteriorDesign.Web.Attributes;
@@ -14,6 +10,9 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.RazorPages;
     using Microsoft.Extensions.Logging;
+    using System;
+    using System.ComponentModel.DataAnnotations;
+    using System.Threading.Tasks;
 
     [AllowAnonymous]
 #pragma warning disable SA1649 // File name should match first type name
@@ -49,10 +48,10 @@
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            returnUrl = returnUrl ?? this.Url.Content("~/");
+            returnUrl = returnUrl ?? this.Url.Content("~/Home/IndexLoggedin");
             if (this.ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = this.Input.Email, Email = this.Input.Email };
+                var user = new ApplicationUser { UserName = this.Input.Email };
                 var result = await this.userManager.CreateAsync(user, this.Input.Password);
                 if (result.Succeeded)
                 {
@@ -93,16 +92,6 @@
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
-
-            [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
-            [Display(Name = "Username")]
-            public string Username { get; set; }
-
-            [Required]
-            [BirthdayValidationAttribute(ErrorMessage = "Age is restricted between 18 and 90.")]
-            [Display(Name = "Birthday")]
-            public DateTime Birthday { get; set; }
 
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]

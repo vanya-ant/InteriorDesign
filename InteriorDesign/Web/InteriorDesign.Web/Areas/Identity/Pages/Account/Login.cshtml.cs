@@ -57,7 +57,7 @@
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            returnUrl = returnUrl ?? this.Url.Content("~/");
+            returnUrl = returnUrl ?? this.Url.Content("~/Home/IndexLoggedin");
 
             if (this.ModelState.IsValid)
             {
@@ -67,7 +67,7 @@
                 if (result.Succeeded)
                 {
                     this.logger.LogInformation("User logged in.");
-                    return this.LocalRedirect("/Home/IndexLoggedin");
+                    return this.LocalRedirect(returnUrl);
                 }
 
                 if (result.RequiresTwoFactor)
