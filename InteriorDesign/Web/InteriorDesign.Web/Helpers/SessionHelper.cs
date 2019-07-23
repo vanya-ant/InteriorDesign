@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json;
-
-namespace InteriorDesign.Web.Helpers
+﻿namespace InteriorDesign.Web.Helpers
 {
+    using Microsoft.AspNetCore.Http;
+    using Newtonsoft.Json;
+
     public static class SessionHelper
     {
         public static void SetObjectAsJson(this ISession session, string key, object value)

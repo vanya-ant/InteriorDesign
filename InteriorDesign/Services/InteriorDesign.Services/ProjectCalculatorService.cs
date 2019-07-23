@@ -1,5 +1,6 @@
 ﻿namespace InteriorDesign.Services
 {
+    using InteriorDesign.Data.Models;
     using InteriorDesign.Models.InputModels;
     using InteriorDesign.Services.Contracts;
 
@@ -18,23 +19,23 @@
         {
             decimal result = 0m;
 
-            switch (model.Project)
+            switch (model.Property)
             {
-                case "Apartment": result = this.CalculatePropertyArea(model) *
+                case TypeOfProperty.Apartment: result = this.CalculatePropertyArea(model) *
                         (model.NumberOfBathrooms + model.NumberOfBedrooms);
                     break;
-                case "Studio":
+                case TypeOfProperty.Studio:
                     result = this.CalculatePropertyArea(model);
                     break;
-                case "House":
+                case TypeOfProperty.House:
                     result = this.CalculatePropertyArea(model) *
                         (model.NumberOfBathrooms + model.NumberOfBedrooms) * House;
                     break;
-                case "Office":
+                case TypeOfProperty.Office:
                     result = this.CalculatePropertyArea(model) *
                        (model.NumberOfBathrooms + model.NumberOfBedrooms) * Office;
                     break;
-                case "RetailProperty":
+                case TypeOfProperty.RetailProperty:
                     result = this.CalculatePropertyArea(model) *
                        (model.NumberOfBathrooms + model.NumberOfBedrooms) * RetailProperty;
                     break;
@@ -51,20 +52,16 @@
 
             switch (model.Project)
             {
-                case "BasicInteriorDesignProject":
+                case TypeOfProject.Basic:
                     result = model.HousingArea * BaseProjectRate;
                     break;
 
-                case "FullInteriorDesignProject":
+                case TypeOfProject.Full:
                     result = model.HousingArea * FullProjectRate;
                     break;
 
-                case "Consultation":
+                case TypeOfProject.Consultation:
                     result = model.HousingArea * ConsultationRate;
-                    break;
-
-                case "ConsultationInHome":
-                    result = model.HousingArea * ConsultationInHouseRate;
                     break;
 
                 default:

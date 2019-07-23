@@ -35,7 +35,7 @@
             {
                 var user = new ApplicationUser
                 {
-                    UserName = GlobalConstants.AdministratorRoleName,
+                    UserName = GlobalConstants.AdministratorEmail,
                     Email = GlobalConstants.AdministratorEmail,
                     FullName = GlobalConstants.AdministratorFullName,
                 };

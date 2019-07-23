@@ -90,45 +90,42 @@
 
 <h2>Project Calculator</h2>
 <div class="col-md-6">
-    <form class="d-flex" asp-controller="ProjectCalculator" asp-action="ProjectCalculator" method="get">
-        <div class="form-group">
-            <label asp-for="Property">Type of property</label>
-            <select class="form-control" bg="dark" id="type-of-property" name="typeOfProperty" asp-items="Html.GetEnumSelectList<TypeOfProperty>()"></select>
-        </div>
-        <div class="form-group">
-            <label asp-for="Project">Type of project</label>
-            <select multiple class="form-control" id="type-of-project" name="typeOfProject" asp-items="Html.GetEnumSelectList<TypeOfProject>()"></select>
-        </div>
-        <div class="form-group">
-            <label asp-for="NumberOfBedrooms">Enter number of berdooms</label>
-            <input class="form-control" id="number-of-bedrooms" type="number" name="numberOfBedrooms" />
-        </div>
-        <div class="form-group">
-            <label asp-for="NumberOfBathrooms">Enter number of bathrooms</label>
-            <input class="form-control" id="number-of-bedrooms" type="number" name="numberOfBathrooms" />
-        </div>
-        <div class="form-group">
-            <label asp-for="HousingArea">Enter housing area /sq.m./</label>
-            <input class="form-control" id="number-of-bedrooms" type="number" step="0.1" name="housingArea" />
-        </div>
-        <div class="form-group">
-            <label asp-for="Description">Enter additional description</label>
-            <textarea class="form-control" id="descripion" rows="3" name="description"></textarea>
-        </div>
-        <div class="form-group text-center">
-            <button class="btn btn-lg btn-primary btn-color-white" type="submit" id="submitProjectCalculator>">Calculate</button>
-        </div>
-        <div class="text-center">
-            <label for="project-cost-evaluation">Approximate Project Design Expenses</label>
-            <textarea clas="form-control" id="approximate-project-cost"></textarea>
-        </div>
-    </form>
-</div>
-@if (this.User.Identity.IsAuthenticated)
-{
-
-}
-else
-{
-
-}
+    @using (Html.BeginForm("ProjectCalculatorCalculate", "ProjectCalculator", FormMethod.Post, new { @class = "form-group" }))
+    {
+        <form class="d-flex" asp-controller="ProjectCalculator" asp-action="ProjectCalculator">
+            <div class="form-group">
+                <label asp-for="Property">Type of property</label>
+                <select class="form-control" bg="dark" id="property" name="property" asp-items="Html.GetEnumSelectList<TypeOfProperty>()"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Project">Type of project</label>
+                <select multiple class="form-control" id="project" name="project" asp-items="Html.GetEnumSelectList<TypeOfProject>()"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumberOfBedrooms">Enter number of berdooms</label>
+                <input class="form-control" id="number-of-bedrooms" type="number" name="numberOfBedrooms" />
+            </div>
+            <div class="form-group">
+                <label asp-for="NumberOfBathrooms">Enter number of bathrooms</label>
+                <input class="form-control" id="number-of-bedrooms" type="number" name="numberOfBathrooms" />
+            </div>
+            <div class="form-group">
+                <label asp-for="HousingArea">Enter housing area /sq.m./</label>
+                <input class="form-control" id="number-of-bedrooms" type="number" step="0.1" name="housingArea" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Description">Enter additional description</label>
+                <textarea class="form-control" id="descripion" rows="3" name="description"></textarea>
+            </div>
+            <div class="text-center">
+                <label for="project-cost-evaluation">Approximate Project Design Expenses</label>
+                <div clas="form-control" id="approximate-project-cost">
+                </div>
+                @Html.TextBoxFor(model => model.Result, null, new { @class = "form-control" })
+            </div>
+            <div class="form-group text-center">
+                <button class="btn btn-lg btn-primary btn-color-white" type="submit" id="submit-ProjectCalculator">Calculate</button>
+            </div>
+        </form>
+    }
+    </div>

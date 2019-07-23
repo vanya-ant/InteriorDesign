@@ -15,26 +15,20 @@
         }
 
         // GET: ProjectCalculator
-        public ActionResult ProjectCalculator()
+        [HttpGet]
+        public ActionResult ProjectCalculator(ProjectCalculatorInputModel model)
         {
-            return this.View();
+            return this.View(model);
         }
 
         // POST: ProjectCalculator
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(ProjectCalculatorInputModel model)
+        public ActionResult ProjectCalculatorCalculate(ProjectCalculatorInputModel model)
         {
-            try
-            {
-               var result = this.service.Calculate(model);
+            model.Result = this.service.Calculate(model);
 
-               return this.RedirectToAction(nameof(this.ProjectCalculator));
-            }
-            catch
-            {
-                return this.View();
-            }
+            return this.RedirectToAction("ProjectCalculator", model);
         }
     }
 }

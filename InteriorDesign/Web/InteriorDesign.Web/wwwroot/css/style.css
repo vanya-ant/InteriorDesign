@@ -383,7 +383,7 @@ input[type="color"]:focus,
     left: 0;
 }
 .overlayc {
-    background: url('../images/parallax2.jpg') repeat rgba(0, 0, 0, .4);
+    background: url('../images/sofia-map-2.jpg') repeat rgba(0, 0, 0, .4);
     z-index:1;
     position: absolute;
     display: block;

@@ -26,6 +26,30 @@
             return this.View();
         }
 
+        [AllowAnonymous]
+        public IActionResult Clients()
+        {
+            return this.View();
+        }
+
+        [AllowAnonymous]
+        public IActionResult Contacts()
+        {
+            return this.View();
+        }
+
+        [AllowAnonymous]
+        public IActionResult Services()
+        {
+            return this.View();
+        }
+
+        [AllowAnonymous]
+        public IActionResult Team()
+        {
+            return this.View();
+        }
+
         [Authorize]
         public IActionResult IndexLoggedin()
         {
