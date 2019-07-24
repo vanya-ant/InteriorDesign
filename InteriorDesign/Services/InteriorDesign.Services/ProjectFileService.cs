@@ -4,31 +4,26 @@
     using System.Linq;
     using System.Threading.Tasks;
 
-    using CloudinaryDotNet;
-    using CloudinaryDotNet.Actions;
-
     using InteriorDesign.Data;
     using InteriorDesign.Data.Models;
     using InteriorDesign.Models.InputModels;
     using InteriorDesign.Models.ViewModels;
     using InteriorDesign.Services.Contracts;
-    using Microsoft.Extensions.Options;
 
     public class ProjectFileService : IProjectFileService
     {
         private readonly IDesignerService designerService;
-        private readonly IOptions<CloudinarySettings> cloudinaryConfig;
-        private readonly Cloudinary cloudinary;
+        private readonly ICloudinaryService cloudinaryService;
         private readonly ApplicationDbContext context;
 
         public ProjectFileService(
                                   IDesignerService designerService,
-                                  IOptions<CloudinarySettings> cloudinaryConfig,
+                                  ICloudinaryService cloudinaryService,
                                   ApplicationDbContext context)
         {
             this.context = context;
             this.designerService = designerService;
-            this.cloudinaryConfig = cloudinaryConfig;
+            this.cloudinaryService = cloudinaryService;
         }
 
         public async Task<ProjectFileVewModel> AddProjectFile(string projectId, ProjectFileCreateModel projectFile)
@@ -40,27 +35,7 @@
 
             var file = projectFile.File;
 
-            var uploadResult = new ImageUploadResult();
-
-            if (file.Length > 0)
-            {
-                using (var stream = file.OpenReadStream())
-                {
-                    var uploadParams = new ImageUploadParams()
-                    {
-                        File = new FileDescription(file.Name, stream),
-                        Transformation = new Transformation()
-                                        .Width(500).Height(500)
-                                        .Crop("fill")
-                                        .Gravity("face"),
-                    };
-
-                    uploadResult = this.cloudinary.Upload(uploadParams);
-                }
-            }
-
-            projectFile.Url = uploadResult.Uri.ToString();
-            projectFile.PublicId = uploadResult.PublicId;
+            string projectFileUrl = await this.cloudinaryService.UploadProjectFileAsync(projectFile.File, project.Customer + projectFile.AddedOn.ToString("dd-MM-yyyy HH:mm"));
 
             var newFile = new ProjectFile
             {

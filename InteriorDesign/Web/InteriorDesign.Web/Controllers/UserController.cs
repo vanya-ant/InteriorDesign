@@ -1,17 +1,17 @@
 ﻿namespace InteriorDesign.Web.Controllers
 {
-    using AutoMapper;
-    using InteriorDesign.Data;
-    using InteriorDesign.Data.Models;
-    using InteriorDesign.Models.ViewModels;
-    using Microsoft.AspNetCore.Mvc;
     using System.Linq;
     using System.Security.Claims;
 
+    using AutoMapper;
+    using InteriorDesign.Data;
+    using InteriorDesign.Models.ViewModels;
+    using Microsoft.AspNetCore.Mvc;
+
     public class UserController : BaseController
     {
-        public readonly IMapper mapper;
-        public readonly ApplicationDbContext context;
+        private readonly IMapper mapper;
+        private readonly ApplicationDbContext context;
 
         public UserController(IMapper mapper, ApplicationDbContext context)
         {

@@ -1,4 +1,4 @@
-﻿namespace UnravelTravel.Web.Middlewares
+﻿namespace InteriorDesign.Web.Middlewares
 {
     using Microsoft.AspNetCore.Builder;
 

@@ -28,7 +28,6 @@
         {
             await this.signInManager.SignOutAsync();
 
-
             return this.LocalRedirect("/Home/Index");
         }
     }

@@ -2,10 +2,10 @@
 {
     using System;
 
-    using Microsoft.AspNetCore.Mvc.Filters;
-    using Microsoft.Extensions.DependencyInjection;
     using InteriorDesign.Data.Common.Repositories;
     using InteriorDesign.Data.Models;
+    using Microsoft.AspNetCore.Mvc.Filters;
+    using Microsoft.Extensions.DependencyInjection;
 
     public class AdminExceptionStoreExceptionFilter : ExceptionFilterAttribute
     {

@@ -1,8 +1,9 @@
 ﻿namespace InteriorDesign.Web
 {
-    using System.Configuration;
     using System.Reflection;
+
     using AutoMapper;
+    using CloudinaryDotNet;
     using InteriorDesign.Data;
     using InteriorDesign.Data.Common;
     using InteriorDesign.Data.Common.Repositories;
@@ -14,8 +15,8 @@
     using InteriorDesign.Services.Data;
     using InteriorDesign.Services.Mapping;
     using InteriorDesign.Services.Messaging;
+    using InteriorDesign.Web.Middlewares;
     using InteriorDesign.Web.ViewModels;
-
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
@@ -27,7 +28,6 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
-    using UnravelTravel.Web.Middlewares;
 
     public class Startup
     {
@@ -45,6 +45,15 @@
             // TODO: Add pooling when this bug is fixed: https://github.com/aspnet/EntityFrameworkCore/issues/9741
             services.AddDbContext<ApplicationDbContext>(
                 options => options.UseSqlServer(this.configuration.GetConnectionString("DefaultConnection")));
+
+            Account cloudinaryCredentials = new Account(
+                this.configuration["Cloudinary:CloudName"],
+                this.configuration["Cloudinary:ApiKey"],
+                this.configuration["Cloudinary:ApiSecret"]);
+
+            Cloudinary cloudinaryUtility = new Cloudinary(cloudinaryCredentials);
+
+            services.AddSingleton(cloudinaryUtility);
 
             services
                 .AddIdentity<ApplicationUser, ApplicationRole>(options =>
@@ -107,11 +116,10 @@
             services.AddTransient<IDesignerService, DesignerService>();
             services.AddTransient<ICustomerService, CustomerService>();
             services.AddTransient<IProjectFileService, ProjectFileService>();
+            services.AddTransient<ICloudinaryService, CloudinaryService>();
 
             services.AddTransient<IEmailSender, SendGridEmailSender>(provider =>
                new SendGridEmailSender(new LoggerFactory(), this.configuration["SendGridKey"], "interiorDesign@interiordesign.com", "InteriorDesign"));
-
-            services.Configure<CloudinarySettings>(this.configuration.GetSection("CloudinarySettings"));
 
             // Data repositories
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
@@ -154,9 +162,11 @@
             }
 
             //app.UseResponseCompression();
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
             //app.UseSession();
             app.UseAuthentication();
             app.UseSetAdminMiddleware();
