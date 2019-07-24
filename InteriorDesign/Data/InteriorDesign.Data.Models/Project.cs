@@ -13,9 +13,11 @@
             this.ProjectReviews = new HashSet<ProjectReview>();
         }
 
-        public ProjectStatus Status { get; set; }
+        public string Name { get; set; }
 
-        public bool IsPublic { get; set; }
+        public ProjectStatus Status { get; set; } = ProjectStatus.InProgress;
+
+        public bool IsPublic { get; set; } = false;
 
         public string CustomerId { get; set; }
 

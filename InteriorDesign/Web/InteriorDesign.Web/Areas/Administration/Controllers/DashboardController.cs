@@ -1,23 +1,33 @@
 ﻿namespace InteriorDesign.Web.Areas.Administration.Controllers
 {
-    using InteriorDesign.Services.Data;
-    using InteriorDesign.Web.Areas.Administration.ViewModels.Dashboard;
+    using System.Linq;
 
+    using InteriorDesign.Data;
+    using InteriorDesign.Data.Models;
+    using InteriorDesign.Models.ViewModels;
+    using InteriorDesign.Web.Controllers;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
-    public class DashboardController : AdministrationController
+    public class DashboardController : BaseController
     {
-        private readonly ISettingsService settingsService;
+        private readonly ApplicationDbContext context;
 
-        public DashboardController(ISettingsService settingsService)
+        public DashboardController(ApplicationDbContext context)
         {
-            this.settingsService = settingsService;
+            this.context = context;
         }
 
         public IActionResult Index()
         {
-            var viewModel = new IndexViewModel { SettingsCount = this.settingsService.GetCount(), };
-            return this.View(viewModel);
+            var projects = this.context.Projects.Where(p => p.Status == ProjectStatus.InProgress);
+
+            foreach (var project in projects)
+            {
+                var projectsView = AutoMapper.Mapper.Map<ProjectViewModel>(project);
+            }
+
+            return this.View(projects);
         }
     }
 }

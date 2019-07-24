@@ -47,9 +47,9 @@
                 options => options.UseSqlServer(this.configuration.GetConnectionString("DefaultConnection")));
 
             Account cloudinaryCredentials = new Account(
-                this.configuration["Cloudinary:CloudName"],
-                this.configuration["Cloudinary:ApiKey"],
-                this.configuration["Cloudinary:ApiSecret"]);
+                this.configuration["CloudinarySettings:CloudName"],
+                this.configuration["CloudinarySettings:ApiKey"],
+                this.configuration["CloudinarySettings:ApiSecret"]);
 
             Cloudinary cloudinaryUtility = new Cloudinary(cloudinaryCredentials);
 

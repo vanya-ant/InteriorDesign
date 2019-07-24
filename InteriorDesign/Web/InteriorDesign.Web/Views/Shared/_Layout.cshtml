@@ -44,7 +44,9 @@
                         <ul class="nav">
                             @if (!this.User.Identity.IsAuthenticated)
                             {
-                                <li class="active"> <a  href="/Home/Index">Home</a> </li>
+                                <li class="active"> <a href="/Home/Index">Home</a> </li>
+
+                                <li class="nav-item"> <a href="/Identity/Account/Login">Login</a> </li>
 
                                 <li class="nav-item"> <a href="/Home/Services">Services</a> </li>
 
@@ -63,10 +65,10 @@
                                 if (this.User.IsInRole("Administrator"))
                                 {
                                     <li class="nav-item">
-                                        <a href="/Admin/Create/User">Create Designer</a>
+                                        <a href="/Administation/Designer/Assign">Create Designer</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="/Admin/Create/Project">Create Project</a>
+                                        <a href="/Administration/Project/Create">Create Project</a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="/Identity/Account/Logout">Logout</a>
