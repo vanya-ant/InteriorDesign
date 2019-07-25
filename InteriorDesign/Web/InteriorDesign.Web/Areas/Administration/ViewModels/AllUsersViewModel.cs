@@ -6,9 +6,9 @@
 
     public class AllUsersViewModel
     {
-        public IEnumerable<UserViewModel> Users { get; set; }
+        public IEnumerable<ApplicationUser> Customers { get; set; }
 
-        public IEnumerable<UserViewModel> Designers { get; set; }
+        public IEnumerable<ApplicationUser> Designers { get; set; }
 
         public string Roles { get; set; }
     }

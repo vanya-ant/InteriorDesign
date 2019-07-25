@@ -12,17 +12,12 @@
 
     public class ProjectFileService : IProjectFileService
     {
-        private readonly IDesignerService designerService;
         private readonly ICloudinaryService cloudinaryService;
         private readonly ApplicationDbContext context;
 
-        public ProjectFileService(
-                                  IDesignerService designerService,
-                                  ICloudinaryService cloudinaryService,
-                                  ApplicationDbContext context)
+        public ProjectFileService(ICloudinaryService cloudinaryService, ApplicationDbContext context)
         {
             this.context = context;
-            this.designerService = designerService;
             this.cloudinaryService = cloudinaryService;
         }
 

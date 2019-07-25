@@ -1,49 +1,58 @@
 ﻿namespace InteriorDesign.Web.Areas.Administration.Controllers
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
     using InteriorDesign.Data.Models;
+    using InteriorDesign.Models.InputModels;
     using InteriorDesign.Models.ViewModels;
+    using InteriorDesign.Services.Contracts;
     using InteriorDesign.Web.Areas.Administration.ViewModels;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
 
     public class ProjectController : AdministrationController
     {
         private readonly UserManager<ApplicationUser> userManager;
+        private readonly IProjectService projectService;
 
-        public ProjectController(UserManager<ApplicationUser> userManager)
+        public ProjectController(UserManager<ApplicationUser> userManager, IProjectService projectService)
         {
             this.userManager = userManager;
+            this.projectService = projectService;
         }
 
         [HttpGet("/Administration/Project/Create")]
-        public async Task<IActionResult> CreateProject()
+        public async Task<IActionResult> Create()
         {
-            var users = await this.userManager.GetUsersInRoleAsync("User");
+            var users = await this.userManager.GetUsersInRoleAsync("Customer");
 
             var designers = await this.userManager.GetUsersInRoleAsync("Designer");
 
             var viewModel = new AllUsersViewModel()
             {
-                Users = AutoMapper.Mapper.Map<IEnumerable<UserViewModel>>(users),
-                Designers = AutoMapper.Mapper.Map<IEnumerable<UserViewModel>>(designers),
+                Customers = AutoMapper.Mapper.Map<IList<ApplicationUser>>(users),
+                Designers = AutoMapper.Mapper.Map<IList<ApplicationUser>>(designers),
             };
 
             return this.View("Create", viewModel);
         }
 
         [HttpPost("/Administration/Project/Create")]
-        public async Task<IActionResult> CreateProject(ProjectViewModel model)
+        public async Task<IActionResult> CreateProject()
         {
-            var project = new Project
+            string customerEmail = this.Request.Form["customer"].ToString();
+            string designerEmail = this.Request.Form["designer"].ToString();
+
+            var project = new ProjectCreateInputModel
             {
-                Name = model.Name,
-                Customer = await this.userManager.FindByEmailAsync(model.CustomerEmail),
-                Designer = await this.userManager.FindByEmailAsync(model.DesignerEmail),
+                Customer = await this.userManager.FindByNameAsync(customerEmail),
+                Designer = await this.userManager.FindByNameAsync(designerEmail),
             };
 
-            return this.Redirect("/Dashboard/IndexViewModel");
+            await this.projectService.CreateProject(project);
+
+            return this.Redirect("/Dashboard/Index");
         }
     }
 }

@@ -7,8 +7,6 @@ namespace InteriorDesign.Models.ViewModels
 {
     public class ProjectViewModel
     {
-        public string Name { get; set; }
-
         public string CustomerEmail { get; set; }
 
         public string DesignerEmail { get; set; }

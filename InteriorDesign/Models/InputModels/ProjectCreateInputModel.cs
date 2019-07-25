@@ -1,16 +1,11 @@
-﻿using InteriorDesign.Data.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace InteriorDesign.Models.InputModels
+﻿namespace InteriorDesign.Models.InputModels
 {
+    using InteriorDesign.Data.Models;
+
     public class ProjectCreateInputModel
     {
-        public string Name { get; set; }
+        public ApplicationUser Customer { get; set; }
 
-        public string CustomerEmail { get; set; }
-
-        public string DesignerEmail { get; set; }
+        public ApplicationUser Designer { get; set; }
     }
 }

@@ -117,6 +117,7 @@
             services.AddTransient<ICustomerService, CustomerService>();
             services.AddTransient<IProjectFileService, ProjectFileService>();
             services.AddTransient<ICloudinaryService, CloudinaryService>();
+            services.AddTransient<IProjectService, ProjectService>();
 
             services.AddTransient<IEmailSender, SendGridEmailSender>(provider =>
                new SendGridEmailSender(new LoggerFactory(), this.configuration["SendGridKey"], "interiorDesign@interiordesign.com", "InteriorDesign"));

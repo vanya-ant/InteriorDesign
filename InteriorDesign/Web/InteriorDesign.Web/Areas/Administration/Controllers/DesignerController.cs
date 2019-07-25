@@ -1,8 +1,10 @@
 ﻿namespace InteriorDesign.Web.Areas.Administration.Controllers
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using InteriorDesign.Data.Models;
+    using InteriorDesign.Web.Areas.Administration.ViewModels;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
@@ -16,19 +18,28 @@
         }
 
         [HttpGet("/Administration/Designer/Assign")]
-        public IActionResult Index()
+        public async Task<IActionResult> Assign()
         {
-            return this.View("Assign");
+            var users = await this.userManager.GetUsersInRoleAsync("Customer");
+
+            var viewModel = new AllUsersViewModel()
+            {
+                Customers = AutoMapper.Mapper.Map<IList<ApplicationUser>>(users),
+            };
+
+            return this.View("Assign", viewModel);
         }
 
         [HttpPost("/Administration/Designer/Assign")]
-        public async Task<IActionResult> AssignUserToDesignerRole(string email)
+        public async Task<IActionResult> AssignUserToDesignerRole()
         {
-            var userToBeAssigned = await this.userManager.FindByEmailAsync(email);
+            string selectedEmail = this.Request.Form["Customer"].ToString();
+
+            var userToBeAssigned = await this.userManager.FindByNameAsync(selectedEmail);
 
             await this.userManager.AddToRoleAsync(userToBeAssigned, "Designer");
 
-            return this.Redirect("/Dashboard/IndexViewModel");
+            return this.Redirect("Administration/Dashboard/Index");
         }
     }
 }
