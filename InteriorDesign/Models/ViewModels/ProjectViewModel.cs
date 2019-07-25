@@ -7,8 +7,20 @@ namespace InteriorDesign.Models.ViewModels
 {
     public class ProjectViewModel
     {
+        public string Name { get; set; }
+
+        public string Status { get; set; }
+
+        public bool IsPublic { get; set; }
+
         public string CustomerEmail { get; set; }
 
         public string DesignerEmail { get; set; }
+
+        public ICollection<DesignBoard> DesignBoards { get; set; }
+
+        public ICollection<ProjectFile> ProjectFiles { get; set; }
+
+        public ICollection<ProjectReview> ProjectReviews { get; set; }
     }
 }

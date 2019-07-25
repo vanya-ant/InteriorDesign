@@ -6,6 +6,8 @@
 
     public class AllUsersViewModel
     {
+        public string ProjectName { get; set; }
+
         public IEnumerable<ApplicationUser> Customers { get; set; }
 
         public IEnumerable<ApplicationUser> Designers { get; set; }

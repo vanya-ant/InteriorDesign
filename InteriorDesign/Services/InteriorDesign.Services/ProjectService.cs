@@ -1,5 +1,6 @@
 ﻿namespace InteriorDesign.Services
 {
+    using System.Linq;
     using System.Threading.Tasks;
 
     using InteriorDesign.Data;
@@ -18,8 +19,14 @@
 
         public async Task<string> CreateProject(ProjectCreateInputModel model)
         {
+           if (this.context.Projects.Any(p => p.Name == model.Name))
+           {
+                return $"Project with name {model.Name} alreday exists!";
+            }
+
            var project = await this.context.Projects.AddAsync(new Project
             {
+                Name = model.Name,
                 Designer = model.Designer,
                 Customer = model.Customer,
             });

@@ -41,11 +41,13 @@
         [HttpPost("/Administration/Project/Create")]
         public async Task<IActionResult> CreateProject()
         {
+            string projectName = this.Request.Form["projectName"].ToString();
             string customerEmail = this.Request.Form["customer"].ToString();
             string designerEmail = this.Request.Form["designer"].ToString();
 
             var project = new ProjectCreateInputModel
             {
+                Name = projectName,
                 Customer = await this.userManager.FindByNameAsync(customerEmail),
                 Designer = await this.userManager.FindByNameAsync(designerEmail),
             };
