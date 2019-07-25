@@ -2,29 +2,38 @@
 {
     using System.Linq;
     using System.Security.Claims;
-
+    using System.Threading.Tasks;
     using AutoMapper;
     using InteriorDesign.Data;
+    using InteriorDesign.Data.Models;
     using InteriorDesign.Models.ViewModels;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
     public class UserController : BaseController
     {
-        private readonly IMapper mapper;
         private readonly ApplicationDbContext context;
+        private readonly UserManager<ApplicationUser> userManager;
 
-        public UserController(IMapper mapper, ApplicationDbContext context)
+        public UserController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
-            this.mapper = mapper;
             this.context = context;
+            this.userManager = userManager;
         }
 
-        public IActionResult Profile()
+        [HttpGet("/User/Profile")]
+        public async Task<IActionResult> Profile()
         {
-            return this.View(new UserDetailsViewModel()
+            var userFromDb = await this.userManager.FindByNameAsync(this.User.Identity.Name);
+
+            var user = new UserDetailsViewModel
             {
-                Email = this.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email).Value,
-            });
+                Email = userFromDb.UserName,
+                Birthday = userFromDb.Birthday,
+                FullName = userFromDb.FullName,
+            };
+
+            return this.View(user);
         }
     }
 }

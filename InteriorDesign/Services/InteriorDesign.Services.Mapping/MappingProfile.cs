@@ -9,6 +9,7 @@
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<UserDetailsViewModel, ApplicationUser>();
+            configuration.CreateMap<ProjectViewModel, Project>();
         }
     }
 }

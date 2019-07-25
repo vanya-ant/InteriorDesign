@@ -1,57 +1,54 @@
-﻿@using System.Security.Claims;
+﻿@Model  InteriorDesign.Models.ViewModels.UserViewModel
 
 @{
     ViewData["Title"] = "IndexLoggedin";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@if (this.User.IsInRole("Administrator"))
-{
 
-}
-else if (this.User.IsInRole("Designer"))
-{
+<div class="main-wrapper">
+    <div class="col-md-12 padding-top-md">
+        <div class="bg">
+            <div class="text-center">
+                <div id="wellcome-text">
+                    <h1>Wellcome, @this.User.Identity.Name</h1>
+                    <h1>Current projects:</h1>
+                </div>
 
-}
-else
-{
+                @if (Model.Projects.Count > 0)
+                {
+                    @foreach (var project in Model.Projects)
+                    {
+                        <div> Project Name: @project.Name</div>
 
-    <div class="main-wrapper">
-        <div class="col-md-12 padding-top-md">
-            <div class="bg">
-                <div class="text-center">
-                    <div id="wellcome-text">
-                        <h1>Wellcome, @this.User.FindFirst(ClaimTypes.Name).Value</h1>
-                        <h1>Current projects:</h1>
-                    </div>
+                        @foreach (var projectFile in project.ProjectFiles)
+                        {
+
+                        }
+
+                        @if (this.User.IsInRole("Administrator"))
+                        {
+
+                        }
+                        else if (this.User.IsInRole("Designer"))
+                        {
+
+                        }
+                    }
+                }
+                else
+                {
                     <div class="text-center">
                         No current projects!
                     </div>
                     <br />
-                    <br />
                     <div>
                         <a href="/Protfolio/Portfolio">Please, visit our portfolio page</a>
                     </div>
-
-                    @*@if (Model.Projects.Count() > 0)
-                        {
-                            @foreach (var project in Model.Projects)
-                            {
-
-                            }
-                        }
-                        else
-                        {
-                            <div class="text-center">
-                                "No current projects!"
-                            </div>
-                            <div>
-                                <a href="/Protfolio/Portfolio">Please, visit our pportfolio page</a>
-                            </div>
-                        }*@
-                </div>
+                }
             </div>
         </div>
-
     </div>
-}
+
+</div>
+

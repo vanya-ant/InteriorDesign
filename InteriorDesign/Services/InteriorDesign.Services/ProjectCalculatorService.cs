@@ -8,8 +8,7 @@
     {
         private const decimal BaseProjectRate = 6.88m;
         private const decimal FullProjectRate = 22.34m;
-        private const decimal ConsultationRate = 30m;
-        private const decimal ConsultationInHouseRate = 50m;
+        private const decimal ConsultationRate = 3.15m;
 
         private const decimal House = 1.8m;
         private const decimal Office = 1.2m;

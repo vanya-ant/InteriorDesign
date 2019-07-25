@@ -13,18 +13,17 @@
     <dl class="dl-horizontal">
     </dl>
     <div>
-        <ul>
-            <li>@Model.Email</li>
-
-            @if (Model.FullName == null)
-            {
-                <li> Add full name</li>
-            }
-            else if (Model.Birtday == null)
-            {
-                <li> Add birthday </li>
-            }
-        </ul>
+        <form id="profile">
+            <label class="text-center">Email</label>
+            <input type="email" placeholder="@Model.Email" readonly/>
+            <label class="text-center">Birthday</label>
+            <input type="date" value="Enter birtday..." />
+            <label class="text-center">Full Name</label>
+            <input type="text" value="Enter Full Name" />
+            <div>
+                <btn class="btn-primary">Update</btn>
+            </div>
+        </form>
     </div>
 </div>
 <div>

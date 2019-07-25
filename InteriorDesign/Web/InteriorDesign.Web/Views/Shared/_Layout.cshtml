@@ -52,23 +52,21 @@
 
                                 <li class="nav-item"> <a href="/Portfolio/Portfolio">Works</a> </li>
 
-                                <li class="nav-item"> <a href="/Home/Team">Team</a> </li>
-
                                 <li class="nav-item"> <a href="/ProjectCalculator/ProjectCalculator">Pricing</a> </li>
-
-                                <li class="nav-item"> <a href="/Home/Clients">Clients</a> </li>
 
                                 <li class="nav-item"> <a href="/Home/Contacts">Contact</a> </li>
                             }
                             else
                             {
+                                <li class="active align-content-end"><a href="/User/Profile"> My profile</a></li>
+
                                 if (this.User.IsInRole("Administrator"))
                                 {
                                     <li class="nav-item">
-                                        <a href="/Administration/Designer/Assign">Create Designer</a>
+                                        <a href="/Administration/Project/Create">Create Project</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="/Administration/Project/Create">Create Project</a>
+                                        <a href="/Administration/Designer/Assign">Create Designer</a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="/Identity/Account/Logout">Logout</a>
@@ -85,19 +83,13 @@
                                 }
                                 else
                                 {
-                                    <li class="active align-content-end"><a href="/User/Profile"> My profile</a></li>
-
                                     <li class="nav-item"> <a href="/Home/Index">Home</a> </li>
 
                                     <li class="nav-item"> <a href="/Home/Services">Services</a> </li>
 
                                     <li class="nav-item"> <a href="/Portfolio/Portfolio">Works</a> </li>
 
-                                    <li class="nav-item"> <a href="/Home/Team">Team</a> </li>
-
                                     <li class="nav-item"> <a href="/ProjectCalculator/ProjectCalculator">Pricing</a> </li>
-
-                                    <li class="nav-item"> <a href="/Home/Clients">Clients</a> </li>
 
                                     <li class="nav-item"> <a href="/Home/Contacts">Contact</a> </li>
 
