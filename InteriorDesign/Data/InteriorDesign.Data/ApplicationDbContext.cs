@@ -112,6 +112,12 @@
                 .WithOne(e => e.Customer);
 
             builder.Entity<Project>()
+               .HasOne(e => e.Designer);
+
+            builder.Entity<Project>()
+             .HasOne(e => e.Customer);
+
+            builder.Entity<Project>()
                .HasMany(e => e.DesignBoards)
                .WithOne(e => e.Project);
 
@@ -122,6 +128,7 @@
             builder.Entity<DesignBoard>()
               .HasMany(e => e.DesignReferences)
               .WithOne(e => e.DesignBoard);
+
         }
 
         private static void SetIsDeletedQueryFilter<T>(ModelBuilder builder)

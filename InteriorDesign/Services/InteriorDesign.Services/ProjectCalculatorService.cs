@@ -1,16 +1,18 @@
 ﻿namespace InteriorDesign.Services
 {
+    using System;
+
     using InteriorDesign.Data.Models;
     using InteriorDesign.Models.InputModels;
     using InteriorDesign.Services.Contracts;
 
     public class ProjectCalculatorService : IProjectCalculatorService
     {
-        private const decimal BaseProjectRate = 6.88m;
-        private const decimal FullProjectRate = 22.34m;
+        private const decimal BaseProjectRate = 4.88m;
+        private const decimal FullProjectRate = 8.34m;
         private const decimal ConsultationRate = 3.15m;
 
-        private const decimal House = 1.8m;
+        private const decimal House = 1.1m;
         private const decimal Office = 1.2m;
         private const decimal RetailProperty = 2m;
 
@@ -42,7 +44,7 @@
                     break;
             }
 
-            return result;
+            return Math.Round(result, 2);
         }
 
         internal decimal CalculatePropertyArea(ProjectCalculatorInputModel model)

@@ -1,5 +1,6 @@
 ﻿namespace InteriorDesign.Web.Areas.Administration.Controllers
 {
+    using System.Collections.Generic;
     using System.Linq;
 
     using InteriorDesign.Data;
@@ -22,12 +23,9 @@
         {
             var projects = this.context.Projects.Where(p => p.Status == ProjectStatus.InProgress);
 
-            foreach (var project in projects)
-            {
-                var projectsView = AutoMapper.Mapper.Map<ProjectViewModel>(project);
-            }
+            var result = AutoMapper.Mapper.Map<IQueryable<Project>, IEnumerable<ProjectViewModel>>(projects);
 
-            return this.View(projects);
+            return this.View(result);
         }
     }
 }

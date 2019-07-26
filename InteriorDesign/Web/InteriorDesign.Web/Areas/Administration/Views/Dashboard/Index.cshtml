@@ -1,13 +1,12 @@
-﻿@model InteriorDesign.Web.Areas.Administration.ViewModels.Dashboard.IndexViewModel
+﻿@model List<InteriorDesign.Models.ViewModels.ProjectViewModel>
 
 @{
     this.ViewData["Title"] = "Admin dashboard";
 }
 
 <h1>@this.ViewData["Title"]</h1>
-Settings: @this.Model.SettingsCount
 
-@foreach (var project in Model.Projects)
+@foreach (var project in Model)
 {
     <a href="/Project/Details"> Project </a>
 }

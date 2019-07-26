@@ -1,11 +1,12 @@
 ﻿namespace InteriorDesign.Services.Contracts
 {
+    using System.ComponentModel.DataAnnotations;
     using System.Threading.Tasks;
 
     using InteriorDesign.Models.InputModels;
 
     public interface IProjectService
     {
-       Task<string> CreateProject(ProjectCreateInputModel model);
+       Task<ValidationResult> CreateProject(ProjectCreateInputModel model);
     }
 }

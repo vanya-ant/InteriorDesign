@@ -1,9 +1,7 @@
 ﻿namespace InteriorDesign.Web.Controllers
 {
-    using System.Linq;
-    using System.Security.Claims;
     using System.Threading.Tasks;
-    using AutoMapper;
+
     using InteriorDesign.Data;
     using InteriorDesign.Data.Models;
     using InteriorDesign.Models.ViewModels;

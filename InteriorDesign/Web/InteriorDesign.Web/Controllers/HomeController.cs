@@ -1,12 +1,13 @@
 ﻿namespace InteriorDesign.Web.Controllers
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
     using InteriorDesign.Data.Models;
     using InteriorDesign.Models.ViewModels;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using System.Collections.Generic;
-    using System.Linq;
 
     public class HomeController : BaseController
     {
@@ -56,21 +57,14 @@
         [Authorize]
         public IActionResult IndexLoggedin()
         {
-           var userId = this.userManager.GetUserId(this.HttpContext.User);
-           ApplicationUser userFromDb = this.userManager.FindByIdAsync(userId).Result;
+            var userId = this.userManager.GetUserId(this.HttpContext.User);
+            ApplicationUser userFromDb = this.userManager.FindByIdAsync(userId).Result;
 
-           var user = new UserViewModel
-           {
-               Username = userFromDb.UserName,
-               Projects = userFromDb.Projects.Select(p => new ProjectViewModel
-               {
-                    Name = p.Name,
-                    CustomerEmail = p.Customer.UserName,
-                    DesignerEmail = p.Designer.UserName,
-               }).ToList(),
-           };
+            var allUserProjects = userFromDb.Projects.ToList();
 
-           return this.View(user);
+            var result = AutoMapper.Mapper.Map<List<ProjectViewModel>>(allUserProjects);
+
+            return this.View(result);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

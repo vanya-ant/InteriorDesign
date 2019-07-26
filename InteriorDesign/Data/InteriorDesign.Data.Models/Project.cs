@@ -1,7 +1,7 @@
 ﻿namespace InteriorDesign.Data.Models
 {
     using System.Collections.Generic;
-
+    using System.ComponentModel.DataAnnotations.Schema;
     using InteriorDesign.Data.Common.Models;
 
     public class Project : BaseModel<string>
@@ -19,13 +19,15 @@
 
         public bool IsPublic { get; set; } = false;
 
+        [ForeignKey("Customer")]
         public string CustomerId { get; set; }
 
-        public ApplicationUser Customer { get; set; }
+        public virtual ApplicationUser Customer { get; set; }
 
+        [ForeignKey("Designer")]
         public string DesignerId { get; set; }
 
-        public ApplicationUser Designer { get; set; }
+        public virtual ApplicationUser Designer { get; set; }
 
         public ICollection<DesignBoard> DesignBoards { get; set; }
 

@@ -6,11 +6,11 @@
     {
         public string CustomerId { get; set; }
 
-        public ApplicationUser Customer { get; set; }
+        public virtual ApplicationUser Customer { get; set; }
 
         public string DesignBoardId { get; set; }
 
-        public DesignBoard DesignBoard { get; set; }
+        public virtual DesignBoard DesignBoard { get; set; }
 
         public string ImageUrl { get; set; }
     }

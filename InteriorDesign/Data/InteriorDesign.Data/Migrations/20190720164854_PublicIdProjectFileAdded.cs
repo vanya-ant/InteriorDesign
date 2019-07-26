@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-using System;
-
-namespace InteriorDesign.Data.Migrations
+﻿namespace InteriorDesign.Data.Migrations
 {
+    using System;
+
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class PublicIdProjectFileAdded : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -53,7 +54,7 @@ namespace InteriorDesign.Data.Migrations
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     Review = table.Column<string>(nullable: true),
                     CustomerId = table.Column<string>(nullable: true),
-                    ProjectId = table.Column<string>(nullable: true)
+                    ProjectId = table.Column<string>(nullable: true),
                 },
                 constraints: table =>
                 {
@@ -116,7 +117,7 @@ namespace InteriorDesign.Data.Migrations
                     Id = table.Column<string>(nullable: false),
                     CreatedOn = table.Column<DateTime>(nullable: false),
                     ModifiedOn = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: true),
                 },
                 constraints: table =>
                 {

@@ -8,10 +8,10 @@
 
         public string CustomerId { get; set; }
 
-        public ApplicationUser Customer { get; set; }
+        public virtual ApplicationUser Customer { get; set; }
 
         public string ProjectId { get; set; }
 
-        public Project Project { get; set; }
+        public virtual Project Project { get; set; }
     }
 }

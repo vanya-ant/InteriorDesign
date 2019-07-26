@@ -23,6 +23,6 @@
 
         public string ProjectId { get; set; }
 
-        public Project Project { get; set; }
+        public virtual Project Project { get; set; }
     }
 }

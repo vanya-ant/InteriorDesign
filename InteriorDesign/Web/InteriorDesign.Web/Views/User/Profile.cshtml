@@ -5,28 +5,25 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Profile</h2>
-
-<div class="main-wrapper">
-    <h4>Personal data</h4>
-    <hr />
-    <dl class="dl-horizontal">
-    </dl>
-    <div>
-        <form id="profile">
-            <label class="text-center">Email</label>
-            <input type="email" placeholder="@Model.Email" readonly/>
-            <label class="text-center">Birthday</label>
-            <input type="date" value="Enter birtday..." />
-            <label class="text-center">Full Name</label>
-            <input type="text" value="Enter Full Name" />
+    <div class="main-wrapper">
+        <div class="col-md-6">
+            <h2>Profile</h2>
+            <h4>Personal data</h4>
+            <hr />
+            <dl class="dl-horizontal">
+            </dl>
             <div>
-                <btn class="btn-primary">Update</btn>
+                <form id="profile">
+                    <label class="text-center">Email</label>
+                    <input type="email" placeholder="@Model.Email" readonly />
+                    <label class="text-center">Birthday</label>
+                    <input type="date" value="Enter birtday..." />
+                    <label class="text-center">Full Name</label>
+                    <input type="text" value="Enter Full Name" />
+                    <div>
+                        <btn class="btn-primary">Update</btn>
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
     </div>
-</div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
-</div>

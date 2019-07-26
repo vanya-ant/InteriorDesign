@@ -17,9 +17,5 @@
         public decimal NumberOfBathrooms { get; set; }
 
         public decimal HousingArea { get; set; }
-
-        public string UserId { get; set; }
-
-        public ApplicationUser Customer { get; set; }
     }
 }

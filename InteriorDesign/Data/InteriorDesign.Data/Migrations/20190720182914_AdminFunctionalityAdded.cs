@@ -1,9 +1,9 @@
-﻿using System;
-
-using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace InteriorDesign.Data.Migrations
+﻿namespace InteriorDesign.Data.Migrations
 {
+    using System;
+
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class AdminFunctionalityAdded : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)

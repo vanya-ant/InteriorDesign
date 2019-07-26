@@ -1,5 +1,6 @@
 ﻿namespace InteriorDesign.Services
 {
+    using System.ComponentModel.DataAnnotations;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -17,11 +18,11 @@
             this.context = context;
         }
 
-        public async Task<string> CreateProject(ProjectCreateInputModel model)
+        public async Task<ValidationResult> CreateProject(ProjectCreateInputModel model)
         {
            if (this.context.Projects.Any(p => p.Name == model.Name))
            {
-                return $"Project with name {model.Name} alreday exists!";
+                return new ValidationResult($"Project with name {model.Name} alreday exists!");
             }
 
            var project = await this.context.Projects.AddAsync(new Project
@@ -33,7 +34,7 @@
 
            await this.context.SaveChangesAsync();
 
-           return $"New project created successfuly!";
+           return new ValidationResult($"New project created successfuly!");
         }
     }
 }

@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic);
 
 html, body {
-    background-image: url('/images/works/C1.jpg');
+    background-image: url('/images/background2.jpg');
     min-height: 100%;
     min-width: 100%;
     background-size: 100% 100%;
@@ -745,6 +745,11 @@ html[xmlns] .slides {
 /*-----------------------------------------------------------------*/
 /* Works
 /*-----------------------------------------------------------------*/
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+    width: 70%;
+    margin: auto;
+}
 
 #works{
     padding-bottom: 0;
