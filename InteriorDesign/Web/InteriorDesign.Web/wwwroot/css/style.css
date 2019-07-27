@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic);
 
 html, body {
-    background-image: url('/images/background2.jpg');
+    background-image: url('/images/background-dark.jpg');
     min-height: 100%;
     min-width: 100%;
     background-size: 100% 100%;
@@ -15,6 +15,7 @@ html, body {
     border: none;
     color: #F5F5F5;
     background-size: cover;
+    overflow-y: auto;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -753,8 +754,8 @@ html[xmlns] .slides {
 
 #works{
     padding-bottom: 0;
-	position:relative;
-	background: #F8F8F8;
+	position: center;
+	background: rgba(0, 0, 0, .4);
 }
 
 .work-grid .mix { 
@@ -820,87 +821,6 @@ html[xmlns] .slides {
 
 .work-item {
     display: inline-block;
-}
-
-.work-item a {
-	position: relative;
-    height: 100%;
-}
-
-.work-item a img {
-    width: 100%;
-    -webkit-transition: all0.3s ease-out;
-    transition: all 0.3s ease-out;
-}
-
-.work-item .work-info {
-    position: absolute;
-    z-index: 2;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, .4);
-    opacity: 0;
-    -webkit-transition: all0.3s ease-out;
-    transition: all 0.3s ease-out;
-}
-
-.work-item:hover .work-info {
-    opacity: 1;
-}
-
-.work-item  .work-info .work-info-detail  {
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    opacity: 0;
-    -webkit-transform: translateY(65%);
-    -ms-transform: translateY(65%);
-    transform: translateY(65%);
-    -webkit-transition: all 0.2s linear;
-    transition: all 0.2s linear;
-}
-
-.work-item:hover .work-info .work-info-detail  {
-    opacity: 1;
-    -webkit-transform: translateY(0);
-    -ms-transform: translateY(0);
-    transform: translateY(0);
-}
-
-.work-item  .work-info .work-info-detail  h4,
-.work-item  .work-info .work-info-detail  p{
-    color: #fff;
-}
-
-.work-item  .work-info .work-info-detail  p{
-    margin-bottom:15px;
-}
-
-.work-item  .work-info .work-info-detail h4:after {
-    content: "";
-    display: block;
-    width: 40px;
-    height: 2px;
-    background:#ffc107;
-    margin: 10px auto;
-}
-
-.thumbnail-img {
-    position: relative;
-    float: left;
-    display: inline-block;
-    width: 100%;
-    overflow: hidden;
-}
-
-.work-all{
-	text-align:center;
-	margin-top: 50px;
-	padding-bottom: 50px;
 }
 
 @media only screen and (min-width: 40.063em) {
