@@ -1,4 +1,5 @@
-﻿@{
+﻿@model InteriorDesign.Models.InputModels.ContactFormInputModel
+@{
     ViewData["Title"] = "Contacts";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -8,18 +9,17 @@
     <div class="overlayc"></div>
     <div class="container">
         <div class="row">
-
             <!--Start heading-->
-            <div class="col-md-offset-2 col-md-8  wow zoomIn" data-wow-duration="700ms" data-wow-delay="300ms">
+            <div class="col-md-offset-2 col-md-8">
                 <div class="section-header">
                     <h2 class="smt"><span><img src="~/images/leftw.png"> Contact <img src="~/images/rightw.png"></span></h2>
                 </div>
             </div>
             <!--End heading-->
             <!--Start contact form-->
-            <div class="col-md-7 contact-form wow zoomIn" data-wow-duration="700ms" data-wow-delay="300ms">
+            <div class="col-md-7">
                 <div class="contact-form">
-                    <form method="post" action="">
+                    <form asp-action="Contacts" asp-controller="Home" method="post">
                         <div class="row">
                             <div class="col-md-6">
                                 <input class="form-control" name="name" id="name" placeholder="Full Name" type="text">
@@ -42,7 +42,7 @@
             </div>
             <!--contact form-->
             <!--Start contact information -->
-            <div class="col-md-4 contact-address wow zoomIn" data-wow-duration="700ms" data-wow-delay="400ms">
+            <div class="col-md-4 contact-address">
                 <p> <i class="fa fa-map-marker"></i>  <span>43, Kukuvitza Str.</span></p>
                 <p> <i class="fa fa-envelope"></i> <span>design@interiorDesign.com</span></p>
                 <p> <i class="fa fa-phone"></i> <span>(+359) 877 877877 </span></p>

@@ -23,7 +23,7 @@
            if (this.context.Projects.Any(p => p.Name == model.Name))
            {
                 return new ValidationResult($"Project with name {model.Name} alreday exists!");
-            }
+           }
 
            var project = await this.context.Projects.AddAsync(new Project
             {

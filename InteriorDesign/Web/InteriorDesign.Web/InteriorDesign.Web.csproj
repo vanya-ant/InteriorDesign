@@ -48,8 +48,4 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\Project\" />
-  </ItemGroup>
 </Project>
