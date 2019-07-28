@@ -117,7 +117,7 @@
             services.AddTransient<ICustomerService, CustomerService>();
             services.AddTransient<IProjectFileService, ProjectFileService>();
             services.AddTransient<ICloudinaryService, CloudinaryService>();
-            services.AddTransient<IProjectService, ProjectService>();
+            services.AddTransient<IAdminServise, AdminService>();
             services.AddTransient<IContactService, ContactService>();
 
             services.AddTransient<IEmailSender, SendGridEmailSender>(provider =>

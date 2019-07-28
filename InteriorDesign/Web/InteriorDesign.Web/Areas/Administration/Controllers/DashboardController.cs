@@ -21,9 +21,9 @@
 
         public IActionResult Index()
         {
-            var projects = this.context.Projects.Where(p => p.Status == ProjectStatus.InProgress);
+            var projects = this.context.Projects.Where(p => p.Status == ProjectStatus.InProgress).ToList();
 
-            var result = AutoMapper.Mapper.Map<IQueryable<Project>, IEnumerable<ProjectViewModel>>(projects);
+            var result = AutoMapper.Mapper.Map<ICollection<Project>, IEnumerable<ProjectViewModel>>(projects);
 
             return this.View(result);
         }

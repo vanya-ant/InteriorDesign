@@ -13,8 +13,8 @@
         {
             configuration.CreateMap<UserDetailsViewModel, ApplicationUser>();
             configuration.CreateMap<ApplicationUser, UserDetailsViewModel>();
-            configuration.CreateMap<Project, ProjectViewModel>();
-            configuration.CreateMap<IQueryable<Project>, IEnumerable<ProjectViewModel>>();
+            configuration.CreateMap<Project, ProjectViewModel>().ReverseMap();
+            configuration.CreateMap<ProjectViewModel, Project>().PreserveReferences();
         }
     }
 }

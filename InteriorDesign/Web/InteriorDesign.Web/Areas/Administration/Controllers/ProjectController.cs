@@ -5,7 +5,6 @@
 
     using InteriorDesign.Data.Models;
     using InteriorDesign.Models.InputModels;
-    using InteriorDesign.Models.ViewModels;
     using InteriorDesign.Services.Contracts;
     using InteriorDesign.Web.Areas.Administration.ViewModels;
     using Microsoft.AspNetCore.Identity;
@@ -14,12 +13,12 @@
     public class ProjectController : AdministrationController
     {
         private readonly UserManager<ApplicationUser> userManager;
-        private readonly IProjectService projectService;
+        private readonly IAdminServise adminService;
 
-        public ProjectController(UserManager<ApplicationUser> userManager, IProjectService projectService)
+        public ProjectController(UserManager<ApplicationUser> userManager, IAdminServise adminService)
         {
             this.userManager = userManager;
-            this.projectService = projectService;
+            this.adminService = adminService;
         }
 
         [HttpGet("/Administration/Project/Create")]
@@ -39,7 +38,7 @@
         }
 
         [HttpPost("/Administration/Project/Create")]
-        public async Task<IActionResult> CreateProject()
+        public async Task<IActionResult> CreateProject(ProjectCreateInputModel model)
         {
             string projectName = this.Request.Form["projectName"].ToString();
             string customerEmail = this.Request.Form["customer"].ToString();
@@ -52,7 +51,7 @@
                 Designer = await this.userManager.FindByNameAsync(designerEmail),
             };
 
-            await this.projectService.CreateProject(project);
+            await this.adminService.CreateProject(project);
 
             return this.Redirect("/Dashboard/Index");
         }

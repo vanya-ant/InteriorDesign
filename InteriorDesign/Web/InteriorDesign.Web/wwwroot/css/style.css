@@ -67,6 +67,11 @@ img{
     height: 100vh;
 }
 
+.navbar-right li a {
+    text-align: right;
+}
+
+
 select,
 textarea,
 input[type="text"],

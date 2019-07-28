@@ -34,9 +34,18 @@
                 <div class="col-sm-12">
                     <!--Start Logo -->
                     <div class="logo-nav">
-                        <a href="/Home/Index">
-                            <img src="~/images/logo.png" alt="Company logo" />
-                        </a>
+                        @if (!this.User.Identity.IsAuthenticated)
+                        {
+                            <a href="/Home/Index">
+                                <img src="~/images/logo.png" alt="Company logo" />
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="/Home/IndexLoggedin">
+                                <img src="~/images/logo.png" alt="Company logo" />
+                            </a>
+                        }
                     </div>
                     <!--End Logo -->
                     <div class="clear-toggle"></div>
@@ -48,8 +57,6 @@
                             {
                                 <li class="active"> <a href="/Home/Index">Home</a> </li>
 
-                                <li class="nav-item"> <a href="/Identity/Account/Login">Login</a> </li>
-
                                 <li class="nav-item"> <a href="/Home/Services">Services</a> </li>
 
                                 <li class="nav-item"> <a href="/Portfolio/Portfolio">Works</a> </li>
@@ -57,6 +64,10 @@
                                 <li class="nav-item"> <a href="/ProjectCalculator/ProjectCalculator">Pricing</a> </li>
 
                                 <li class="nav-item"> <a href="/Home/Contacts">Contact</a> </li>
+
+                                <li class="nav-item pull-right"> <a href="/Identity/Account/Register">Register</a> </li>
+
+                                <li class="nav-item pull-right"> <a href="/Identity/Account/Login">Login</a> </li>
                             }
                             else
                             {
@@ -85,7 +96,7 @@
                                 }
                                 else
                                 {
-                                    <li class="nav-item"> <a href="/Home/Index">Home</a> </li>
+                                    <li class="nav-item"> <a href="/Home/IndexLoggedin">Home</a> </li>
 
                                     <li class="nav-item"> <a href="/Home/Services">Services</a> </li>
 

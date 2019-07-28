@@ -1,12 +1,19 @@
 ﻿namespace InteriorDesign.Services.Contracts
 {
-    using System;
     using System.Collections.Generic;
-    using System.Text;
+    using System.ComponentModel.DataAnnotations;
+    using System.Threading.Tasks;
+
+    using InteriorDesign.Data.Models;
+    using InteriorDesign.Models.InputModels;
 
     public interface IAdminServise
     {
-        void CreateProject();
+        Task<ValidationResult> CreateProject(ProjectCreateInputModel model);
+
+        Task AddDesigner(string email);
+
+        ICollection<Project> GetAllProjectsInProgress();
 
         void EditProject();
 
@@ -14,10 +21,8 @@
 
         void DeleteProjectFIle();
 
-        void AddDesigner();
-
         void DeleteDeigner();
 
-        void DeleteREview();
+        void DeleteReview();
     }
 }

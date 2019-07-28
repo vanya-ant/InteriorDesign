@@ -5,12 +5,15 @@
 
     using InteriorDesign.Data.Models;
     using InteriorDesign.Web.Areas.Administration.ViewModels;
+
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+    using InteriorDesign.Services;
 
     public class DesignerController : AdministrationController
     {
         private readonly UserManager<ApplicationUser> userManager;
+        private readonly AdminService adminService;
 
         public DesignerController(UserManager<ApplicationUser> userManager)
         {
@@ -35,9 +38,7 @@
         {
             string selectedEmail = this.Request.Form["Customer"].ToString();
 
-            var userToBeAssigned = await this.userManager.FindByNameAsync(selectedEmail);
-
-            await this.userManager.AddToRoleAsync(userToBeAssigned, "Designer");
+            await this.adminService.AddDesigner(selectedEmail);
 
             return this.Redirect("Administration/Dashboard/Index");
         }

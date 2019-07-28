@@ -2,8 +2,6 @@
 {
     using System.Collections.Generic;
     using System.Linq;
-    using System.Net;
-    using System.Net.Mail;
     using System.Threading.Tasks;
 
     using InteriorDesign.Data.Models;
@@ -19,11 +17,19 @@
     {
         private readonly UserManager<ApplicationUser> userManager;
         private readonly IContactService contactService;
+        private readonly IAdminServise adminService;
+        private readonly ICustomerService customerService;
+        private readonly IDesignerService designerService;
 
-        public HomeController(UserManager<ApplicationUser> userManager, IContactService contactService)
+        public HomeController(UserManager<ApplicationUser> userManager, IContactService contactService, 
+                              IAdminServise adminService, ICustomerService customerService,
+                              IDesignerService designerService)
         {
             this.userManager = userManager;
             this.contactService = contactService;
+            this.adminService = adminService;
+            this.customerService = customerService;
+            this.designerService = designerService;
         }
 
         [AllowAnonymous]
@@ -70,7 +76,7 @@
                           $"Full Name: {model.Name}\n\r" +
                           $"Email: {model.Email}\n\r" +
                           $"Message: {model.Message}\n\r" +
-                          "Cheers,The InteriorDesign contact form";
+                          "Cheers,\n\rThe InteriorDesign contact form";
 
             mailer.IsHtml = true;
             mailer.Send();
@@ -92,16 +98,29 @@
         }
 
         [Authorize]
-        public IActionResult IndexLoggedin()
+        public async Task<IActionResult> IndexLoggedin()
         {
             var userId = this.userManager.GetUserId(this.HttpContext.User);
             ApplicationUser userFromDb = this.userManager.FindByIdAsync(userId).Result;
 
-            var allUserProjects = userFromDb.Projects.ToList();
+            var projects = new List<Project>();
 
-            var result = AutoMapper.Mapper.Map<List<ProjectViewModel>>(allUserProjects);
+            if (await this.userManager.IsInRoleAsync(userFromDb, "Administrator"))
+            {
+                projects = this.adminService.GetAllProjectsInProgress().ToList();
+            }
+            else if (await this.userManager.IsInRoleAsync(userFromDb, "Designer"))
+            {
+                projects = this.designerService.GetActiveDesignerProjects(userId).ToList();
+            }
+            else if (await this.userManager.IsInRoleAsync(userFromDb, "Customer"))
+            {
+                projects = this.customerService.GetActiveCustomerProjects(userId).ToList();
+            }
 
-            return this.View(result);
+            //List<ProjectViewModel> result = AutoMapper.Mapper.Map<List<ProjectViewModel>>(projects);
+
+            return this.View(projects);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

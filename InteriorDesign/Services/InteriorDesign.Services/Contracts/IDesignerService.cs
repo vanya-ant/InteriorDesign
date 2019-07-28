@@ -1,11 +1,13 @@
 ﻿namespace InteriorDesign.Services.Contracts
 {
-    using System;
     using System.Collections.Generic;
-    using System.Text;
+
+    using InteriorDesign.Data.Models;
 
     public interface IDesignerService
     {
+        ICollection<Project> GetActiveDesignerProjects(string designerId);
+
         void EditProject();
 
         void AddProjectFile();

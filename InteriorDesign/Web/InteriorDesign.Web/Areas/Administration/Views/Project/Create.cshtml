@@ -6,14 +6,12 @@
     ViewData["Title"] = "Create Project";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Create Project</h2>
-
-<h4>New Project</h4>
-<hr />
 <div class="main-wrapper">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
+            <h2>Create Project</h2>
+            <h4>New Project</h4>
+            <hr />
             <form asp-action="Create">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
@@ -24,13 +22,13 @@
                     <asp:DropDownList ID="customer" runat="server" AutoPostBack="True">
                         <label asp-for="Customers" class="control-label"></label>
                         @Html.DropDownList("Customer", new SelectList(Model.Customers, "Email"))
-                        </asp:DropDownList>
-                    </div>
+                    </asp:DropDownList>
+                </div>
                 <div class="form-group">
                     <asp:DropDownList ID="designer" runat="server" AutoPostBack="True">
                         <label asp-for="Designers" class="control-label"></label>
                         @Html.DropDownList("Designer", new SelectList(Model.Designers, "Email"))
-                    </asp:DropdownList>
+                    </asp:DropDownList>
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Create" class="btn btn-default" />
