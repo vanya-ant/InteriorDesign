@@ -4,20 +4,21 @@
     using System.Threading.Tasks;
 
     using InteriorDesign.Data.Models;
+    using InteriorDesign.Services.Contracts;
     using InteriorDesign.Web.Areas.Administration.ViewModels;
 
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using InteriorDesign.Services;
 
     public class DesignerController : AdministrationController
     {
+        private readonly IAdminServise adminService;
         private readonly UserManager<ApplicationUser> userManager;
-        private readonly AdminService adminService;
 
-        public DesignerController(UserManager<ApplicationUser> userManager)
+        public DesignerController(UserManager<ApplicationUser> userManager, IAdminServise adminService)
         {
             this.userManager = userManager;
+            this.adminService = adminService;
         }
 
         [HttpGet("/Administration/Designer/Assign")]
@@ -34,13 +35,13 @@
         }
 
         [HttpPost("/Administration/Designer/Assign")]
-        public async Task<IActionResult> AssignUserToDesignerRole()
+        public async Task<IActionResult> AssignDesignerRole()
         {
             string selectedEmail = this.Request.Form["Customer"].ToString();
 
             await this.adminService.AddDesigner(selectedEmail);
 
-            return this.Redirect("Administration/Dashboard/Index");
+            return this.Redirect("/Home/IndexLoggedin");
         }
     }
 }

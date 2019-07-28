@@ -4,6 +4,7 @@
 
     using InteriorDesign.Data;
     using InteriorDesign.Data.Models;
+    using InteriorDesign.Models.InputModels;
     using InteriorDesign.Models.ViewModels;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
@@ -32,6 +33,22 @@
             };
 
             return this.View(user);
+        }
+
+        [HttpPost("/User/Profile")]
+        public async Task<IActionResult> Profile(EditProfileInputModel model)
+        {
+            if (this.ModelState.IsValid)
+            {
+                var userFromDb = await this.userManager.FindByNameAsync(this.User.Identity.Name);
+                userFromDb.Birthday = model.Birthday;
+                userFromDb.Birthday = model.Birthday;
+                await this.userManager.UpdateAsync(userFromDb);
+
+                return this.Redirect("IndexLoggedin");
+            }
+
+            return this.Content($"Please fill both your Birthday and Full Name");
         }
     }
 }

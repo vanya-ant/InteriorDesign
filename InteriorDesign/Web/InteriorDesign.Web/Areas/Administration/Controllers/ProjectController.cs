@@ -53,7 +53,7 @@
 
             await this.adminService.CreateProject(project);
 
-            return this.Redirect("/Dashboard/Index");
+            return this.Redirect("/Home/IndexLoggedin");
         }
     }
 }

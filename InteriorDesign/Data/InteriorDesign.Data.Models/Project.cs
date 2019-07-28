@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations.Schema;
+
     using InteriorDesign.Data.Common.Models;
 
     public class Project : BaseModel<string>

@@ -1,0 +1,46 @@
+﻿@model InteriorDesign.Models.ViewModels.ProjectViewModel;
+
+<div class="d-flex justify-content-between">
+    <div class="col-md-6 align-content-center">
+        <h4>Project</h4>
+        <hr />
+        <form form class="d-flex">
+            <div class="row">
+                Project Name
+            </div>
+            <br/>
+            <div class="row" style="text-emphasis-color:darkorange">
+                @Html.DisplayFor(model => model.Name)
+            </div>
+            <br />
+            @foreach (var projectReview in Model.ProjectReviews)
+            {
+
+            }
+            <div>
+                @if (this.User.IsInRole("Administrator"))
+                {
+                    <div class="form-group text-center">
+                        <button class="btn btn-lg btn-primary btn-color-white" asp-action="Edit" asp-route-id="@Model.Id">Edit</button>
+                    </div>
+                    <div class="form-group text-center">
+                        <button class="btn btn-lg btn-primary btn-color-white" asp-action="Delete" asp-route-id="@Model.Id">Delete</button>
+                    </div>
+                }
+                else if (this.User.IsInRole("Designer"))
+                {
+                    <div class="form-group text-center">
+                        <button class="btn btn-lg btn-primary btn-color-white" asp-action="Edit" asp-route-id="@Model.Id">Add Project File</button>
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group text-center">
+                        <button class="btn btn-lg btn-primary btn-color-white" asp-action="Edit" asp-route-id="@Model.Id">Details</button>
+                    </div>
+                }
+                <hr />
+            </div>
+        </form>
+    </div>
+</div>

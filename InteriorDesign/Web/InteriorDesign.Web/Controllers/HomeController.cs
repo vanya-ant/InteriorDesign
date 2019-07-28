@@ -21,7 +21,7 @@
         private readonly ICustomerService customerService;
         private readonly IDesignerService designerService;
 
-        public HomeController(UserManager<ApplicationUser> userManager, IContactService contactService, 
+        public HomeController(UserManager<ApplicationUser> userManager, IContactService contactService,
                               IAdminServise adminService, ICustomerService customerService,
                               IDesignerService designerService)
         {
@@ -118,9 +118,27 @@
                 projects = this.customerService.GetActiveCustomerProjects(userId).ToList();
             }
 
-            //List<ProjectViewModel> result = AutoMapper.Mapper.Map<List<ProjectViewModel>>(projects);
+            List<ProjectViewModel> result = new List<ProjectViewModel>();
 
-            return this.View(projects);
+            foreach (var project in projects)
+            {
+                var projectView = new ProjectViewModel
+                {
+                    Customer = project.Customer,
+                    Designer = project.Designer,
+                    DesignBoards = project.DesignBoards,
+                    ProjectFiles = project.ProjectFiles,
+                    Id = project.Id,
+                    Name = project.Name,
+                    Status = project.Status.ToString(),
+                    IsPublic = project.IsPublic,
+                    ProjectReviews = project.ProjectReviews,
+                };
+
+                result.Add(projectView);
+            }
+
+            return this.View(result);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

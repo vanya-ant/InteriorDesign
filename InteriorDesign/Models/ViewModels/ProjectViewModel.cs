@@ -1,10 +1,8 @@
-﻿using InteriorDesign.Data.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace InteriorDesign.Models.ViewModels
+﻿namespace InteriorDesign.Models.ViewModels
 {
+    using InteriorDesign.Data.Models;
+    using System.Collections.Generic;
+
     public class ProjectViewModel
     {
         public string Id { get; set; }
@@ -13,11 +11,11 @@ namespace InteriorDesign.Models.ViewModels
 
         public string Status { get; set; }
 
-        public bool IsPublic { get; set; }
+        public bool IsPublic { get; set; } = false;
 
-        public string CustomerEmail { get; set; }
+        public virtual ApplicationUser Customer { get; set; }
 
-        public string DesignerEmail { get; set; }
+        public virtual ApplicationUser Designer { get; set; }
 
         public ICollection<DesignBoard> DesignBoards { get; set; }
 

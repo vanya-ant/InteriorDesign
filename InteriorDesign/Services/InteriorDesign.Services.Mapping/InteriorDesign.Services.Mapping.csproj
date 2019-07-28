@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Data\InteriorDesign.Data.Models\InteriorDesign.Data.Models.csproj" />
     <ProjectReference Include="..\..\Models\InteriorDesign.Models.csproj" />
   </ItemGroup>
 
