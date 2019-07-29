@@ -1,5 +1,6 @@
 ﻿namespace InteriorDesign.Web.Controllers
 {
+    using System;
     using System.Threading.Tasks;
 
     using InteriorDesign.Data;
@@ -36,16 +37,16 @@
         }
 
         [HttpPost("/User/Profile")]
-        public async Task<IActionResult> Profile(EditProfileInputModel model)
+        public async Task<IActionResult> ProfileEdit(EditProfileInputModel model)
         {
             if (this.ModelState.IsValid)
             {
                 var userFromDb = await this.userManager.FindByNameAsync(this.User.Identity.Name);
                 userFromDb.Birthday = model.Birthday;
-                userFromDb.Birthday = model.Birthday;
+                userFromDb.FullName = model.FullName;
                 await this.userManager.UpdateAsync(userFromDb);
 
-                return this.Redirect("IndexLoggedin");
+                return this.Redirect("/Home/IndexLoggedin");
             }
 
             return this.Content($"Please fill both your Birthday and Full Name");

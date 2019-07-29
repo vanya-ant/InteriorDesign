@@ -60,7 +60,7 @@ namespace InteriorDesign.Data.Migrations
 
                     b.Property<int>("AccessFailedCount");
 
-                    b.Property<DateTime>("Birthday");
+                    b.Property<DateTime?>("Birthday");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();

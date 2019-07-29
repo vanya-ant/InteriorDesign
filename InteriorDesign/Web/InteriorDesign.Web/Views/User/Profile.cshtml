@@ -10,19 +10,19 @@
             <h2>Profile</h2>
             <h4>Personal data</h4>
             <hr />
-            <dl class="dl-horizontal">
-            </dl>
             <div>
-                <form id="profile">
-                    <label class="text-center">Email</label>
-                    <input type="email" placeholder="@Model.Email" readonly />
-                    <label class="text-center">Birthday</label>
-                    <input type="date" value="Enter birtday..." />
-                    <label class="text-center">Full Name</label>
-                    <input type="text" value="Enter Full Name" />
-                    <div>
-                        <btn class="btn btn-default">Update</btn>
+                <form id="profile" runat="server" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <label class="text-center">Email</label>
+                        <input type="email" asp-for="@Model.Email" readonly />
+                        <label id="birthday" class="text-center">Birthday</label>
+                        <input type="date" asp-for="@Model.Birthday"/>
+                        <label id="fullName" class="text-center">Full Name</label>
+                        <input type="text" asp-for="@Model.FullName" />
+                    <div class="form-group">
+                        <input type="submit" value="Update" class="btn btn-default" />
                     </div>
+                    <div />
                 </form>
             </div>
         </div>

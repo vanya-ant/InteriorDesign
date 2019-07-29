@@ -1,9 +1,9 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-
-namespace InteriorDesign.Models.InputModels
+﻿namespace InteriorDesign.Models.InputModels
 {
-    public class EditProfileInputModel
+    using System;
+    using System.ComponentModel.DataAnnotations;
+
+    public class EditProfileInputModel 
     {
         [Required]
         public DateTime Birthday { get; set; }

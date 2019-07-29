@@ -5,6 +5,7 @@ namespace InteriorDesign.Data.Models
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+
     using InteriorDesign.Data.Common.Models;
 
     using Microsoft.AspNetCore.Identity;
@@ -22,9 +23,8 @@ namespace InteriorDesign.Data.Models
 
         public string FullName { get; set; }
 
-        [DataType(DataType.Date)]
-        [Column(TypeName = "Date")]
-        public DateTime Birthday { get; set; }
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime? Birthday { get; set; }
 
         // Audit info
         public DateTime CreatedOn { get; set; }
