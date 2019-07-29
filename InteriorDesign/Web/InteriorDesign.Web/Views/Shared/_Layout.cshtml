@@ -76,10 +76,10 @@
                                 if (this.User.IsInRole("Administrator"))
                                 {
                                     <li class="nav-item">
-                                        <a href="/Administration/Project/Create">Create Project</a>
+                                        <a href="/Project/Create">Create Project</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="/Administration/Designer/Assign">Create Designer</a>
+                                        <a href="/Designer/Assign">Create Designer</a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="/Identity/Account/Logout">Logout</a>
@@ -87,9 +87,7 @@
                                 }
                                 else if (this.User.IsInRole("Designer"))
                                 {
-                                    <li class="nav-item">
-                                        <a href="/Projects/Current">Current projects</a>
-                                    </li>
+
                                     <li class="nav-item">
                                         <a href="/Identity/Account/Logout">Logout</a>
                                     </li>
@@ -125,7 +123,7 @@
             </div>
         </main>
 
-    <footer class="modal-footer">
+    <footer class="modal-footer navbar-fixed-bottom">
         <div class="text-center">
             &copy; @DateTime.Now.Year - InteriorDesign - <a href="/Home/Privacy">Privacy</a>
         </div>

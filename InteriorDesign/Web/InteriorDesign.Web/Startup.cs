@@ -112,10 +112,10 @@
             services.AddTransient<IRoleStore<ApplicationRole>, ApplicationRoleStore>();
             services.AddTransient<IProjectCalculatorService, ProjectCalculatorService>();
             services.AddTransient<IPortfolioService, PortfolioService>();
-            services.AddTransient<IAdminServise, AdminService>();
             services.AddTransient<IDesignerService, DesignerService>();
             services.AddTransient<ICustomerService, CustomerService>();
             services.AddTransient<IProjectFileService, ProjectFileService>();
+            services.AddTransient<IProjectService, ProjectService>();
             services.AddTransient<ICloudinaryService, CloudinaryService>();
             services.AddTransient<IAdminServise, AdminService>();
             services.AddTransient<IContactService, ContactService>();

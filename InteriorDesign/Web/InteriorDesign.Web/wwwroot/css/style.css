@@ -322,10 +322,6 @@ input[type="color"]:focus,
 	color:#FFF;
 }
 
-.section-white .section-header .smt:before, .section-white .section-header .smt:after {
-
-}
-
 .color-white{
 	color:#fff !important;
 }
@@ -911,44 +907,6 @@ html[xmlns] .slides {
 	 color:#ffc107;
 }
 
-
-/*-----------------------------------------------------------------*/
-/* Call to Action
-/*-----------------------------------------------------------------*/
-
-
-#cta{
-	background:url(../images/parallax/cta.jpg);
-}
-
-.call-to-action{
-	text-align:center;
-	margin-bottom: 30px;
-}
-
-.call-to-action h3 {
-    margin-bottom: 25px;
-    font-weight: 500;
-    color: #6a3e0a;
-    font-size: 38px;
-    letter-spacing: 1px;
-}
-
-.call-to-action p{
-	font-size: 16px;
-	margin-bottom: 30px;
-	color:#6a3e0a;
-}
-
-.call-to-action a{
-	margin-right:10px;
-	margin-bottom:10px;
-}
-
-.call-to-action a:last-child{
-	margin-right:0px;
-}
-
  
 /*-----------------------------------------------------------------*/
 /* Features
@@ -1068,142 +1026,6 @@ html[xmlns] .slides {
 	text-transform: uppercase;
 	font-weight:500;
 	color:#5c440f;
-}
-
-
-/*-----------------------------------------------------------------*/
-/* Pricing Page
-/*-----------------------------------------------------------------*/
-
-
-#pricing{
-	padding-top:100px;
-	background:url(../images/parallax/pricing.jpg);
-}
-
-.pricing-table {
-    text-align: center;
-	margin-bottom:30px;
-	background:#FFF;
-}	
-
-.pricing-table h1 {
-	padding: 25px 0;
-	margin: 0;
-	font-size:20px;
-}
-
-.pricing-table h2 {
-	margin: 0;
-	padding: 25px;
-	color: #FFF;
-	font-size: 4em;
-	background:#ac6c20;
-}
-
-.pricing-table h2 small {
-	font-size: 14px;
-	font-weight:700;
-	color: #FFF;
-}
-
-.pricing-table .feature-list {
-	padding: 15px 0;
-}
-
-.pricing-table .feature-list ul {
-    list-style: none outside none;
-    padding: 0px;
-}
-
-.pricing-table .feature-list ul li {
-    padding: 13px 0px;
-    border-bottom: 1px solid #E5E5E5;
-    margin: 0px 40px;
-}
-
-
-.pricing-table .price-signup {
-	padding: 10px 0 30px;
-}
-
-
-/*-----------------------------------------------------------------*/
-/* Testimonial
-/*-----------------------------------------------------------------*/
-
-
-#testimonials {
-	position:relative;
-	padding:100px 0px;
-	background:#ECF0F1;
-}
-
-#testimonials .container{
-	width:90%;
-	position:relative;
-}
-
-#testimonials {
-	text-align: center;
-}
-
-#testimonials .items {
-	margin-bottom: 30px;
-	margin-top:-7px;
-	color:#474545;
-}
-
-#testimonials .desc {
-    font-size:17px;
-    line-height: 32px;
-	font-weight:500;
-}
-
-#testimonials .name {
-    font-weight: 500;
-    margin-top:20px;
-    font-size: 18px;
-}
-
-#testimonials .owl-controls .owl-page span {
-    background:#ccc;
-    border-radius:0;
-    display: block;
-    margin: 5px 4px;
-    opacity: 1;
-	width:12px;
-	height:12px;
-	margin-right:10px;
-}
-
-#testimonials .owl-controls .owl-page.active span {
-    background:#ffc107 !important;
-	border:1px solid #ffc107;
-} 
- 
-
-/*-----------------------------------------------------------------*/
-/* Client
-/*-----------------------------------------------------------------*/
-
-
-#clients{
-	background:#FFF;
-	text-align:center;
-}
-
-.clients-carousel  figure{
-	margin: 5px;
-    background: rgba(172, 108, 32, 0.35);
-	padding:40px 10px;
-	margin-bottom:30px;
-	
-}
-
-.clients-carousel  figure img{
-	display: block;
-	margin: 0 auto;
 }
 
 
@@ -1924,19 +1746,6 @@ li.comment ol.comment-sub {
 }
 
 
-
-/*-----------------------------------------------------------------*/
-/* Footer
-/*-----------------------------------------------------------------*/
-
-
-footer {
-    float: left;
-    width: 100%;
-    padding: 45px 0 30px;
-    background: #1B1C1F;
-}
-
 /*-----------------------------------------------------------------*/
 /*  Media queries
 /*-----------------------------------------------------------------*/
@@ -2063,15 +1872,20 @@ img.align-right {
 
 @media (max-width: 330px) {
 
-.header-info h1 {
-	font-size: 18px !important;
-	line-height: 22px;
+    .header-info h1 {
+        font-size: 18px !important;
+        line-height: 22px;
+    }
+
+    .header-info {
+        padding: 0px 10px;
+    }
 }
 
-.header-info {
-	padding: 0px 10px;
+
+.modal-footer {
+    background: #332F2F
 }
 
 
-}
 

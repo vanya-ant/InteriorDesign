@@ -1,10 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace InteriorDesign.Models.ViewModels
+﻿namespace InteriorDesign.Models.ViewModels
 {
+    using System;
+
     public class ProjectFileVewModel
     {
         public string Id { get; set; }

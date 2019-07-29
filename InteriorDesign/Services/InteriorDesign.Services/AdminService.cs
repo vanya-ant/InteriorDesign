@@ -34,7 +34,7 @@
             }
         }
 
-        public void AddProjectFile()
+        public void AddProjectFile(ProjectFileCreateModel projectFile)
         {
             throw new NotImplementedException();
         }
@@ -58,22 +58,27 @@
             return new ValidationResult($"New project created successfuly!");
         }
 
-        public void DeleteDeigner()
+        public void DeleteDeigner(string id)
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteProjectFIle()
+        public void DeleteProject(string id)
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteReview()
+        public void DeleteProjectFIle(string id)
         {
             throw new NotImplementedException();
         }
 
-        public void EditProject()
+        public void DeleteReview(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void EditProject(string id)
         {
             throw new NotImplementedException();
         }

@@ -7,6 +7,7 @@
     using InteriorDesign.Data.Models;
     using InteriorDesign.Models.InputModels;
     using InteriorDesign.Models.ViewModels;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
@@ -21,6 +22,7 @@
             this.userManager = userManager;
         }
 
+        [Authorize]
         [HttpGet("/User/Profile")]
         public async Task<IActionResult> Profile()
         {
@@ -36,6 +38,7 @@
             return this.View(user);
         }
 
+        [Authorize]
         [HttpPost("/User/Profile")]
         public async Task<IActionResult> ProfileEdit(EditProfileInputModel model)
         {

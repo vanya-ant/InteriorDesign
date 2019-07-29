@@ -15,14 +15,16 @@
 
         ICollection<Project> GetAllProjectsInProgress();
 
-        void EditProject();
+        void EditProject(string id);
 
-        void AddProjectFile();
+        void AddProjectFile(ProjectFileCreateModel projectFile);
 
-        void DeleteProjectFIle();
+        void DeleteProject(string id);
 
-        void DeleteDeigner();
+        void DeleteProjectFIle(string id);
 
-        void DeleteReview();
+        void DeleteDeigner(string id);
+
+        void DeleteReview(string id);
     }
 }
