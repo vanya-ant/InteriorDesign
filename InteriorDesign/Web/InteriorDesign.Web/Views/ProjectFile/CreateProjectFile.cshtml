@@ -1,0 +1,69 @@
+﻿@model InteriorDesign.Data.Models.ProjectFile
+
+@{
+    ViewData["Title"] = "CreateProjectFile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CreateProjectFile</h2>
+
+<h4>ProjectFile</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateProjectFile">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Url" class="control-label"></label>
+                <input asp-for="Url" class="form-control" />
+                <span asp-validation-for="Url" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AddedOn" class="control-label"></label>
+                <input asp-for="AddedOn" class="form-control" />
+                <span asp-validation-for="AddedOn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="IsApproved" /> @Html.DisplayNameFor(model => model.IsApproved)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="IsPublic" /> @Html.DisplayNameFor(model => model.IsPublic)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="PublicId" class="control-label"></label>
+                <input asp-for="PublicId" class="form-control" />
+                <span asp-validation-for="PublicId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProjectId" class="control-label"></label>
+                <select asp-for="ProjectId" class ="form-control" asp-items="ViewBag.ProjectId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatedOn" class="control-label"></label>
+                <input asp-for="CreatedOn" class="form-control" />
+                <span asp-validation-for="CreatedOn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ModifiedOn" class="control-label"></label>
+                <input asp-for="ModifiedOn" class="form-control" />
+                <span asp-validation-for="ModifiedOn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

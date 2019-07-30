@@ -1,0 +1,23 @@
+﻿@model List<InteriorDesign.Models.ViewModels.ProjectFileVewModel>
+
+    <div>
+        <h4>ProjectFile</h4>
+        <hr />
+        @foreach (var projectFile in Model)
+        {
+            <div class="related-project col-md-2">
+                <div class="image-holder d-flex justify-content-center">
+                    <a href="/Project/ProjectFile/@projectFile.Id">
+                        <img class="img-thumbnail product-image" src="@projectFile.Url" alt="...">
+                    </a>
+                </div>
+                @if (this.User.IsInRole("Administrator"))
+                {
+                    <div>
+                        <a href="/Project/ProjectFile/Delete">Delete File</a>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+

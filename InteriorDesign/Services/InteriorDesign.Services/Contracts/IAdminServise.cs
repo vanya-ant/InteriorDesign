@@ -15,6 +15,8 @@
 
         ICollection<Project> GetAllProjectsInProgress();
 
+        ICollection<Project> GetAllCompletedProjects();
+
         void EditProject(string id);
 
         void AddProjectFile(ProjectFileCreateModel projectFile);

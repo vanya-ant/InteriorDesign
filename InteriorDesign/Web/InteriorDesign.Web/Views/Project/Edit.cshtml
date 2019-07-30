@@ -1,0 +1,67 @@
+﻿@model InteriorDesign.Models.ViewModels.ProjectEditViewModel;
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+<h4>Project</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" runat="server" AutoPostBack="True">
+            @Html.HiddenFor(m => m.Id)
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <asp:DropDownList ID="statuses">
+                    <label asp-for="Statuses" class="control-label"></label>
+                    @Html.DropDownList("Statuses", new SelectList(Model.Statuses, "Statuses"))
+                </asp:DropDownList>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input checked asp-for="IsPublic" /> @Html.DisplayNameFor(model => model.IsPublic)
+                    </label>
+                </div>
+            </div>
+            @if (Model.ProjectFiles.Count > 0)
+            {
+                @foreach (var projectFile in Model.ProjectFiles)
+                {
+                    @await Html.PartialAsync("ProjectFile", projectFile)
+                }
+            }
+            else
+            {
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-color-white" onclick="location.href='@Url.Action("CreateProjectFile", "Project", new { id = Model.Id })'">Add Project File</button>
+                </div>
+            }
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" onclick="location.href='@Url.Action("Update", "Project", new {  id = Model.Id })'" />
+            </div>
+            @if (this.User.IsInRole("Administrator"))
+            {
+                <div class="form-group">
+                    <button class="btn btn-danger" runat="server" OnClientClick="return confirm('Are you sure you want to delete this event?');"
+                            AlternateText="Delete">
+                        DELETE PROJECT
+                    </button>
+                </div>
+            }
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="/Home/IndexLoggedin">Back to List</a>
+</div>
+

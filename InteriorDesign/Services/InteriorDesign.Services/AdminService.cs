@@ -83,6 +83,13 @@
             throw new NotImplementedException();
         }
 
+        public ICollection<Project> GetAllCompletedProjects()
+        {
+            var allCompletedProjects = this.context.Projects.Where(p => p.Status == ProjectStatus.Completed).ToList();
+
+            return allCompletedProjects;
+        }
+
         public ICollection<Project> GetAllProjectsInProgress()
         {
             var allActiveProjects = this.context.Projects.Where(p => p.Status == ProjectStatus.InProgress).ToList();
