@@ -1,6 +1,7 @@
 ﻿namespace InteriorDesign.Web.Controllers
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
     using InteriorDesign.Data.Models;
@@ -15,15 +16,12 @@
     public class ProjectController : BaseController
     {
         private readonly UserManager<ApplicationUser> userManager;
-        private readonly IProjectFileService projectFileService;
         private readonly IProjectService projectService;
         private readonly IAdminServise adminService;
 
-        public ProjectController(UserManager<ApplicationUser> userManager, IProjectFileService projectFileService,
-                                 IProjectService projectService, IAdminServise adminService)
+        public ProjectController(UserManager<ApplicationUser> userManager, IProjectService projectService, IAdminServise adminService)
         {
             this.userManager = userManager;
-            this.projectFileService = projectFileService;
             this.projectService = projectService;
             this.adminService = adminService;
         }
@@ -96,7 +94,7 @@
 
             return this.View(project);
         }
-        
+
         [Authorize]
         [ValidateAntiForgeryToken]
         [HttpPost("/Project/Edit")]
@@ -104,7 +102,7 @@
         {
             if (this.ModelState.IsValid)
             {
-                this.projectService.EditProject(id, model);
+               await this.projectService.EditProject(id, model);
             }
 
             return this.Redirect("/Home/IndexLoggedin");
@@ -114,26 +112,9 @@
         [HttpGet("/Project/Delete")]
         public async Task<IActionResult> Delete(string projectId)
         {
-            var projectFromDb = await this.projectService.GetProjectById(projectId);
+            var projectFromDb = this.projectService.GetProjectById(projectId);
 
             this.adminService.DeleteProject(projectId);
-
-            return this.Redirect("/Home/IndexLoggedin");
-        }
-
-        [Authorize]
-        [HttpGet("/ProjectFile/Create")]
-        public async Task<IActionResult> CreateProjectFile(string id)
-        {
-            return this.View();
-        }
-
-        [Authorize]
-        [HttpPost("/ProjectFile/Create")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddProjectFile(string projectId, ProjectFileCreateModel model)
-        {
-            await this.projectFileService.AddProjectFile(projectId, model);
 
             return this.Redirect("/Home/IndexLoggedin");
         }

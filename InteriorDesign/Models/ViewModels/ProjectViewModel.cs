@@ -3,7 +3,7 @@
     using InteriorDesign.Data.Models;
     using System.Collections.Generic;
 
-    public class ProjectViewModel
+    public class ProjectViewModel 
     {
         public string Id { get; set; }
 

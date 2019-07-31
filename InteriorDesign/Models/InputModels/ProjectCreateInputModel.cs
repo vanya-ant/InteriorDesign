@@ -6,6 +6,7 @@
     public class ProjectCreateInputModel
     {
         [Required]
+        [StringLength(1000, ErrorMessage = "Project name must be between {0} and {2} characters long!", MinimumLength = 3)]
         public string Name { get; set; }
 
         [Required]

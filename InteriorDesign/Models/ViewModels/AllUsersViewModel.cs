@@ -8,6 +8,8 @@
     {
         public string ProjectName { get; set; }
 
+        public bool IsPublic { get; set; }
+
         public IEnumerable<ApplicationUser> Customers { get; set; }
 
         public IEnumerable<ApplicationUser> Designers { get; set; }

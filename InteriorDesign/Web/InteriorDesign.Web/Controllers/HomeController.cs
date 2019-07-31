@@ -141,6 +141,33 @@
             return this.View(result);
         }
 
+        [Authorize]
+        [HttpGet("/Home/AllCompleted")]
+        public async Task<IActionResult> AllCompletedProjects()
+        {
+            var projectsFromDb = this.adminService.GetAllCompletedProjects();
+
+            List<ProjectViewModel> result = new List<ProjectViewModel>();
+
+            foreach (var project in projectsFromDb)
+            {
+                var projectView = new ProjectViewModel
+                {
+                    Customer = project.Customer,
+                    Designer = project.Designer,
+                    DesignBoards = project.DesignBoards,
+                    ProjectFiles = project.ProjectFiles,
+                    Id = project.Id,
+                    Name = project.Name,
+                    Status = project.Status.ToString(),
+                    IsPublic = project.IsPublic,
+                    ProjectReviews = project.ProjectReviews,
+                };
+            }
+
+            return this.View("IndexLoggedin", result);
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error() => this.View();
     }

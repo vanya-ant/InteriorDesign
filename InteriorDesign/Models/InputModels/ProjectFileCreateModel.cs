@@ -3,29 +3,26 @@
     using InteriorDesign.Data.Models;
     using Microsoft.AspNetCore.Http;
     using System;
-
+    using System.ComponentModel.DataAnnotations;
 
     public class ProjectFileCreateModel
     {
-        public ProjectFileCreateModel()
-        {
-            AddedOn = DateTime.UtcNow;
-        }
-        public string Url { get; set; }
+        [Required]
+        public string Name { get; set; }
 
+        [Required]
         public IFormFile File { get; set; }
 
-        public DateTime AddedOn { get; set; }
+        public DateTime AddedOn { get; set; } = DateTime.UtcNow;
 
+        [Required]
         public bool IsApproved { get; set; }
 
+        [Required]
         public bool IsPublic { get; set; }
 
-        public string PublicId { get; set; }
-
+        [Required]
         public string ProjectId { get; set; }
-
-        public Project Project { get; set; }
 
     }
 }

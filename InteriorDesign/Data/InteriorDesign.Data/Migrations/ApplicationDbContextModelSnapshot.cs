@@ -211,9 +211,10 @@ namespace InteriorDesign.Data.Migrations
 
                     b.Property<DateTime?>("ModifiedOn");
 
-                    b.Property<string>("ProjectId");
+                    b.Property<string>("Name");
 
-                    b.Property<string>("PublicId");
+                    b.Property<string>("ProjectId")
+                        .IsRequired();
 
                     b.Property<string>("Url");
 
@@ -396,7 +397,8 @@ namespace InteriorDesign.Data.Migrations
                 {
                     b.HasOne("InteriorDesign.Data.Models.Project", "Project")
                         .WithMany("ProjectFiles")
-                        .HasForeignKey("ProjectId");
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("InteriorDesign.Data.Models.ProjectReview", b =>

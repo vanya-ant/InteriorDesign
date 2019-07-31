@@ -82,12 +82,17 @@
                                         <a href="/Designer/Assign">Create Designer</a>
                                     </li>
                                     <li class="nav-item">
+                                        <a href="/Home/AllCompleted">Completed Projects</a>
+                                    </li>
+                                    <li class="nav-item">
                                         <a href="/Identity/Account/Logout">Logout</a>
                                     </li>
                                 }
                                 else if (this.User.IsInRole("Designer"))
                                 {
-
+                                    <li class="nav-item">
+                                        <a href="/Home/IndexLoggedin">Current Projects</a>
+                                    </li>
                                     <li class="nav-item">
                                         <a href="/Identity/Account/Logout">Logout</a>
                                     </li>

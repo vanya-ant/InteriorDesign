@@ -31,6 +31,12 @@
                     </asp:DropDownList>
                 </div>
                 <div class="form-group">
+                    <asp:CheckBox id="isPublic" runat="server" AutoPostBack="True" OnCheckedChanged="IsPublicSet">
+                        <label asp-for="IsPublic" class="checkbox"></label>
+                        <input type="checkbox" ID="isPublic" value="@Model.IsPublic" />
+                    </asp:CheckBox>
+                </div>
+                <div class="form-group">
                     <input type="submit" value="Create" class="btn btn-default" />
                 </div>
             </form>

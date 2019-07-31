@@ -7,7 +7,9 @@
 
     public interface IProjectFileService
     {
-        Task<ProjectFileVewModel> AddProjectFile(string projectId, ProjectFileCreateModel projectFile);
+        Task<ProjectFileVewModel> AddProjectFile(ProjectFileCreateModel projectFile);
+
+        Task<ProjectViewModel> GetCurrentProject(string id);
 
         Task<bool> SaveAll();
     }

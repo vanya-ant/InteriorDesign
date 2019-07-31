@@ -3,7 +3,7 @@
     using System;
     using System.Linq;
     using System.Threading.Tasks;
-
+    using AutoMapper;
     using InteriorDesign.Data;
     using InteriorDesign.Data.Models;
     using InteriorDesign.Models.InputModels;
@@ -21,26 +21,25 @@
             this.cloudinaryService = cloudinaryService;
         }
 
-        public async Task<ProjectFileVewModel> AddProjectFile(string projectId, ProjectFileCreateModel projectFile)
+        public async Task<ProjectFileVewModel> AddProjectFile(ProjectFileCreateModel projectFile)
         {
             var project = this.context
                .Projects
-               .Where(p => p.Id == projectId)
+               .Where(p => p.Id == projectFile.ProjectId)
                .SingleOrDefault();
 
             var file = projectFile.File;
 
-            string projectFileUrl = await this.cloudinaryService.UploadProjectFileAsync(projectFile.File, project.Customer + projectFile.AddedOn.ToString("dd-MM-yyyy HH:mm"));
+            string projectFileUrl = await this.cloudinaryService.UploadProjectFileAsync(projectFile.File, projectFile.Name);
 
             var newFile = new ProjectFile
             {
-                Url = projectFile.Url,
-                IsApproved = false,
+                IsApproved = projectFile.IsApproved,
                 AddedOn = projectFile.AddedOn,
                 ProjectId = project.Id,
-                PublicId = projectFile.PublicId,
-                Project = project,
-                IsPublic = false,
+                IsPublic = projectFile.IsPublic,
+                Name = projectFile.Name,
+                Url = projectFileUrl,
             };
 
             project.ProjectFiles.Add(newFile);
@@ -53,6 +52,15 @@
                 IsPublic = false,
                 PublicId = Guid.NewGuid().ToString(),
             };
+        }
+
+        public async Task<ProjectViewModel> GetCurrentProject(string id)
+        {
+            var project = this.context.Projects.Where(x => x.Id == id);
+
+            var result = AutoMapper.Mapper.Map<ProjectViewModel>(project);
+
+            return result;
         }
 
         public async Task<bool> SaveAll()

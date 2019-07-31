@@ -27,8 +27,11 @@
         {
             var projectFromBd = await this.GetProjectById(id);
 
-            projectFromBd.Status = model.Status;
-            projectFromBd.Name = model.Name;
+            if (projectFromBd.Status != model.Status && projectFromBd.Name != model.Name)
+            {
+                projectFromBd.Status = model.Status;
+                projectFromBd.Name = model.Name;
+            }
 
             this.context.Update(projectFromBd);
 
