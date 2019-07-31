@@ -7,6 +7,7 @@
     using InteriorDesign.Data;
     using InteriorDesign.Data.Models;
     using InteriorDesign.Models.InputModels;
+    using InteriorDesign.Models.ViewModels;
     using InteriorDesign.Services.Contracts;
 
     public class ProjectService : IProjectService
@@ -36,6 +37,23 @@
             this.context.Update(projectFromBd);
 
             this.context.SaveChanges();
+        }
+
+        public async Task<IList<ProjectFile>> GetCurrentProjectFiles(string id)
+        {
+            var projectFiles = this.context.ProjectFiles.Where(x => x.ProjectId == id).ToList();
+
+            return projectFiles;
+        }
+
+        public async Task<IList<ProjectReview>> GetCurrentProjectReviews(string id)
+        {
+            return this.context.ProjectReviews.Where(x => x.ProjectId == id).ToList();
+        }
+
+        public async Task<IList<DesignBoard>> GetCurrentProjectDesignBoards(string id)
+        {
+            return this.context.DesignBoards.Where(x => x.ProjectId == id).ToList();
         }
     }
 }

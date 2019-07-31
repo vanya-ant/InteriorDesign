@@ -19,7 +19,7 @@
 
         public ICollection<DesignBoard> DesignBoards { get; set; }
 
-        public ICollection<ProjectFile> ProjectFiles { get; set; }
+        public ICollection<ProjectFileViewModel> ProjectFiles { get; set; }
 
         public ICollection<ProjectReview> ProjectReviews { get; set; }
     }

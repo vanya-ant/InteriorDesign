@@ -2,10 +2,8 @@
 {
     using System;
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
 
     using InteriorDesign.Data.Common.Models;
-    using Microsoft.AspNetCore.Http;
 
     public class ProjectFile : BaseModel<string>
     {

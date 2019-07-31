@@ -15,6 +15,6 @@ namespace InteriorDesign.Models.ViewModels
 
         public bool IsPublic { get; set; }
 
-        public ICollection<ProjectFile> ProjectFiles { get; set; }
+        public ICollection<ProjectFileViewModel> ProjectFiles { get; set; }
     }
 }

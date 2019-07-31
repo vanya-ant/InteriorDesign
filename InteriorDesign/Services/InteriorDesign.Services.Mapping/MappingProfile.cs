@@ -1,5 +1,7 @@
 ﻿namespace InteriorDesign.Services.Mapping
 {
+    using System.Collections.Generic;
+
     using AutoMapper;
     using InteriorDesign.Data.Models;
     using InteriorDesign.Models.ViewModels;
@@ -8,10 +10,9 @@
     {
         public void CreateMappings(IProfileExpression configuration)
         {
-            configuration.CreateMap<ApplicationUser, UserDetailsViewModel>();
-            configuration.CreateMap<UserDetailsViewModel, ApplicationUser>();
-            configuration.CreateMap<Project, ProjectViewModel>();
-            configuration.CreateMap<ProjectViewModel, Project>();
+            configuration.CreateMap<UserDetailsViewModel, ApplicationUser>().ReverseMap();
+            configuration.CreateMap<Project, ProjectViewModel>().ReverseMap();
+            configuration.CreateMap<ProjectFile, ProjectFileViewModel>().ReverseMap();
         }
     }
 }

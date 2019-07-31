@@ -119,16 +119,13 @@
 
             builder.Entity<Project>()
                .HasMany(e => e.DesignBoards)
-               .WithOne(e => e.Project);
+               .WithOne(e => e.Project)
+               .OnDelete(DeleteBehavior.Restrict);
 
             builder.Entity<Project>()
                .HasMany(e => e.ProjectReviews)
-               .WithOne(e => e.Project);
-
-            builder.Entity<DesignBoard>()
-              .HasMany(e => e.DesignReferences)
-              .WithOne(e => e.DesignBoard);
-
+               .WithOne(e => e.Project)
+               .OnDelete(DeleteBehavior.Restrict);
         }
 
         private static void SetIsDeletedQueryFilter<T>(ModelBuilder builder)

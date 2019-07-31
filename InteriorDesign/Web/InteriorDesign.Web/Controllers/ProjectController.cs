@@ -66,14 +66,28 @@
 
         [Authorize]
         [HttpGet("/Project/Details")]
-        public async Task<IActionResult> GetProjectDetails(string projectId)
+        public async Task<IActionResult> Details(string id)
         {
-            var projectFromDb = await this.projectService.GetProjectById(projectId);
+            var project = await this.projectService.GetProjectById(id);
 
-            var project = new ProjectDetailsViewModel
-            {
-                Name = projectFromDb.Name,
-            };
+            var projectFiles = await this.projectService.GetCurrentProjectFiles(id);
+
+            var projectReviews = await this.projectService.GetCurrentProjectReviews(id);
+
+            var projectDesignBoards = await this.projectService.GetCurrentProjectDesignBoards(id);
+
+            //var result = new ProjectDetailsViewModel
+            //{
+            //    ProjectFiles = projectFiles,
+            //    ProjectReviews = projectReviews,
+            //    DesignBoards = projectDesignBoards,
+            //    Name = project.Name,
+            //    Id = id,
+            //};
+
+            project.ProjectFiles = projectFiles;
+            project.ProjectReviews = projectReviews;
+            project.DesignBoards = projectDesignBoards;
 
             return this.View(project);
         }
@@ -89,7 +103,7 @@
                 Id = projectFromDb.Id,
                 Name = projectFromDb.Name,
                 Statuses = new List<ProjectStatus> { ProjectStatus.InProgress, ProjectStatus.Completed },
-                ProjectFiles = projectFromDb.ProjectFiles,
+                ProjectFiles = AutoMapper.Mapper.Map<IList<ProjectFileViewModel>>(projectFromDb.ProjectFiles),
             };
 
             return this.View(project);

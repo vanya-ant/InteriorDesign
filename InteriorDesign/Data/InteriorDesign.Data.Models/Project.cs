@@ -9,9 +9,9 @@
     {
         public Project()
         {
-            this.ProjectFiles = new HashSet<ProjectFile>();
-            this.DesignBoards = new HashSet<DesignBoard>();
-            this.ProjectReviews = new HashSet<ProjectReview>();
+            this.ProjectFiles = new List<ProjectFile>();
+            this.DesignBoards = new List<DesignBoard>();
+            this.ProjectReviews = new List<ProjectReview>();
         }
 
         public string Name { get; set; }
@@ -30,10 +30,10 @@
 
         public virtual ApplicationUser Designer { get; set; }
 
-        public ICollection<DesignBoard> DesignBoards { get; set; }
+        public IList<DesignBoard> DesignBoards { get; set; }
 
-        public ICollection<ProjectFile> ProjectFiles { get; set; }
+        public IList<ProjectFile> ProjectFiles { get; set; }
 
-        public ICollection<ProjectReview> ProjectReviews { get; set; }
+        public IList<ProjectReview> ProjectReviews { get; set; }
     }
 }

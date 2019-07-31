@@ -5,6 +5,7 @@
 
     using InteriorDesign.Data;
     using InteriorDesign.Data.Models;
+    using InteriorDesign.Models.ViewModels;
     using InteriorDesign.Services.Contracts;
 
     public class PortfolioService : IPortfolioService
@@ -16,14 +17,16 @@
             this.context = context;
         }
 
-        public ICollection<ProjectFile> GetPublicProjectFiles()
+        public ICollection<ProjectFileViewModel> GetPublicProjectFiles()
         {
             string ext = string.Empty;
 
             var publicProjectFiles = this.context.ProjectFiles
                     .Where(x => x.IsPublic).ToList();
 
-            return publicProjectFiles;
+            var result = AutoMapper.Mapper.Map<ICollection<ProjectFileViewModel>>(publicProjectFiles);
+
+            return result;
         }
     }
 }

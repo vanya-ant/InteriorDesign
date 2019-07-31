@@ -368,7 +368,8 @@ namespace InteriorDesign.Data.Migrations
 
                     b.HasOne("InteriorDesign.Data.Models.Project", "Project")
                         .WithMany("DesignBoards")
-                        .HasForeignKey("ProjectId");
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("InteriorDesign.Data.Models.DesignReference", b =>
@@ -379,7 +380,8 @@ namespace InteriorDesign.Data.Migrations
 
                     b.HasOne("InteriorDesign.Data.Models.DesignBoard", "DesignBoard")
                         .WithMany("DesignReferences")
-                        .HasForeignKey("DesignBoardId");
+                        .HasForeignKey("DesignBoardId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("InteriorDesign.Data.Models.Project", b =>
@@ -409,7 +411,8 @@ namespace InteriorDesign.Data.Migrations
 
                     b.HasOne("InteriorDesign.Data.Models.Project", "Project")
                         .WithMany("ProjectReviews")
-                        .HasForeignKey("ProjectId");
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -1,6 +1,7 @@
 ﻿namespace InteriorDesign.Services
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
     using AutoMapper;
@@ -21,7 +22,7 @@
             this.cloudinaryService = cloudinaryService;
         }
 
-        public async Task<ProjectFileVewModel> AddProjectFile(ProjectFileCreateModel projectFile)
+        public async Task<ProjectFileViewModel> AddProjectFile(ProjectFileCreateModel projectFile)
         {
             var project = this.context
                .Projects
@@ -29,6 +30,11 @@
                .SingleOrDefault();
 
             var file = projectFile.File;
+
+            if (this.context.ProjectFiles.Any(p => p.Name == projectFile.Name))
+            {
+                return null;
+            }
 
             string projectFileUrl = await this.cloudinaryService.UploadProjectFileAsync(projectFile.File, projectFile.Name);
 
@@ -39,19 +45,22 @@
                 ProjectId = project.Id,
                 IsPublic = projectFile.IsPublic,
                 Name = projectFile.Name,
+                Project = project,
                 Url = projectFileUrl,
             };
 
             project.ProjectFiles.Add(newFile);
-            await this.SaveAll();
+            await this.context.SaveChangesAsync();
 
-            return new ProjectFileVewModel
+            var result = new ProjectFileViewModel
             {
-                IsApproved = false,
+                IsApproved = newFile.IsApproved,
+                AddedOn = newFile.AddedOn,
+                IsPublic = newFile.IsPublic,
                 Url = newFile.Url,
-                IsPublic = false,
-                PublicId = Guid.NewGuid().ToString(),
             };
+
+            return result;
         }
 
         public async Task<ProjectViewModel> GetCurrentProject(string id)

@@ -22,15 +22,20 @@
         @if (this.User.IsInRole("Administrator"))
         {
             <div class="form-group text-center">
+                <button class="btn btn-lg btn-primary btn-color-white" onclick="location.href='@Url.Action("Details", "Project",  new {  id = Model.Id })'">Details</button>
+            </div>
+            <div class="form-group text-center">
                 <button class="btn btn-lg btn-primary btn-color-white" onclick="location.href='@Url.Action("Edit", "Project", new {  id = Model.Id })'">Edit</button>
             </div>
-
             <div>
                 <button class="btn btn-lg btn-primary btn-color-white" onclick="location.href='@Url.Action("CreateProjectFile", "ProjectFile", new {  id = Model.Id })'">Add Project File</button>
             </div>
         }
         else if (this.User.IsInRole("Designer"))
         {
+            <div class="form-group text-center">
+                <button class="btn btn-lg btn-primary btn-color-white" onclick="location.href='@Url.Action("Details", "Project",  new {  id = Model.Id })'">Details</button>
+            </div>
             <div class="form-group text-center">
                 <button class="btn btn-lg btn-primary btn-color-white" onclick="location.href='@Url.Action("CreateProjectFile", "ProjectFile", new {  id = Model.Id })'">Add Project File</button>
             </div>

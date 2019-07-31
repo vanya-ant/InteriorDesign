@@ -1,14 +1,12 @@
-﻿@model List<InteriorDesign.Models.ViewModels.ProjectFileVewModel>
+﻿@model InteriorDesign.Data.Models.ProjectFile;
 
     <div>
         <h4>ProjectFile</h4>
         <hr />
-        @foreach (var projectFile in Model)
-        {
             <div class="related-project col-md-2">
                 <div class="image-holder d-flex justify-content-center">
-                    <a href="/Project/ProjectFile/@projectFile.Id">
-                        <img class="img-thumbnail product-image" src="@projectFile.Url" alt="...">
+                    <a href="/Project/ProjectFile/@Model.Id">
+                        <img class="img-thumbnail" src="@Model.Url" alt="...">
                     </a>
                 </div>
                 @if (this.User.IsInRole("Administrator"))
@@ -18,6 +16,5 @@
                     </div>
                 }
             </div>
-        }
     </div>
 

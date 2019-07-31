@@ -1,5 +1,6 @@
 ﻿namespace InteriorDesign.Web
 {
+    using System.Globalization;
     using System.Reflection;
 
     using AutoMapper;
@@ -75,8 +76,14 @@
                 mc.AddProfile(new MappingProfile());
             });
 
+            mappingConfig.AssertConfigurationIsValid();
+
             IMapper mapper = mappingConfig.CreateMapper();
+
             services.AddSingleton(mapper);
+
+            CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
+            CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
 
             services
                 .AddMvc()

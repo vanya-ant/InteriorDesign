@@ -1,4 +1,5 @@
 ﻿using InteriorDesign.Data.Models;
+using InteriorDesign.Models.ViewModels;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -19,7 +20,7 @@ namespace InteriorDesign.Models.InputModels
 
         public ICollection<DesignBoard> DesignBoards { get; set; }
 
-        public ICollection<ProjectFile> ProjectFiles { get; set; }
+        public ICollection<ProjectFileViewModel> ProjectFiles { get; set; }
 
         public ICollection<ProjectReview> ProjectReviews { get; set; }
     }
