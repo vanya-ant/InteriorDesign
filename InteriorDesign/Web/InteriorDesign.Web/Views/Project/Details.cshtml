@@ -1,4 +1,4 @@
-﻿@model InteriorDesign.Data.Models.Project;
+﻿@model InteriorDesign.Models.ViewModels.ProjectDetailsViewModel;
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,11 +9,12 @@
 <div>
     <h4>Project</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-    </dl>
+    <div class="d-flex justify-content-between">
+        <div>
+            @Model.Name
+        </div>
+        <hr />
+    </div>
     @foreach (var projectFile in Model.ProjectFiles)
     {
         @await Html.PartialAsync("ProjectFile", projectFile);

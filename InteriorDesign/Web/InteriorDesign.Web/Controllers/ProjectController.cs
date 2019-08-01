@@ -71,25 +71,37 @@
             var project = await this.projectService.GetProjectById(id);
 
             var projectFiles = await this.projectService.GetCurrentProjectFiles(id);
+            var projectFilesResult = new List<ProjectFileViewModel>();
+
+            foreach (var currentProjectFile in projectFiles)
+            {
+                var projectFile = new ProjectFileViewModel
+                {
+                    Id = currentProjectFile.Id,
+                    Name = currentProjectFile.Name,
+                    IsApproved = currentProjectFile.IsApproved,
+                    IsPublic = currentProjectFile.IsPublic,
+                    ProjectId = currentProjectFile.ProjectId,
+                    Url = currentProjectFile.Url,
+                };
+
+                projectFilesResult.Add(projectFile);
+            }
 
             var projectReviews = await this.projectService.GetCurrentProjectReviews(id);
 
             var projectDesignBoards = await this.projectService.GetCurrentProjectDesignBoards(id);
 
-            //var result = new ProjectDetailsViewModel
-            //{
-            //    ProjectFiles = projectFiles,
-            //    ProjectReviews = projectReviews,
-            //    DesignBoards = projectDesignBoards,
-            //    Name = project.Name,
-            //    Id = id,
-            //};
+            var result = new ProjectDetailsViewModel
+            {
+                ProjectFiles = projectFilesResult,
+                ProjectReviews = projectReviews,
+                DesignBoards = projectDesignBoards,
+                Name = project.Name,
+                Id = id,
+            };
 
-            project.ProjectFiles = projectFiles;
-            project.ProjectReviews = projectReviews;
-            project.DesignBoards = projectDesignBoards;
-
-            return this.View(project);
+            return this.View(result);
         }
 
         [Authorize]

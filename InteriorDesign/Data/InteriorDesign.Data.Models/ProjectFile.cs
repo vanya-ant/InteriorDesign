@@ -13,15 +13,10 @@
 
         public DateTime AddedOn { get; set; }
 
-        [Required]
         public bool IsApproved { get; set; }
 
-        [Required]
         public bool IsPublic { get; set; }
 
-        [Required]
         public string ProjectId { get; set; }
-
-        public virtual Project Project { get; set; }
     }
 }

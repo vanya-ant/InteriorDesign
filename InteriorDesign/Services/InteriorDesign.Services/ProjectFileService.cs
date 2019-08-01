@@ -45,7 +45,6 @@
                 ProjectId = project.Id,
                 IsPublic = projectFile.IsPublic,
                 Name = projectFile.Name,
-                Project = project,
                 Url = projectFileUrl,
             };
 
@@ -55,7 +54,6 @@
             var result = new ProjectFileViewModel
             {
                 IsApproved = newFile.IsApproved,
-                AddedOn = newFile.AddedOn,
                 IsPublic = newFile.IsPublic,
                 Url = newFile.Url,
             };

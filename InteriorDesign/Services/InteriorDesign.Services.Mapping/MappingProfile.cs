@@ -12,7 +12,8 @@
         {
             configuration.CreateMap<UserDetailsViewModel, ApplicationUser>().ReverseMap();
             configuration.CreateMap<Project, ProjectViewModel>().ReverseMap();
-            configuration.CreateMap<ProjectFile, ProjectFileViewModel>().ReverseMap();
+            configuration.CreateMap<ProjectFileViewModel, ProjectFile>().ReverseMap();
+            configuration.CreateMap<List<ProjectFile>, List<ProjectFileViewModel>>().ReverseMap();
         }
     }
 }

@@ -1,20 +1,28 @@
-﻿@model InteriorDesign.Data.Models.ProjectFile;
+﻿@model InteriorDesign.Models.ViewModels.ProjectFileViewModel;
 
-    <div>
-        <h4>ProjectFile</h4>
-        <hr />
-            <div class="related-project col-md-2">
-                <div class="image-holder d-flex justify-content-center">
-                    <a href="/Project/ProjectFile/@Model.Id">
-                        <img class="img-thumbnail" src="@Model.Url" alt="...">
-                    </a>
-                </div>
-                @if (this.User.IsInRole("Administrator"))
-                {
-                    <div>
-                        <a href="/Project/ProjectFile/Delete">Delete File</a>
-                    </div>
-                }
-            </div>
-    </div>
-
+       
+  <div class="related-project col-md-2">
+      <div class="image-holder d-flex justify-content-center">
+          <h4>@Model.Name</h4>
+          <hr />
+          <a class="img-fluid">
+              <img id="img" class="img-thumbnail" src="@Model.Url" onclick="window.open(this.src)">
+          </a>
+      </div>
+      <div>
+          @if (Model.IsApproved)
+          {
+              <ul class="text-success">Approved</ul>
+          }
+          else
+          {
+              <ul class="text-danger">Not Approved</ul>
+          }
+      </div>
+      @if (this.User.IsInRole("Administrator"))
+      {
+          <div>
+              <a href="/Project/ProjectFile/Delete">Delete File</a>
+          </div>
+      }
+  </div>

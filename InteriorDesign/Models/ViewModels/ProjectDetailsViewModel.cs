@@ -17,9 +17,9 @@ namespace InteriorDesign.Models.ViewModels
 
         //public string DesignerId { get; set; }
 
-        public ICollection<DesignBoard> DesignBoards { get; set; }
+        public IList<DesignBoard> DesignBoards { get; set; }
 
-        public IList<ProjectFileViewModel> ProjectFiles { get; set; }
+        public List<ProjectFileViewModel> ProjectFiles { get; set; }
 
         public IList<ProjectReview> ProjectReviews { get; set; }
     }
