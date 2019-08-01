@@ -19,12 +19,21 @@
 
         public ICollection<ProjectFileViewModel> GetPublicProjectFiles()
         {
-            string ext = string.Empty;
-
             var publicProjectFiles = this.context.ProjectFiles
                     .Where(x => x.IsPublic).ToList();
 
-            var result = AutoMapper.Mapper.Map<ICollection<ProjectFileViewModel>>(publicProjectFiles);
+            var result = new List<ProjectFileViewModel>();
+
+            foreach (var projectFile in publicProjectFiles)
+            {
+                if (projectFile.Url.EndsWith(".jpg") || projectFile.Url.EndsWith(".png"))
+                {
+                    result.Add(new ProjectFileViewModel
+                    {
+                        Url = projectFile.Url,
+                    });
+                }
+            }
 
             return result;
         }

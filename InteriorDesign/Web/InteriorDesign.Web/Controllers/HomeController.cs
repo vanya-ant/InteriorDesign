@@ -125,7 +125,7 @@
                 var projectView = new ProjectViewModel
                 {
                     Customer = project.Customer,
-                    Designer = project.Designer,
+                    Designer = await this.userManager.FindByIdAsync(project.DesignerId),
                     DesignBoards = project.DesignBoards,
                     ProjectFiles = AutoMapper.Mapper.Map<ICollection<ProjectFileViewModel>>(project.ProjectFiles),
                     Id = project.Id,

@@ -1,7 +1,9 @@
 ﻿namespace InteriorDesign.Web.Controllers
 {
+    using InteriorDesign.Models.ViewModels;
     using InteriorDesign.Services.Contracts;
     using Microsoft.AspNetCore.Mvc;
+    using System.Linq;
 
     public class PortfolioController : Controller
     {
@@ -14,9 +16,14 @@
 
         public IActionResult Portfolio()
         {
-            var publicFiles = this.portfolioService.GetPublicProjectFiles();
+            var publicFiles = this.portfolioService.GetPublicProjectFiles().OrderBy(x => x.ProjectId).ToList();
 
-            return this.View(publicFiles);
+            var result = new PortfolioViewModel
+            {
+                 PublicProjectFiles = publicFiles,
+            };
+
+            return this.View(result);
         }
     }
 }

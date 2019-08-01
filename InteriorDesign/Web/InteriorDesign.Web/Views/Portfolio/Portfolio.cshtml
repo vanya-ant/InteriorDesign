@@ -1,111 +1,52 @@
-﻿
+﻿@model  InteriorDesign.Models.ViewModels.PortfolioViewModel;
+
 @{
     ViewData["Title"] = "Portfolio";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!--Start portfolio-->
-    <div class="slider-container" id="works">
-         <div id="myCarousel" class="carousel slide" data-ride="carousel">
-             <!-- Indicators -->
-             <ol class="carousel-indicators">
-                 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                 <li data-target="#myCarousel" data-slide-to="1"></li>
-                 <li data-target="#myCarousel" data-slide-to="2"></li>
-                 <li data-target="#myCarousel" data-slide-to="3"></li>
-                 <li data-target="#myCarousel" data-slide-to="4"></li>
-                 <li data-target="#myCarousel" data-slide-to="5"></li>
-                 <li data-target="#myCarousel" data-slide-to="6"></li>
-                 <li data-target="#myCarousel" data-slide-to="7"></li>
-                 <li data-target="#myCarousel" data-slide-to="8"></li>
-                 <li data-target="#myCarousel" data-slide-to="9"></li>
-                 <li data-target="#myCarousel" data-slide-to="10"></li>
-                 <li data-target="#myCarousel" data-slide-to="11"></li>
-                 <li data-target="#myCarousel" data-slide-to="12"></li>
-                 <li data-target="#myCarousel" data-slide-to="13"></li>
-                 <li data-target="#myCarousel" data-slide-to="14"></li>
-                 <li data-target="#myCarousel" data-slide-to="15"></li>
-                 <li data-target="#myCarousel" data-slide-to="16"></li>
-                 <li data-target="#myCarousel" data-slide-to="17"></li>
-                 <li data-target="#myCarousel" data-slide-to="18"></li>
-                 <li data-target="#myCarousel" data-slide-to="19"></li>
-                 <li data-target="#myCarousel" data-slide-to="20"></li>
-                 <li data-target="#myCarousel" data-slide-to="21"></li>
-             </ol>
-             <div class="carousel-inner">
-                 <div class="item active">
-                     <img src="~/images/works/C1.jpg" alt="0">
-                 </div>
-                 <div class="item">
-                     <img src="~/images/works/C2.png" alt="1">
-                 </div>
-                 <div class="item">
-                     <img src="~/images/works/C3.png" alt="2">
-                 </div>
-                 <div class="item">
-                     <img src="~/images/works/DSC_0053.jpg" alt="3">
-                 </div>
-                 <div class="item">
-                     <img src="~/images/works/DSC_0058.jpg" alt="4">
-                 </div>
-                 <div class="item">
-                     <img src="~/images/works/Dnevna 2.png" alt="5">
-                 </div>
-                 <div class="item">
-                     <img src="~/images/works/Dnevna.png" alt="6">
-                 </div>
-                 <div class="item">
-                     <img src="~/images/works/classic_4.jpg" alt="7">
-                 </div>
-                 <div class="item">
-                     <img src="~/images/works/childrens_loft_1.png" alt="8">
-                 </div>
-                 <div class="item">
-                     <img class="d-block w-100" src="~/images/works/childrens_loft_2.png" alt="9">
-                 </div>
-                 <div class="item">
-                     <img src="~/images/works/childrens_2.jpg" alt="10">
-                 </div>
-                 <div class="item">
-                     <img src="~/images/works/dnevna ap 6.jpg" alt="12">
-                 </div>
-                 <div class="item">
-                     <img src="~/images/works/kuhniq ap 6.jpg" alt="13">
-                 </div>
-                 <div class="item">
-                     <img src="~/images/works/spalnia ap 6.png" alt="14">
-                 </div>
-                 <div class="item">
-                     <img src="~/images/works/bath 1.png" alt="15">
-                 </div>
-                 <div class="item">
-                     <img src="~/images/works/Bath 22.png" alt="16">
-                 </div>
-                 <div class="item">
-                     <img src="~/images/works/transitional_1.png" alt="17">
-                 </div>
-                 <div class="item">
-                     <img src="~/images/works/transitional_2.png" alt="18">
-                 </div>
-                 <div class="item">
-                     <img src="~/images/works/viz 1.png" alt="19">
-                 </div>
-                 <div class="item">
-                     <img src="~/images/works/viz 2.png" alt="20">
-                 </div>
-                 <div class="item">
-                     <img src="~/images/works/viz 3.png" alt="21">
-                 </div>
-             </div>
-             <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                 <span class="glyphicon glyphicon-chevron-left"></span>
-                 <span class="sr-only">Previous</span>
-             </a>
-             <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                 <span class="glyphicon glyphicon-chevron-right"></span>
-                 <span class="sr-only">Next</span>
-             </a>
-         </div>
+<div class="slider-container" id="works">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            @for (int i = 0; i < Model.PublicProjectFiles.Count; i++)
+            {
+                if (i == 0)
+                {
+                    <li data-target="#myCarousel" data-slide-to="i" class="active"></li>
+                }
+                else
+                {
+                    <li data-target="#myCarousel" data-slide-to="i"></li>
+                }
+            }
+        </ol>
+        <div class="carousel-inner">
+            @for (int i = 0; i < Model.PublicProjectFiles.Count; i++)
+            {
+                if (i == 0)
+                {
+                    <div class="item active">
+                        <img src="@Model.PublicProjectFiles[i].Url" alt="0">
+                    </div>
+                }
+                else
+                {
+                    <div class="item">
+                        <img src="@Model.PublicProjectFiles[i].Url" alt="i">
+                    </div>
+                }
+            }
+        </div>
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
+</div>
 <!--End portfolio-->
-

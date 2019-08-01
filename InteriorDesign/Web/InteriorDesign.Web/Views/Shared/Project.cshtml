@@ -10,6 +10,12 @@
             <div class="row">
                 @Html.DisplayFor(model => model.Name)
             </div>
+            @if (this.User.IsInRole("Administrator"))
+            {
+                <div class="row">
+                    @Html.DisplayFor(model => model.Designer.UserName)
+                </div>
+            }
             <div class="row text-light">
                 @Html.DisplayFor(model => model.Status)
             </div>
