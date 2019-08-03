@@ -1,9 +1,10 @@
 ﻿namespace InteriorDesign.Web.Controllers
 {
+    using System.Linq;
+
     using InteriorDesign.Models.ViewModels;
     using InteriorDesign.Services.Contracts;
     using Microsoft.AspNetCore.Mvc;
-    using System.Linq;
 
     public class PortfolioController : Controller
     {

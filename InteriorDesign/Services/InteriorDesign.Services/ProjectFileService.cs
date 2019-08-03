@@ -4,12 +4,14 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+
     using AutoMapper;
     using InteriorDesign.Data;
     using InteriorDesign.Data.Models;
     using InteriorDesign.Models.InputModels;
     using InteriorDesign.Models.ViewModels;
     using InteriorDesign.Services.Contracts;
+    using Microsoft.AspNetCore.Mvc;
 
     public class ProjectFileService : IProjectFileService
     {
@@ -36,7 +38,7 @@
                 return null;
             }
 
-            string projectFileUrl = await this.cloudinaryService.UploadProjectFileAsync(projectFile.File, projectFile.Name);
+            string projectFileUrl = await this.cloudinaryService.UploadProjectFileAsync(projectFile.File, Guid.NewGuid().ToString());
 
             var newFile = new ProjectFile
             {
@@ -68,6 +70,22 @@
             var result = AutoMapper.Mapper.Map<ProjectViewModel>(project);
 
             return result;
+        }
+
+        public async Task<ProjectFileViewModel> GetCurrentProjectFile(string id)
+        {
+            var project = this.context.ProjectFiles.Where(x => x.Id == id);
+
+            var result = AutoMapper.Mapper.Map<ProjectFileViewModel>(project);
+
+            return result;
+        }
+
+        public async Task DeleteProjectFile(string id)
+        {
+            var projectFileToDelete = await this.GetCurrentProjectFile(id);
+
+            await this.cloudinaryService.DeleteImage(projectFileToDelete.Url);
         }
 
         public async Task<bool> SaveAll()

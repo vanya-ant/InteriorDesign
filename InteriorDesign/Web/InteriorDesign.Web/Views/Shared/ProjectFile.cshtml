@@ -1,28 +1,34 @@
 ﻿@model InteriorDesign.Models.ViewModels.ProjectFileViewModel;
 
        
-  <div class="related-project col-md-2">
-      <div class="image-holder d-flex justify-content-center">
-          <h4>@Model.Name</h4>
-          <hr />
-          <a class="img-fluid">
-              <img id="img" class="img-thumbnail" src="@Model.Url" onclick="window.open(this.src)">
-          </a>
-      </div>
-      <div>
-          @if (Model.IsApproved)
-          {
-              <ul class="text-success">Approved</ul>
-          }
-          else
-          {
-              <ul class="text-danger">Not Approved</ul>
-          }
-      </div>
-      @if (this.User.IsInRole("Administrator"))
-      {
-          <div>
-              <a href="/Project/ProjectFile/Delete">Delete File</a>
-          </div>
-      }
-  </div>
+    <form>
+        <div class="related-project col-md-2">
+            <div class="image-holder d-flex justify-content-center">
+                @Html.HiddenFor(m => m.Id)
+                <h4>@Model.Name</h4>
+                <hr />
+                <a class="img-fluid">
+                    <img id="img" class="img-thumbnail" src="@Model.Url" onclick="window.open(this.src)">
+                </a>
+            </div>
+            <div>
+                @if (Model.IsApproved)
+                {
+                    <ul class="text-success">Approved</ul>
+                }
+                else
+                {
+                    <ul class="text-danger">Not Approved</ul>
+                }
+            </div>
+            @if (this.User.IsInRole("Administrator"))
+            {
+                <form-control  runat="server" method="post">
+                     <button class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this project file?');"
+                             AlternateText="Delete">
+                         DELETE Project File
+                     </button>
+                </form-control>
+            }
+        </div>
+    </form>

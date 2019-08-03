@@ -17,12 +17,12 @@
     {
         private readonly UserManager<ApplicationUser> userManager;
         private readonly IContactService contactService;
-        private readonly IAdminServise adminService;
+        private readonly IAdminService adminService;
         private readonly ICustomerService customerService;
         private readonly IDesignerService designerService;
 
         public HomeController(UserManager<ApplicationUser> userManager, IContactService contactService,
-                              IAdminServise adminService, ICustomerService customerService,
+                              IAdminService adminService, ICustomerService customerService,
                               IDesignerService designerService)
         {
             this.userManager = userManager;
@@ -107,7 +107,7 @@
 
             if (await this.userManager.IsInRoleAsync(userFromDb, "Administrator"))
             {
-                projects = this.adminService.GetAllProjectsInProgress().ToList();
+                projects = await this.adminService.GetAllProjectsInProgress();
             }
             else if (await this.userManager.IsInRoleAsync(userFromDb, "Designer"))
             {
@@ -145,7 +145,7 @@
         [HttpGet("/Home/AllCompleted")]
         public async Task<IActionResult> AllCompletedProjects()
         {
-            var projectsFromDb = this.adminService.GetAllCompletedProjects();
+            var projectsFromDb = await this.adminService.GetAllCompletedProjects();
 
             List<ProjectViewModel> result = new List<ProjectViewModel>();
 

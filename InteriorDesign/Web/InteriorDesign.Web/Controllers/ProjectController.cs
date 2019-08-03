@@ -17,9 +17,9 @@
     {
         private readonly UserManager<ApplicationUser> userManager;
         private readonly IProjectService projectService;
-        private readonly IAdminServise adminService;
+        private readonly IAdminService adminService;
 
-        public ProjectController(UserManager<ApplicationUser> userManager, IProjectService projectService, IAdminServise adminService)
+        public ProjectController(UserManager<ApplicationUser> userManager, IProjectService projectService, IAdminService adminService)
         {
             this.userManager = userManager;
             this.projectService = projectService;
@@ -44,8 +44,8 @@
         }
 
         [Authorize]
-        [ValidateAntiForgeryToken]
         [HttpPost("/Project/Create")]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateProject(ProjectCreateInputModel model)
         {
             string projectName = this.Request.Form["projectName"].ToString();
@@ -57,6 +57,7 @@
                 Name = projectName,
                 Customer = await this.userManager.FindByNameAsync(customerEmail),
                 Designer = await this.userManager.FindByNameAsync(designerEmail),
+                IsPublic = true,
             };
 
             await this.adminService.CreateProject(project);
@@ -68,7 +69,7 @@
         [HttpGet("/Project/Details")]
         public async Task<IActionResult> Details(string id)
         {
-            var project = await this.projectService.GetProjectById(id);
+            var project = await this.adminService.GetProjectById(id);
 
             var projectFiles = await this.projectService.GetCurrentProjectFiles(id);
             var projectFilesResult = new List<ProjectFileViewModel>();
@@ -108,7 +109,7 @@
         [HttpGet("/Project/Edit")]
         public async Task<IActionResult> Edit(string id)
         {
-            var projectFromDb = await this.projectService.GetProjectById(id);
+            var projectFromDb = await this.adminService.GetProjectById(id);
 
             var project = new ProjectEditViewModel
             {
@@ -124,23 +125,22 @@
         [Authorize]
         [ValidateAntiForgeryToken]
         [HttpPost("/Project/Edit")]
-        public async Task<IActionResult> Update(string id, ProjectEditInputModel model)
+        public async Task<IActionResult> Edit(string id, ProjectEditInputModel model)
         {
             if (this.ModelState.IsValid)
             {
-               await this.projectService.EditProject(id, model);
+               await this.adminService.EditProject(id, model);
             }
 
             return this.Redirect("/Home/IndexLoggedin");
         }
 
         [Authorize]
-        [HttpGet("/Project/Delete")]
-        public async Task<IActionResult> Delete(string projectId)
+        [HttpPost("/Project/Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(string id)
         {
-            var projectFromDb = this.projectService.GetProjectById(projectId);
-
-            this.adminService.DeleteProject(projectId);
+            await this.adminService.DeleteProject(id);
 
             return this.Redirect("/Home/IndexLoggedin");
         }

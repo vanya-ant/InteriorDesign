@@ -43,7 +43,6 @@
         public void ConfigureServices(IServiceCollection services)
         {
             // Framework services
-            // TODO: Add pooling when this bug is fixed: https://github.com/aspnet/EntityFrameworkCore/issues/9741
             services.AddDbContext<ApplicationDbContext>(
                 options => options.UseSqlServer(this.configuration.GetConnectionString("DefaultConnection")));
 
@@ -124,7 +123,7 @@
             services.AddTransient<IProjectFileService, ProjectFileService>();
             services.AddTransient<IProjectService, ProjectService>();
             services.AddTransient<ICloudinaryService, CloudinaryService>();
-            services.AddTransient<IAdminServise, AdminService>();
+            services.AddTransient<IAdminService, AdminService>();
             services.AddTransient<IContactService, ContactService>();
 
             services.AddTransient<IEmailSender, SendGridEmailSender>(provider =>
@@ -170,13 +169,10 @@
                 app.UseHsts();
             }
 
-            //app.UseResponseCompression();
-
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
-            //app.UseSession();
             app.UseAuthentication();
             app.UseSetAdminMiddleware();
 

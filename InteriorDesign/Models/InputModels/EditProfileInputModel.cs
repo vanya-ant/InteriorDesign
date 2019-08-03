@@ -1,11 +1,14 @@
 ﻿namespace InteriorDesign.Models.InputModels
 {
+    using InteriorDesign.Models.Attributes;
     using System;
     using System.ComponentModel.DataAnnotations;
+
 
     public class EditProfileInputModel 
     {
         [Required]
+        [BirthdayValidationAttribute]
         public DateTime Birthday { get; set; }
 
         [Required]

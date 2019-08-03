@@ -11,10 +11,10 @@
 
     public class DesignerController : BaseController
     {
-        private readonly IAdminServise adminService;
+        private readonly IAdminService adminService;
         private readonly UserManager<ApplicationUser> userManager;
 
-        public DesignerController(UserManager<ApplicationUser> userManager, IAdminServise adminService)
+        public DesignerController(UserManager<ApplicationUser> userManager, IAdminService adminService)
         {
             this.userManager = userManager;
             this.adminService = adminService;

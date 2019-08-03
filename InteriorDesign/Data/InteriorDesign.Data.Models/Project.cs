@@ -18,7 +18,7 @@
 
         public ProjectStatus Status { get; set; } = ProjectStatus.InProgress;
 
-        public bool IsPublic { get; set; } = false;
+        public bool IsPublic { get; set; }
 
         [ForeignKey("Customer")]
         public string CustomerId { get; set; }

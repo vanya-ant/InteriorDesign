@@ -13,7 +13,7 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
-    public class AdminService : IAdminServise
+    public class AdminService : IAdminService
     {
         private readonly UserManager<ApplicationUser> userManager;
         private readonly ApplicationDbContext context;
@@ -32,11 +32,6 @@
             {
                 await this.userManager.AddToRoleAsync(userToBeAssigned, "Designer");
             }
-        }
-
-        public void AddProjectFile(ProjectFileCreateModel projectFile)
-        {
-            throw new NotImplementedException();
         }
 
         public async Task<ValidationResult> CreateProject(ProjectCreateInputModel model)
@@ -58,39 +53,85 @@
             return new ValidationResult($"New project created successfuly!");
         }
 
-        public void DeleteDeigner(string id)
+        public async Task<Project> GetProjectById(string id)
         {
-            throw new NotImplementedException();
+           var project = this.context.Projects.Where(x => x.Id == id).SingleOrDefault();
+
+           return project;
         }
 
-        public void DeleteProject(string id)
+        public async Task EditProject(string id, ProjectEditInputModel model)
         {
-            throw new NotImplementedException();
+            var projectFromBd = await this.GetProjectById(id);
+
+            if (projectFromBd.Status != model.Status || projectFromBd.Name != model.Name || projectFromBd.IsPublic != model.IsPublic)
+            {
+                projectFromBd.Status = model.Status;
+                projectFromBd.Name = model.Name;
+                projectFromBd.IsPublic = model.IsPublic;
+            }
+
+            this.context.Projects.Update(projectFromBd);
+
+            await this.context.SaveChangesAsync();
         }
 
-        public void DeleteProjectFIle(string id)
+        public async Task DeleteDeigner(string id)
         {
-            throw new NotImplementedException();
+            var designerToBeDeleted = this.context.Users.Where(x => x.Id == id).SingleOrDefault();
+
+            designerToBeDeleted.IsDeleted = true;
+
+            await this.context.SaveChangesAsync();
         }
 
-        public void DeleteReview(string id)
+        public async Task DeleteProject(string id)
         {
-            throw new NotImplementedException();
+            var project = await this.GetProjectById(id);
+
+            //var projectFilesToBeDEleted = this.context.ProjectFiles.Where(x => x.ProjectId == id);
+
+            //this.context.ProjectFiles.RemoveRange(projectFilesToBeDEleted);
+
+            //var projectReviewsToBeDEleted = this.context.ProjectReviews.Where(x => x.ProjectId == id);
+
+            //this.context.ProjectReviews.RemoveRange(projectReviewsToBeDEleted);
+
+            //var projectDesignBoardToBeDEleted = this.context.DesignBoards.Where(x => x.ProjectId == id);
+
+            //this.context.DesignBoards.RemoveRange(projectDesignBoardToBeDEleted);
+
+            this.context.Projects.Remove(project);
+
+            await this.context.SaveChangesAsync();
         }
 
-        public void EditProject(string id)
+        public async Task DeleteProjectFile(string id)
         {
-            throw new NotImplementedException();
+            var projectFileToBeDeleted = this.context.ProjectFiles.Where(x => x.Id == id).SingleOrDefault();
+
+            this.context.ProjectFiles.Remove(projectFileToBeDeleted);
+
+            await this.context.SaveChangesAsync();
         }
 
-        public ICollection<Project> GetAllCompletedProjects()
+        public async Task DeleteReview(string id)
+        {
+            var projectReviewToBeDeleted = this.context.ProjectReviews.Where(x => x.Id == id).SingleOrDefault();
+
+            this.context.ProjectReviews.Remove(projectReviewToBeDeleted);
+
+            await this.context.SaveChangesAsync();
+        }
+
+        public async Task<List<Project>> GetAllCompletedProjects()
         {
             var allCompletedProjects = this.context.Projects.Where(p => p.Status == ProjectStatus.Completed).ToList();
 
             return allCompletedProjects;
         }
 
-        public ICollection<Project> GetAllProjectsInProgress()
+        public async Task<List<Project>> GetAllProjectsInProgress()
         {
             var allActiveProjects = this.context.Projects.Where(p => p.Status == ProjectStatus.InProgress).ToList();
 

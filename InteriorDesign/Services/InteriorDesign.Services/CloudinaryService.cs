@@ -5,6 +5,7 @@
 
     using CloudinaryDotNet;
     using CloudinaryDotNet.Actions;
+    using InteriorDesign.Models.ViewModels;
     using InteriorDesign.Services.Contracts;
     using Microsoft.AspNetCore.Http;
 
@@ -41,6 +42,11 @@
             }
 
             return uploadResult?.SecureUri.AbsoluteUri;
+        }
+
+        public async Task DeleteImage(string url)
+        {
+            this.cloudinaryUtility.DeleteResources(url);
         }
     }
 }

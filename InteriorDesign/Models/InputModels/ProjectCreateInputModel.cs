@@ -14,5 +14,7 @@
 
         [Required]
         public ApplicationUser Designer { get; set; }
+
+        public bool IsPublic { get; set; }
     }
 }
