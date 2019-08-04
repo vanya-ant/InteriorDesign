@@ -127,7 +127,7 @@
                     Customer = project.Customer,
                     Designer = await this.userManager.FindByIdAsync(project.DesignerId),
                     DesignBoards = project.DesignBoards,
-                    ProjectFiles = AutoMapper.Mapper.Map<ICollection<ProjectFileViewModel>>(project.ProjectFiles),
+                    ProjectFiles = AutoMapper.Mapper.Map<IList<ProjectFileViewModel>>(project.ProjectFiles),
                     Id = project.Id,
                     Name = project.Name,
                     Status = project.Status.ToString(),
@@ -156,13 +156,15 @@
                     Customer = project.Customer,
                     Designer = project.Designer,
                     DesignBoards = project.DesignBoards,
-                    ProjectFiles = AutoMapper.Mapper.Map<ICollection<ProjectFileViewModel>>(project.ProjectFiles),
+                    ProjectFiles = AutoMapper.Mapper.Map<IList<ProjectFileViewModel>>(project.ProjectFiles),
                     Id = project.Id,
                     Name = project.Name,
                     Status = project.Status.ToString(),
                     IsPublic = project.IsPublic,
                     ProjectReviews = project.ProjectReviews,
                 };
+
+                result.Add(projectView);
             }
 
             return this.View("IndexLoggedin", result);

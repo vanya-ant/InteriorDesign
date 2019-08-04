@@ -7,17 +7,36 @@
 
 <h2>Details</h2>
 
-    <h4>Project</h4>
-    <hr />
-    <div class="d-flex justify-content-between">
-        @Html.HiddenFor(m => m.Id)
-        <div>
-            @Model.Name
-        </div>
-        <hr />
+<h4>Project</h4>
+<hr />
+<div class="d-flex justify-content-between">
+    @Html.HiddenFor(m => m.Id)
+    <div>
+        @Model.Name
     </div>
-    @foreach (var projectFile in Model.ProjectFiles)
+    <hr />
+</div>
+@foreach (var projectFile in Model.ProjectFiles)
+{
+    @await Html.PartialAsync("ProjectFile", projectFile);
+}
+<div>
+    @if (Model.ProjectReviews.Count > 0)
     {
-        @await Html.PartialAsync("ProjectFile", projectFile);
+        <label>Project reviews</label>
+
+        @foreach (var projectReview in Model.ProjectReviews)
+        {
+            <div class="comment">
+                <p class="post-description">@projectReview.Review</p>
+            </div>
+
+            if (this.User.IsInRole("Administrator"))
+            {
+                <a>Delete review</a>
+            }
+        }
     }
+</div>
+
 

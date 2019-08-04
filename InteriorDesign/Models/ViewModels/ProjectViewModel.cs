@@ -11,16 +11,16 @@
 
         public string Status { get; set; }
 
-        public bool IsPublic { get; set; } = false;
+        public bool IsPublic { get; set; }
 
         public virtual ApplicationUser Customer { get; set; }
 
         public virtual ApplicationUser Designer { get; set; }
 
-        public ICollection<DesignBoard> DesignBoards { get; set; }
+        public IList<DesignBoard> DesignBoards { get; set; }
 
-        public ICollection<ProjectFileViewModel> ProjectFiles { get; set; }
+        public IList<ProjectFileViewModel> ProjectFiles { get; set; }
 
-        public ICollection<ProjectReview> ProjectReviews { get; set; }
+        public IList<ProjectReview> ProjectReviews { get; set; }
     }
 }

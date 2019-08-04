@@ -18,12 +18,14 @@
         private readonly UserManager<ApplicationUser> userManager;
         private readonly IProjectService projectService;
         private readonly IAdminService adminService;
+        private readonly IReviewService reviewService;
 
-        public ProjectController(UserManager<ApplicationUser> userManager, IProjectService projectService, IAdminService adminService)
+        public ProjectController(UserManager<ApplicationUser> userManager, IProjectService projectService, IAdminService adminService, IReviewService reviewService)
         {
             this.userManager = userManager;
             this.projectService = projectService;
             this.adminService = adminService;
+            this.reviewService = reviewService;
         }
 
         [Authorize]
@@ -143,6 +145,54 @@
             await this.adminService.DeleteProject(id);
 
             return this.Redirect("/Home/IndexLoggedin");
+        }
+
+        [Authorize]
+        [HttpGet("/Project/Review")]
+        public async Task<IActionResult> Review()
+        {
+            var projectsFromDb = await this.adminService.GetAllCompletedProjects();
+
+            List<ProjectViewModel> result = new List<ProjectViewModel>();
+
+            foreach (var project in projectsFromDb)
+            {
+                var projectView = new ProjectViewModel
+                {
+                    Customer = project.Customer,
+                    Designer = project.Designer,
+                    DesignBoards = project.DesignBoards,
+                    ProjectFiles = AutoMapper.Mapper.Map<IList<ProjectFileViewModel>>(project.ProjectFiles),
+                    Id = project.Id,
+                    Name = project.Name,
+                    Status = project.Status.ToString(),
+                    IsPublic = project.IsPublic,
+                    ProjectReviews = project.ProjectReviews,
+                };
+
+                result.Add(projectView);
+            }
+
+            return this.View(result);
+        }
+
+        [Authorize]
+        [HttpPost("/Project/Review")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Review(string id)
+        {
+            var customer = await this.userManager.FindByEmailAsync(this.User.Identity.Name);
+
+            ReviewCreateModel model = new ReviewCreateModel
+            {
+                ProjectId = id,
+                CustomerId = customer.Id,
+                Review = this.Request.Form["review-body"].ToString(),
+            };
+
+            await this.reviewService.CreateReview(model);
+
+            return this.RedirectToAction("Review", "Project", new { id = model.ProjectId });
         }
     }
 }

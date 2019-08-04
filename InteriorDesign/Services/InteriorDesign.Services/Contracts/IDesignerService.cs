@@ -8,10 +8,5 @@
     {
         ICollection<Project> GetActiveDesignerProjects(string designerId);
 
-        void EditProject();
-
-        void AddProjectFile();
-
-        void DeleteProjectFile();
     }
 }

@@ -17,21 +17,6 @@
             this.context = context;
         }
 
-        public void AddProjectFile()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DeleteProjectFile()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void EditProject()
-        {
-            throw new NotImplementedException();
-        }
-
         public ICollection<Project> GetActiveDesignerProjects(string designerId)
         {
             var allActiveProjects = this.context.Projects.Where(p => p.DesignerId == designerId && p.Status == ProjectStatus.InProgress).ToList();
