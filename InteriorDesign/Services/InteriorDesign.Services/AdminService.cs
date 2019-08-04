@@ -89,18 +89,6 @@
         {
             var project = await this.GetProjectById(id);
 
-            //var projectFilesToBeDEleted = this.context.ProjectFiles.Where(x => x.ProjectId == id);
-
-            //this.context.ProjectFiles.RemoveRange(projectFilesToBeDEleted);
-
-            //var projectReviewsToBeDEleted = this.context.ProjectReviews.Where(x => x.ProjectId == id);
-
-            //this.context.ProjectReviews.RemoveRange(projectReviewsToBeDEleted);
-
-            //var projectDesignBoardToBeDEleted = this.context.DesignBoards.Where(x => x.ProjectId == id);
-
-            //this.context.DesignBoards.RemoveRange(projectDesignBoardToBeDEleted);
-
             this.context.Projects.Remove(project);
 
             await this.context.SaveChangesAsync();

@@ -13,7 +13,11 @@
 
         Task<ProjectViewModel> GetCurrentProject(string id);
 
+        Task<ProjectFile> GetCurrentProjectFile(string id);
+
         Task DeleteProjectFile(string id);
+
+        Task ApproveFile(string id);
 
         Task<bool> SaveAll();
     }

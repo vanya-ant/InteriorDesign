@@ -72,13 +72,11 @@
             return result;
         }
 
-        public async Task<ProjectFileViewModel> GetCurrentProjectFile(string id)
+        public async Task<ProjectFile> GetCurrentProjectFile(string id)
         {
-            var project = this.context.ProjectFiles.Where(x => x.Id == id);
+            var projectFile = this.context.ProjectFiles.Where(x => x.Id == id).SingleOrDefault();
 
-            var result = AutoMapper.Mapper.Map<ProjectFileViewModel>(project);
-
-            return result;
+            return projectFile;
         }
 
         public async Task DeleteProjectFile(string id)
@@ -91,6 +89,15 @@
         public async Task<bool> SaveAll()
         {
             return await this.context.SaveChangesAsync() > 0;
+        }
+
+        public async Task ApproveFile(string id)
+        {
+            var projectFile = await this.GetCurrentProjectFile(id);
+
+            projectFile.IsApproved = true;
+
+            await this.context.SaveChangesAsync();
         }
     }
 }

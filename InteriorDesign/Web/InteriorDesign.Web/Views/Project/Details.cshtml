@@ -1,4 +1,5 @@
 ﻿@model InteriorDesign.Models.ViewModels.ProjectDetailsViewModel;
+
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,10 +7,10 @@
 
 <h2>Details</h2>
 
-<div>
     <h4>Project</h4>
     <hr />
     <div class="d-flex justify-content-between">
+        @Html.HiddenFor(m => m.Id)
         <div>
             @Model.Name
         </div>
@@ -19,4 +20,4 @@
     {
         @await Html.PartialAsync("ProjectFile", projectFile);
     }
-</div>
+

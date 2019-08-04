@@ -9,14 +9,6 @@ namespace InteriorDesign.Models.ViewModels
 
         public string Name { get; set; }
 
-        //public string Status { get; set; }
-
-        //public bool IsPublic { get; set; } = false;
-
-        //public string CustomerId { get; set; }
-
-        //public string DesignerId { get; set; }
-
         public IList<DesignBoard> DesignBoards { get; set; }
 
         public List<ProjectFileViewModel> ProjectFiles { get; set; }
