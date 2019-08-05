@@ -104,6 +104,7 @@
             {
                 var board = new DesignBoardViewModel
                 {
+                     Id = designBoard.Id,
                      Name = designBoard.Name,
                      DesignReferences = await this.designBoardService.GetDesignBoardReferences(designBoard.Id),
                 };

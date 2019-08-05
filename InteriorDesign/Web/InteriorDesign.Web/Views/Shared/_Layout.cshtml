@@ -51,7 +51,7 @@
                     <div class="clear-toggle"></div>
                     <div id="main-menu">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-menu">
-                            </button>
+                        </button>
                         <ul class="nav">
                             @if (!this.User.Identity.IsAuthenticated)
                             {
@@ -124,12 +124,15 @@
     </nav>
     <!--End Navigation-->
 
-        <main>
-            <div class="container-fluid">
-                @this.RenderBody()
-            </div>
-        </main>
-
+    <main>
+        <div class="container-fluid">
+            @this.RenderBody()
+        </div>
+    </main>
+    <br />
+    <br />
+    <br />
+    <br />
     <footer class="modal-footer navbar-fixed-bottom">
         <div class="text-center">
             &copy; @DateTime.Now.Year - InteriorDesign - <a href="/Home/Privacy">Privacy</a>
