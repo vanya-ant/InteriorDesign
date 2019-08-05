@@ -76,15 +76,6 @@
             await this.context.SaveChangesAsync();
         }
 
-        public async Task DeleteDeigner(string id)
-        {
-            var designerToBeDeleted = this.context.Users.Where(x => x.Id == id).SingleOrDefault();
-
-            designerToBeDeleted.IsDeleted = true;
-
-            await this.context.SaveChangesAsync();
-        }
-
         public async Task DeleteProject(string id)
         {
             var project = await this.GetProjectById(id);
@@ -99,15 +90,6 @@
             var projectFileToBeDeleted = this.context.ProjectFiles.Where(x => x.Id == id).SingleOrDefault();
 
             this.context.ProjectFiles.Remove(projectFileToBeDeleted);
-
-            await this.context.SaveChangesAsync();
-        }
-
-        public async Task DeleteReview(string id)
-        {
-            var projectReviewToBeDeleted = this.context.ProjectReviews.Where(x => x.Id == id).SingleOrDefault();
-
-            this.context.ProjectReviews.Remove(projectReviewToBeDeleted);
 
             await this.context.SaveChangesAsync();
         }

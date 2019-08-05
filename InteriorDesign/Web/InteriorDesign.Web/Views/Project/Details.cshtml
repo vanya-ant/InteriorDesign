@@ -14,6 +14,19 @@
     <div>
         @Model.Name
     </div>
+    <br />
+    <div>
+        @if (Model.DesignBoards.Any())
+        {
+            foreach (var designBoard in Model.DesignBoards)
+            {
+                @await Html.PartialAsync("DesignBoard", designBoard);
+            }
+        }
+    </div>
+    <div>
+        <a class="btn btn-default" href="/DesignBoard/Create?id=@Model.Id">Create DesignBoard</a>
+    </div>
     <hr />
 </div>
 @foreach (var projectFile in Model.ProjectFiles)
@@ -30,11 +43,6 @@
             <div class="comment">
                 <p class="post-description">@projectReview.Review</p>
             </div>
-
-            if (this.User.IsInRole("Administrator"))
-            {
-                <a>Delete review</a>
-            }
         }
     }
 </div>

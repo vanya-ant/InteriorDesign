@@ -14,7 +14,7 @@
 
         private const decimal House = 1.1m;
         private const decimal Office = 1.2m;
-        private const decimal RetailProperty = 2m;
+        private const decimal RetailProperty = 3m;
 
         public decimal Calculate(ProjectCalculatorInputModel model)
         {
@@ -37,8 +37,7 @@
                        (model.NumberOfBathrooms + model.NumberOfBedrooms) * Office;
                     break;
                 case TypeOfProperty.RetailProperty:
-                    result = this.CalculatePropertyArea(model) *
-                       (model.NumberOfBathrooms + model.NumberOfBedrooms) * RetailProperty;
+                    result = this.CalculatePropertyArea(model) * RetailProperty;
                     break;
                 default:
                     break;

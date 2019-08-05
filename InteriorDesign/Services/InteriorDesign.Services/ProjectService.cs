@@ -39,5 +39,19 @@
 
             return result;
         }
+
+        public ICollection<Project> GetActiveDesignerProjects(string designerId)
+        {
+            var allActiveProjects = this.context.Projects.Where(p => p.DesignerId == designerId && p.Status == ProjectStatus.InProgress).ToList();
+
+            return allActiveProjects;
+        }
+
+        public ICollection<Project> GetActiveCustomerProjects(string customerId)
+        {
+            var allActiveProjects = this.context.Projects.Where(p => p.CustomerId == customerId && p.Status == ProjectStatus.InProgress).ToList();
+
+            return allActiveProjects;
+        }
     }
 }

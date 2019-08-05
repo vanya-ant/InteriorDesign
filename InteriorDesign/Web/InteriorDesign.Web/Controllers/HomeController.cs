@@ -18,18 +18,15 @@
         private readonly UserManager<ApplicationUser> userManager;
         private readonly IContactService contactService;
         private readonly IAdminService adminService;
-        private readonly ICustomerService customerService;
-        private readonly IDesignerService designerService;
+        private readonly IProjectService projectService;
 
         public HomeController(UserManager<ApplicationUser> userManager, IContactService contactService,
-                              IAdminService adminService, ICustomerService customerService,
-                              IDesignerService designerService)
+                              IAdminService adminService, IProjectService projectService)
         {
             this.userManager = userManager;
             this.contactService = contactService;
             this.adminService = adminService;
-            this.customerService = customerService;
-            this.designerService = designerService;
+            this.projectService = projectService;
         }
 
         [AllowAnonymous]
@@ -111,11 +108,11 @@
             }
             else if (await this.userManager.IsInRoleAsync(userFromDb, "Designer"))
             {
-                projects = this.designerService.GetActiveDesignerProjects(userId).ToList();
+                projects = this.projectService.GetActiveDesignerProjects(userId).ToList();
             }
             else if (await this.userManager.IsInRoleAsync(userFromDb, "Customer"))
             {
-                projects = this.customerService.GetActiveCustomerProjects(userId).ToList();
+                projects = this.projectService.GetActiveCustomerProjects(userId).ToList();
             }
 
             List<ProjectViewModel> result = new List<ProjectViewModel>();

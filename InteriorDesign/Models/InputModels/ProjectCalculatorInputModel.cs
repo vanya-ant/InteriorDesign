@@ -28,8 +28,6 @@ namespace InteriorDesign.Models.InputModels
         [Range(10, 20000)]
         public decimal HousingArea { get; set; }
 
-        public string Description { get; set; }
-
         public decimal Result { get; set; }
     }
 }

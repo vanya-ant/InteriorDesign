@@ -14,5 +14,9 @@
         Task<IList<ProjectReview>> GetCurrentProjectReviews(string id);
 
         Task<IList<DesignBoard>> GetCurrentProjectDesignBoards(string id);
+
+        ICollection<Project> GetActiveCustomerProjects(string customerId);
+
+        ICollection<Project> GetActiveDesignerProjects(string designerId);
     }
 }

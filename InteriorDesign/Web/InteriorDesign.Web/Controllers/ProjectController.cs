@@ -4,6 +4,7 @@
     using System.Linq;
     using System.Threading.Tasks;
 
+    using InteriorDesign.Common;
     using InteriorDesign.Data.Models;
     using InteriorDesign.Models.InputModels;
     using InteriorDesign.Models.ViewModels;
@@ -19,16 +20,18 @@
         private readonly IProjectService projectService;
         private readonly IAdminService adminService;
         private readonly IReviewService reviewService;
+        private readonly IDesignBoardService designBoardService;
 
-        public ProjectController(UserManager<ApplicationUser> userManager, IProjectService projectService, IAdminService adminService, IReviewService reviewService)
+        public ProjectController(UserManager<ApplicationUser> userManager, IProjectService projectService, IAdminService adminService, IReviewService reviewService, IDesignBoardService designBoardService)
         {
             this.userManager = userManager;
             this.projectService = projectService;
             this.adminService = adminService;
             this.reviewService = reviewService;
+            this.designBoardService = designBoardService;
         }
 
-        [Authorize]
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
         [HttpGet("/Project/Create")]
         public async Task<IActionResult> Create()
         {
@@ -45,7 +48,7 @@
             return this.View("Create", viewModel);
         }
 
-        [Authorize]
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
         [HttpPost("/Project/Create")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateProject(ProjectCreateInputModel model)
@@ -95,11 +98,24 @@
 
             var projectDesignBoards = await this.projectService.GetCurrentProjectDesignBoards(id);
 
+            var resultDesignBoards = new List<DesignBoardViewModel>();
+
+            foreach (var designBoard in projectDesignBoards)
+            {
+                var board = new DesignBoardViewModel
+                {
+                     Name = designBoard.Name,
+                     DesignReferences = await this.designBoardService.GetDesignBoardReferences(designBoard.Id),
+                };
+
+                resultDesignBoards.Add(board);
+            }
+
             var result = new ProjectDetailsViewModel
             {
                 ProjectFiles = projectFilesResult,
                 ProjectReviews = projectReviews,
-                DesignBoards = projectDesignBoards,
+                DesignBoards = resultDesignBoards,
                 Name = project.Name,
                 Id = id,
             };
@@ -107,7 +123,7 @@
             return this.View(result);
         }
 
-        [Authorize]
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
         [HttpGet("/Project/Edit")]
         public async Task<IActionResult> Edit(string id)
         {
@@ -124,7 +140,7 @@
             return this.View(project);
         }
 
-        [Authorize]
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
         [ValidateAntiForgeryToken]
         [HttpPost("/Project/Edit")]
         public async Task<IActionResult> Edit(string id, ProjectEditInputModel model)
@@ -137,7 +153,7 @@
             return this.Redirect("/Home/IndexLoggedin");
         }
 
-        [Authorize]
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
         [HttpPost("/Project/Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(string id)

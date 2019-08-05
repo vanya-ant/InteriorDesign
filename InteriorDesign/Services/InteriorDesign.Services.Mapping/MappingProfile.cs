@@ -14,6 +14,8 @@
             configuration.CreateMap<Project, ProjectViewModel>().ReverseMap();
             configuration.CreateMap<ProjectFileViewModel, ProjectFile>().ReverseMap();
             configuration.CreateMap<List<ProjectFile>, List<ProjectFileViewModel>>().ReverseMap();
+
+            configuration.CreateMap<DesignBoard, DesignBoardViewModel>().ReverseMap();
         }
     }
 }

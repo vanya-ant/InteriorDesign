@@ -29,6 +29,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\InteriorDesign.Data\InteriorDesign.Data.csproj" />
     <ProjectReference Include="..\..\Services\InteriorDesign.Services.Data\InteriorDesign.Services.Data.csproj" />
+    <ProjectReference Include="..\..\Services\InteriorDesign.Services\InteriorDesign.Services.csproj" />
   </ItemGroup>
 
 </Project>

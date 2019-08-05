@@ -118,14 +118,13 @@
             services.AddTransient<IRoleStore<ApplicationRole>, ApplicationRoleStore>();
             services.AddTransient<IProjectCalculatorService, ProjectCalculatorService>();
             services.AddTransient<IPortfolioService, PortfolioService>();
-            services.AddTransient<IDesignerService, DesignerService>();
-            services.AddTransient<ICustomerService, CustomerService>();
             services.AddTransient<IProjectFileService, ProjectFileService>();
             services.AddTransient<IProjectService, ProjectService>();
             services.AddTransient<ICloudinaryService, CloudinaryService>();
             services.AddTransient<IAdminService, AdminService>();
             services.AddTransient<IContactService, ContactService>();
             services.AddTransient<IReviewService, ReviewService>();
+            services.AddTransient<IDesignBoardService, DesignBoardService>();
 
             services.AddTransient<IEmailSender, SendGridEmailSender>(provider =>
                new SendGridEmailSender(new LoggerFactory(), this.configuration["SendGridKey"], "interiorDesign@interiordesign.com", "InteriorDesign"));
