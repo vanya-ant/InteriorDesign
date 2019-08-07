@@ -13,7 +13,7 @@
 
         Task<ValidationResult> CreateProject(ProjectCreateInputModel model);
 
-        Task EditProject(string id, ProjectEditInputModel model);
+        Task EditProject(ProjectEditInputModel model);
 
         Task AddDesigner(string email);
 

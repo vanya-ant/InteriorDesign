@@ -60,9 +60,9 @@
            return project;
         }
 
-        public async Task EditProject(string id, ProjectEditInputModel model)
+        public async Task EditProject(ProjectEditInputModel model)
         {
-            var projectFromBd = await this.GetProjectById(id);
+            var projectFromBd = await this.GetProjectById(model.Id);
 
             if (projectFromBd.Status != model.Status || projectFromBd.Name != model.Name || projectFromBd.IsPublic != model.IsPublic)
             {

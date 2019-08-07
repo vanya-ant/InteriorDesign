@@ -148,7 +148,7 @@
         {
             if (this.ModelState.IsValid)
             {
-               await this.adminService.EditProject(id, model);
+               await this.adminService.EditProject(model);
             }
 
             return this.Redirect("/Home/IndexLoggedin");

@@ -75,9 +75,9 @@
                 mc.AddProfile(new MappingProfile());
             });
 
-            mappingConfig.AssertConfigurationIsValid();
-
             IMapper mapper = mappingConfig.CreateMapper();
+
+            mappingConfig.AssertConfigurationIsValid();
 
             services.AddSingleton(mapper);
 
