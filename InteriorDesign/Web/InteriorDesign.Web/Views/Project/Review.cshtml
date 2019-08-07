@@ -1,0 +1,36 @@
+﻿@model List<ProjectViewModel>
+
+@using InteriorDesign.Models.ViewModels;
+
+@{
+    ViewData["Title"] = "Review";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="container-fluid justify-content-between">
+        <div class="col-6">
+            @if (Model.Count > 0)
+            {
+                foreach (var project in Model)
+                {
+                    @await Html.PartialAsync("Project", project)
+
+                    <form method="post" asp-controller="Project" asp-action="Review">
+                        <input name="Id" value="@project.Id" type="hidden" />
+                        <input name="review-body" class="form-control col-6" value="Add project review" runat="server"/>
+                        <button class="btn btn-color-brown" type="submit">Add Review</button>
+                    </form>
+                }
+            }
+            else
+            {
+                <div class="text-center">
+                    No current projects!
+                </div>
+                <br />
+                <div>
+                    <a href="/Portfolio/Portfolio">Please, visit our portfolio page</a>
+                </div>
+            }
+        </div>
+    </div>
