@@ -1,48 +1,45 @@
 ﻿@model InteriorDesign.Models.ViewModels.ProjectFileViewModel;
 
-  <div class="row">
-      <div class="related-project col-md-2">
-          <div class="image-holder d-flex justify-content-center">
-              <h4>@Model.Name</h4>
-              <hr />
-              <a class="img-fluid">
-                  <img id="img" class="img-thumbnail" src="@Model.Url" onclick="window.open(this.src)">
-              </a>
-          </div>
-          <div>
-              @if (Model.IsApproved)
-              {
-                  <ul class="glyphicon glyphicon-thumbs-up"> Approved</ul>
-              }
-              else
-              {
-                  <ul class="glyphicon glyphicon-thumbs-down"> Not Approved</ul>
-              }
-          </div>
-          @if (this.User.IsInRole("Administrator"))
-          {
-              <form method="post" asp-action="Delete" asp-controller="ProjectFile">
-                  <input name="Id" value="@Model.Id" type="hidden" />
-                  <button class="btn btn-danger" type="submit" Onclick="ConfirmDelete()">Delete File</button>
-              </form>
-          }
-          @if (this.User.IsInRole("Customer") && this.Model.IsApproved == false)
-          {
-              <form method="post" asp-action="Approve" asp-controller="ProjectFile">
-                  <input name="Id" value="@Model.Id" type="hidden" />
-                  <button class="btn btn-primary" type="submit">Approve</button>
-              </form>
-          }
-      </div>
-  </div>
+<div class="related-project col-md-2">
+    <div class="image-holder">
+        <h4>@Model.Name</h4>
+        <hr />
+        <a class="img-fluid">
+            <img id="img" class="img-thumbnail" src="@Model.Url" onclick="window.open(this.src)">
+        </a>
+    </div>
+    <div>
+        @if (Model.IsApproved)
+        {
+            <ul class="glyphicon glyphicon-thumbs-up"> Approved</ul>
+        }
+        else
+        {
+            <ul class="glyphicon glyphicon-thumbs-down"> Not Approved</ul>
+        }
+    </div>
+    @if (this.User.IsInRole("Administrator"))
+    {
+        <form method="post" asp-action="Delete" asp-controller="ProjectFile">
+            <input name="Id" value="@Model.Id" type="hidden" />
+            <button class="btn btn-danger" type="submit" Onclick="ConfirmDelete()">Delete File</button>
+        </form>
+    }
+    @if (this.User.IsInRole("Customer") && this.Model.IsApproved == false)
+    {
+        <form method="post" asp-action="Approve" asp-controller="ProjectFile">
+            <input name="Id" value="@Model.Id" type="hidden" />
+            <button class="btn btn-primary" type="submit">Approve</button>
+        </form>
+    }
+</div>
 <script>
-    
-function ConfirmDelete()
-{
-  var x = confirm("Are you sure you want to delete file");
 
-    return x;
-}
+    function ConfirmDelete() {
+        var x = confirm("Are you sure you want to delete file");
+
+        return x;
+    }
 
 </script>
 

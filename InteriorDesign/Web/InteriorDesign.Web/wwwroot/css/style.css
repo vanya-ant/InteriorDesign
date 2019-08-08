@@ -67,6 +67,7 @@ img{
     height: 100vh;
     padding-left: 30px;
     padding-right: 30px;
+    text-align: justify;
 }
 
 .navbar-right li a {
@@ -700,7 +701,8 @@ html[xmlns] .slides {
 
 .logo-nav { 
 	float: left; 
-	padding: 30px 0px;
+	padding: 30px;
+    padding-left: 30px;
 }
 .col-sm-12{
     height: 7%;

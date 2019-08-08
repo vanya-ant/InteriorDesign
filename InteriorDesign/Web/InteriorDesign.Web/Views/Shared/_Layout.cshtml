@@ -15,17 +15,14 @@
     <link rel="shortcut icon" href="~/favicon.png">
 
     <!--styles -->
-    <link href="~/css/reset-css.css" />
-    <link href="~/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/css/fontawesome/font-awesome.css" rel="stylesheet">
-    <link href="~/js/owl-carousel/owl.carousel.css" rel="stylesheet">
-    <link href="~/js/owl-carousel/owl.theme.css" rel="stylesheet">
-    <link href="~/js/owl-carousel/owl.transitions.css" rel="stylesheet">
     <link href="~/css/magnific-popup.css" rel="stylesheet">
     <link href="~/css/animate.css" type="text/css" rel="stylesheet">
     <link href="~/css/style.css" type="text/css" rel="stylesheet" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+
 </head>
 <body>
     <!--Start Navigation-->
@@ -66,7 +63,7 @@
 
                                 <li class="nav-item"> <a href="/Home/Contacts">Contact</a> </li>
 
-                                <li class="nav-item">
+                                <li class="nav-item pull-right">
                                     <a href="/Identity/Account/Register">Register</a>
                                     <a href="/Identity/Account/Login">Login</a>
                                 </li>
@@ -86,7 +83,7 @@
                                     <li class="nav-item">
                                         <a href="/Home/AllCompleted">Completed Projects</a>
                                     </li>
-                                    <li class="nav-item">
+                                    <li class="nav-item pull-right">
                                         <a href="/Identity/Account/Logout">Logout</a>
                                     </li>
                                 }
@@ -110,7 +107,7 @@
                                     <li class="nav-item"> <a href="/ProjectCalculator/ProjectCalculator">Pricing</a> </li>
 
                                     <li class="nav-item"> <a href="/Home/Contacts">Contact</a> </li>
-                                    <li class="nav-item">
+                                    <li class="nav-item pull-right">
                                         <a href="/Project/Review">Review Project</a>
                                         <a href="/Identity/Account/Logout">Logout</a>
                                     </li>
@@ -125,7 +122,7 @@
     <!--End Navigation-->
 
     <main class="main-wrapper">
-        <div class="container-fluid">
+        <div class="container-fluid justify-content-center">
             <br />
             @this.RenderBody()
         </div>
@@ -134,11 +131,10 @@
     <br />
     <br />
     <br />
-    <footer class="modal-footer navbar-fixed-bottom">
-        <div class="text-center">
-            &copy; @DateTime.Now.Year - InteriorDesign - <a href="/Home/Privacy">Privacy</a>
-        </div>
-    </footer>
+        <footer class="modal-footer navbar-fixed-bottom justify-content-center">
+                &copy; @DateTime.Now.Year - InteriorDesign - <a href="/Home/Privacy">Privacy</a>
+        </footer>
+
 
     <environment names="Development">
         <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
