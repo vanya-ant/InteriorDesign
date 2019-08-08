@@ -4,17 +4,18 @@
     <meta charset="utf-8">
     <title>Interior Design</title>
     <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
-    <meta name="author" content="">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
+    <meta name="author" content="vd">
+    <meta name="keywords" content="interior design">
+    <meta name="description" content="interior design">
 
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!--Favicons -->
-    <link rel="shortcut icon" href="images/favicon.png">
+    <link rel="shortcut icon" href="~/favicon.png">
 
     <!--styles -->
+    <link href="~/css/reset-css.css" />
     <link href="~/css/bootstrap/bootstrap.min.css" rel="stylesheet">
     <link href="~/css/fontawesome/font-awesome.css" rel="stylesheet">
     <link href="~/js/owl-carousel/owl.carousel.css" rel="stylesheet">
@@ -29,29 +30,29 @@
 <body>
     <!--Start Navigation-->
     <nav id="header">
-        <div class="container-fluid">
+        <div class="navbar-fixed-bottom">
             <div class="row">
-                <div class="col-sm-12">
-                    <!--Start Logo -->
-                    <div class="logo-nav">
-                        @if (!this.User.Identity.IsAuthenticated)
-                        {
-                            <a href="/Home/Index">
-                                <img src="~/images/logo.png" alt="Company logo" />
-                            </a>
-                        }
-                        else
-                        {
-                            <a href="/Home/IndexLoggedin">
-                                <img src="~/images/logo.png" alt="Company logo" />
-                            </a>
-                        }
-                    </div>
-                    <!--End Logo -->
-                    <div class="clear-toggle"></div>
+                <div class="col-sm-8">
                     <div id="main-menu">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-menu">
-                        </button>
+                        <!--Start Logo -->
+                        <div class="logo-nav">
+                            <!--Start Logo -->
+                            <div class="nav-item">
+                                @if (!this.User.Identity.IsAuthenticated)
+                                {
+                                    <a href="/Home/Index">
+                                        <img src="~/images/logo.png" alt="Company logo" />
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a href="/Home/IndexLoggedin">
+                                        <img src="~/images/logo.png" alt="Company logo" />
+                                    </a>
+                                }
+                            </div>
+                        </div>
+                        <!--End Logo -->
                         <ul class="nav">
                             @if (!this.User.Identity.IsAuthenticated)
                             {
@@ -65,9 +66,10 @@
 
                                 <li class="nav-item"> <a href="/Home/Contacts">Contact</a> </li>
 
-                                <li class="nav-item pull-right"> <a href="/Identity/Account/Register">Register</a> </li>
-
-                                <li class="nav-item pull-right"> <a href="/Identity/Account/Login">Login</a> </li>
+                                <li class="nav-item">
+                                    <a href="/Identity/Account/Register">Register</a>
+                                    <a href="/Identity/Account/Login">Login</a>
+                                </li>
                             }
                             else
                             {
@@ -84,7 +86,7 @@
                                     <li class="nav-item">
                                         <a href="/Home/AllCompleted">Completed Projects</a>
                                     </li>
-                                    <li class="nav-item pull-right">
+                                    <li class="nav-item">
                                         <a href="/Identity/Account/Logout">Logout</a>
                                     </li>
                                 }
@@ -93,7 +95,7 @@
                                     <li class="nav-item">
                                         <a href="/Home/IndexLoggedin">Current Projects</a>
                                     </li>
-                                    <li class="nav-item pull-right">
+                                    <li class="nav-item">
                                         <a href="/Identity/Account/Logout">Logout</a>
                                     </li>
                                 }
@@ -110,8 +112,6 @@
                                     <li class="nav-item"> <a href="/Home/Contacts">Contact</a> </li>
                                     <li class="nav-item">
                                         <a href="/Project/Review">Review Project</a>
-                                    </li>
-                                    <li class="nav-item pull-right">
                                         <a href="/Identity/Account/Logout">Logout</a>
                                     </li>
                                 }
@@ -124,8 +124,9 @@
     </nav>
     <!--End Navigation-->
 
-    <main>
+    <main class="main-wrapper">
         <div class="container-fluid">
+            <br />
             @this.RenderBody()
         </div>
     </main>
@@ -153,7 +154,6 @@
         <script src="~/lib/bootstrap/dist/js/bootstrap.min.js" asp-append-version="true"></script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
-
     @this.RenderSection("Scripts", required: false)
 </body>
 </html>

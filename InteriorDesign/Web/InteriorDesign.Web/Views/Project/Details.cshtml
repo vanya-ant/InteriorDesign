@@ -5,31 +5,35 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+    <div class="row">
+        <h2>Details</h2>
 
-<h4>Project</h4>
-<hr />
-<div class="d-flex justify-content-between">
-    @Html.HiddenFor(m => m.Id)
-    <div>
-        @Model.Name
-    </div>
-    <br />
-    <div>
-        @if (Model.DesignBoards.Any())
-        {
-            foreach (var designBoard in Model.DesignBoards)
-            {
-                @await Html.PartialAsync("DesignBoard", designBoard);
-            }
-        }
+        <h4>Project</h4>
+        <hr />
+
+        @Html.HiddenFor(m => m.Id)
+        <div>
+            @Model.Name
+        </div>
         <br />
+        <div>
+            @if (Model.DesignBoards.Any())
+            {
+                foreach (var designBoard in Model.DesignBoards)
+                {
+                    @await Html.PartialAsync("DesignBoard", designBoard);
+                }
+            }
+            <br />
+        </div>
+        <div>
+            @if (this.User.IsInRole("Customer"))
+            {
+                <a class="btn btn-default" href="/DesignBoard/Create?id=@Model.Id">Create DesignBoard</a>
+            }
+        </div>
+        <hr />
     </div>
-    <div>
-        <a class="btn btn-default" href="/DesignBoard/Create?id=@Model.Id">Create DesignBoard</a>
-    </div>
-    <hr />
-</div>
 @foreach (var projectFile in Model.ProjectFiles)
 {
     @await Html.PartialAsync("ProjectFile", projectFile);

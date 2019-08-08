@@ -8,6 +8,14 @@
 <!--Start portfolio-->
 <div class="slider-container" id="works">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        @if (Model.PublicProjectFiles.Count == 0)
+        {
+            <div class="alert alert-dark" role="alert">
+                No public projects yet!
+            </div>
+            <a class="mfp-bg text-lg-center" />
+            @*<img src="~/images/background2.jpg">*@
+        }
         <!-- Indicators -->
         <ol class="carousel-indicators">
             @for (int i = 0; i < Model.PublicProjectFiles.Count; i++)

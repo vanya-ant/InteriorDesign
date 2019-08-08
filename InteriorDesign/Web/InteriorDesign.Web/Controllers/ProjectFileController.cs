@@ -19,8 +19,7 @@
             this.adminService = adminService;
         }
 
-        [Authorize(Roles = GlobalConstants.DesignerRoleName)]
-        [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName + "," + GlobalConstants.DesignerRoleName)]
         [HttpGet("/ProjectFile/Create")]
         public async Task<IActionResult> CreateProjectFile(string id)
         {
@@ -32,8 +31,7 @@
             return this.View(projectId);
         }
 
-        [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
-        [Authorize(Roles = GlobalConstants.DesignerRoleName)]
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName + "," + GlobalConstants.DesignerRoleName)]
         [HttpPost("/ProjectFile/Create")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddProjectFile(ProjectFileCreateModel model)

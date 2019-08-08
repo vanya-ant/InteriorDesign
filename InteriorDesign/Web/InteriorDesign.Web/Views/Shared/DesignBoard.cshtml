@@ -13,12 +13,15 @@
         <div>
             @foreach (var designReference in Model.DesignReferences)
             {
-                 <div>
-                     <a href="@designReference.ImageUrl">@designReference.ImageUrl</a>
-                 </div>
+                <div>
+                    <a href="@designReference.ImageUrl">@designReference.ImageUrl</a>
+                </div>
             }
         </div>
         <br />
-        <input name="Id" value="@Model.Id" type="hidden" />
-        <input class="btn btn-primary" onclick="location.href='@Url.Action("Create", "Reference",  new {  id = Model.Id })'" value="Add reference" />
+        @if (this.User.IsInRole("Customer"))
+        {
+            <input name="Id" value="@Model.Id" type="hidden" />
+            <input class="btn btn-primary" onclick="location.href='@Url.Action("Create", "Reference",  new {  id = Model.Id })'" value="Add reference" />
+        }
     </div>
