@@ -40,11 +40,38 @@
                 PasswordHash = 5.GetHashCode().ToString(),
             };
         }
+        private Project AddProject()
+        {
+            var model = new ProjectCreateInputModel
+            {
+                Designer = new ApplicationUser
+                {
+                    Email = "customer@customer.com",
+                    PasswordHash = 5.GetHashCode().ToString(),
+                },
+                Customer = new ApplicationUser
+                {
+                    Email = "customer@customer.com",
+                    PasswordHash = 5.GetHashCode().ToString(),
+                },
+                Name = "Test",
+                IsPublic = true,
+            };
+
+            return new Project
+            {
+                DesignerId = model.Designer.Id,
+                CustomerId = model.Customer.Id,
+                Name = model.Name,
+                IsPublic = model.IsPublic,
+            };
+        }
 
         private async Task SeedData(ApplicationDbContext context)
         {
             context.Add(this.AddDesigner());
             context.Add(this.AddCustomer());
+            context.Add(this.AddProject());
             await context.SaveChangesAsync();
         }
 
@@ -70,15 +97,15 @@
             {
                Designer = new ApplicationUser
                {
-                   Email = "customer@customer.com",
+                   Email = "designer1@designer.com",
                    PasswordHash = 5.GetHashCode().ToString(),
                },
                Customer = new ApplicationUser
                {
-                   Email = "customer@customer.com",
+                   Email = "customer1@customer.com",
                    PasswordHash = 5.GetHashCode().ToString(),
                },
-               Name = "Test",
+               Name = "Test1",
                IsPublic = true,
             };
 
@@ -146,54 +173,83 @@
 
             this.adminService = new AdminService(userManager, context);
 
-            var test1 = new ProjectCreateInputModel
+            var project = await this.adminService.GetAllProjectsInProgress();
+
+            var projectInputModel = new ProjectEditInputModel
             {
-                Designer = new ApplicationUser
-                {
-                    Email = "customer@customer.com",
-                    PasswordHash = 5.GetHashCode().ToString(),
-                },
-                Customer = new ApplicationUser
-                {
-                    Email = "customer@customer.com",
-                    PasswordHash = 5.GetHashCode().ToString(),
-                },
-                Name = "Test",
-                IsPublic = true,
+                Id = project[0].Id,
+                IsPublic = project[0].IsPublic,
+                Name = "Test-Edited",
+                Status = project[0].Status,
             };
 
-            await this.adminService.CreateProject(test1);
+            await this.adminService.EditProject(projectInputModel);
 
-            var test2 = AutoMapper.Mapper.Map<ProjectEditInputModel>(test1);
-
-            test2.Name = "Test-Edited";
-
-            await this.adminService.EditProject(test2);
-
-            Assert.Equal("Test-Edited", test2.Name);
-        }
-
-        private async Task EditProject_ShouldThrowExeption()
-        {
-
+            Assert.Equal("Test-Edited", project[0].Name);
         }
 
         // GetAllCompletedProjects
+        [Fact]
         private async Task GetAllCompletedProjects_ShouldWorkFine()
         {
+            var context = ContextInitializer.InitializeContext();
+            await this.SeedData(context);
 
+            var userManager = this.GetMockUserManager().Object;
+
+            this.adminService = new AdminService(userManager, context);
+
+            var project = await this.adminService.GetAllProjectsInProgress();
+
+            var projectInputModel = new ProjectEditInputModel
+            {
+                Id = project[0].Id,
+                IsPublic = project[0].IsPublic,
+                Name = "Test-Edited",
+                Status = ProjectStatus.Completed,
+            };
+
+            await this.adminService.EditProject(projectInputModel);
+
+            var completedProjects = await this.adminService.GetAllCompletedProjects();
+
+            Assert.Single(completedProjects);
         }
 
         // GetAllProjectsInProgress
+        [Fact]
         private async Task GetAllProjectsInProgress_ShouldWorkFine()
         {
+            var context = ContextInitializer.InitializeContext();
+            await this.SeedData(context);
 
+            var userManager = this.GetMockUserManager().Object;
+
+            this.adminService = new AdminService(userManager, context);
+
+            var project = await this.adminService.GetAllProjectsInProgress();
+
+            Assert.Single(project);
         }
 
         // DeleteProjectFile
+        [Fact]
         private async Task DeleteProject_ShouldWorkFine()
         {
+            var context = ContextInitializer.InitializeContext();
+            await this.SeedData(context);
 
+            var userManager = this.GetMockUserManager().Object;
+
+            this.adminService = new AdminService(userManager, context);
+
+            var project = await this.adminService.GetAllProjectsInProgress();
+
+            await this.adminService.DeleteProject(project[0].Id);
+
+            var result = await this.adminService.GetAllProjectsInProgress();
+
+            Assert.Empty(result);
         }
     }
 }
