@@ -1,5 +1,10 @@
 ﻿namespace InteriorDesign.Services.Data.Tests
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+
     using InteriorDesign.Data;
     using InteriorDesign.Data.Models;
     using InteriorDesign.Models.InputModels;
@@ -7,10 +12,7 @@
     using InteriorDesign.Services.Data.Tests.Common;
     using Microsoft.AspNetCore.Http;
     using Moq;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
+
     using Xunit;
 
     public class ProjectServiceTests
@@ -132,8 +134,6 @@
         {
             var context = ContextInitializer.InitializeContext();
             await this.SeedData(context);
-
-            //var cloudinary = new Mock<CloudinaryService>().Object;
 
             this.projectService = new ProjectService(context);
 
