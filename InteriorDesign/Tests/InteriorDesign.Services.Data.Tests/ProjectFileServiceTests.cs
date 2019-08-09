@@ -122,12 +122,14 @@
             {
                 IsApproved = true,
                 IsPublic = true,
-                Name = "TestProjectFile13.jpg",
+                Name = "TestProjectFile13",
                 ProjectId = "bb2bd817-98cd-4cf3-a80a-53ea0cd9c200",
                 File = new Mock<IFormFile>().Object,
             };
 
-            var result = await this.projectFileService.AddProjectFile(projectFile);
+            await this.projectFileService.AddProjectFile(projectFile);
+
+            var result = this.projectFileService.GetCurrentProjectFile("bb2bd817-98cd-4cf3-a80a-53ea0cd9c200");
 
             Assert.Null(result);
         }
