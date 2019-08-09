@@ -1,8 +1,5 @@
 ﻿namespace InteriorDesign.Services.Data.Tests
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     using System.Threading.Tasks;
 
     using InteriorDesign.Data;
@@ -40,6 +37,7 @@
                 PasswordHash = 5.GetHashCode().ToString(),
             };
         }
+
         private Project AddProject()
         {
             var model = new ProjectCreateInputModel

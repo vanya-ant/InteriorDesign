@@ -12,6 +12,10 @@
     public class CloudinaryService : ICloudinaryService
     {
         private readonly Cloudinary cloudinaryUtility;
+        public CloudinaryService()
+        {
+
+        }
 
         public CloudinaryService(Cloudinary cloudinaryUtility)
         {
