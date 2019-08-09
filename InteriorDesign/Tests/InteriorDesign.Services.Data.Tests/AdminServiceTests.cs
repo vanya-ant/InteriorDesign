@@ -40,6 +40,7 @@
                 PasswordHash = 5.GetHashCode().ToString(),
             };
         }
+
         private Project AddProject()
         {
             var model = new ProjectCreateInputModel
