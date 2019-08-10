@@ -65,7 +65,7 @@
 
         public async Task<ProjectViewModel> GetCurrentProject(string id)
         {
-            var project = this.context.Projects.Where(x => x.Id == id);
+            var project = this.context.Projects.Where(x => x.Id == id).SingleOrDefault();
 
             var result = AutoMapper.Mapper.Map<ProjectViewModel>(project);
 

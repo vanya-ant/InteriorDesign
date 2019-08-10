@@ -107,9 +107,9 @@
             await context.SaveChangesAsync();
         }
 
-        // AddProjectFile(ProjectFileCreateModel projectFile)
+        // GetCurrentProject(string id)
         [Fact]
-        private async Task AddProjectFile_ShouldWorkFine()
+        private async Task GetCurrentProject_ShouldWorkFine()
         {
             var context = ContextInitializer.InitializeContext();
             await this.SeedData(context);
@@ -118,23 +118,12 @@
 
             this.projectFileService = new ProjectFileService(cloudinary, context);
 
-            var projectFile = new ProjectFileCreateModel
-            {
-                IsApproved = true,
-                IsPublic = true,
-                Name = "TestProjectFile13",
-                ProjectId = "bb2bd817-98cd-4cf3-a80a-53ea0cd9c200",
-                File = new Mock<IFormFile>().Object,
-            };
+            var result = await this.projectFileService.GetCurrentProject("bb2bd817-98cd-4cf3-a80a-53ea0cd9c200");
 
-            await this.projectFileService.AddProjectFile(projectFile);
-
-            var result = this.projectFileService.GetCurrentProjectFile("bb2bd817-98cd-4cf3-a80a-53ea0cd9c200");
-
-            Assert.Null(result);
+            Assert.Equal("Test", result.Name);
+            Assert.True(result.IsPublic);
         }
 
-        // GetCurrentProject(string id)
         // GetCurrentProjectFile(string id)
         // DeleteProjectFile(string id)
     }
