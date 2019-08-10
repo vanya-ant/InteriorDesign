@@ -36,7 +36,10 @@
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddProjectFile(ProjectFileCreateModel model)
         {
-            await this.projectFileService.AddProjectFile(model);
+            if (this.ModelState.IsValid)
+            {
+                await this.projectFileService.AddProjectFile(model);
+            }
 
             return this.Redirect("/Home/IndexLoggedin");
         }

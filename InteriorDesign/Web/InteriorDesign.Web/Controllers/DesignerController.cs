@@ -38,7 +38,14 @@
         {
             string selectedEmail = this.Request.Form["Customer"].ToString();
 
-            await this.adminService.AddDesigner(selectedEmail);
+            var user = await this.userManager.FindByNameAsync(selectedEmail);
+
+            var userRoles = await this.userManager.GetRolesAsync(user);
+
+            if (!userRoles.Contains("Designer"))
+            {
+                await this.adminService.AddDesigner(selectedEmail);
+            }
 
             return this.Redirect("/Home/IndexLoggedin");
         }

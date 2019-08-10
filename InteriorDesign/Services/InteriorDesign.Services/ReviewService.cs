@@ -16,7 +16,7 @@
             this.context = context;
         }
 
-        public async Task CreateReview(ReviewCreateModel model)
+        public async Task<string> CreateReview(ReviewCreateModel model)
         {
             var review = new ProjectReview
             {
@@ -27,6 +27,8 @@
 
             this.context.ProjectReviews.Add(review);
             await this.context.SaveChangesAsync();
+
+            return "Review was successfully created!";
         }
 
         public async Task DeleteReview(string id)

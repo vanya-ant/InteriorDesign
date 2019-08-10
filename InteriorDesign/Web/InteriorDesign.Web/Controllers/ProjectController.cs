@@ -53,19 +53,22 @@
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateProject(ProjectCreateInputModel model)
         {
-            string projectName = this.Request.Form["projectName"].ToString();
-            string customerEmail = this.Request.Form["customer"].ToString();
-            string designerEmail = this.Request.Form["designer"].ToString();
-
-            var project = new ProjectCreateInputModel
+            if (this.ModelState.IsValid)
             {
-                Name = projectName,
-                Customer = await this.userManager.FindByNameAsync(customerEmail),
-                Designer = await this.userManager.FindByNameAsync(designerEmail),
-                IsPublic = true,
-            };
+                string projectName = this.Request.Form["projectName"].ToString();
+                string customerEmail = this.Request.Form["customer"].ToString();
+                string designerEmail = this.Request.Form["designer"].ToString();
 
-            await this.adminService.CreateProject(project);
+                var project = new ProjectCreateInputModel
+                {
+                    Name = projectName,
+                    Customer = await this.userManager.FindByNameAsync(customerEmail),
+                    Designer = await this.userManager.FindByNameAsync(designerEmail),
+                    IsPublic = true,
+                };
+
+                await this.adminService.CreateProject(project);
+            }
 
             return this.Redirect("/Home/IndexLoggedin");
         }

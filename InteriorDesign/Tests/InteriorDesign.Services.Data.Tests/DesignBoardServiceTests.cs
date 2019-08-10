@@ -87,6 +87,23 @@
                 ProjectId = project.Id,
             };
 
+            var designBoard = new DesignBoard
+            {
+                Id = new Guid("bb2bd817-98cd-4cf3-a80a-53ea0cd9c330").ToString(),
+                ProjectId = "bb2bd817-98cd-4cf3-a80a-53ea0cd9c200",
+                CustomerId = new Guid("cb2bd817-98cd-4cf3-a80a-53ea0cd9c200").ToString(),
+                Name = "Test Design Board",
+                DesignReferences = new List<DesignReference>(),
+            };
+
+            var designRefernce = new DesignReference
+            {
+                Id = new Guid("bb2bd817-98cd-4cf3-a80a-53ea0cd9c380").ToString(),
+                CustomerId = new Guid("cb2bd817-98cd-4cf3-a80a-53ea0cd9c200").ToString(),
+                ImageUrl = "https://test.test",
+                DesignBoardId = "de2bd817-98cd-4cf3-a80a-53ea0cd9c200",
+            };
+
             var revew = new ProjectReview
             {
                 ProjectId = project.Id,
@@ -94,16 +111,10 @@
                 Review = "First Review",
             };
 
-            var designRefernce = new DesignReference
-            {
-                CustomerId = new Guid("cb2bd817-98cd-4cf3-a80a-53ea0cd9c200").ToString(),
-                ImageUrl = "https://test.test",
-                DesignBoardId = "de2bd817-98cd-4cf3-a80a-53ea0cd9c200",
-            };
-
             project.ProjectReviews.Add(revew);
             project.ProjectFiles.Add(projectFileResult);
-            //project.DesignBoards[0].DesignReferences.Add(designRefernce);
+            project.DesignBoards.Add(designBoard);
+            project.DesignBoards[0].DesignReferences.Add(designRefernce);
 
             return project;
         }
@@ -115,7 +126,6 @@
             context.Add(this.AddProject());
             await context.SaveChangesAsync();
         }
-
 
         // AddDesignBoard(DesignBoardCreateInputModel model)
         [Fact]
@@ -142,10 +152,58 @@
         [Fact]
         private async Task AddDesignReference_ShouldWorkFine()
         {
+            var context = ContextInitializer.InitializeContext();
+            await this.SeedData(context);
 
+            this.designBoardServce = new DesignBoardService(context);
+
+            var designBoard = new DesignBoardCreateInputModel
+            {
+                ProjectId = "bb2bd817-98cd-4cf3-a80a-53ea0cd9c200",
+                CustomerId = new Guid("cb2bd817-98cd-4cf3-a80a-53ea0cd9c200").ToString(),
+                Name = "Test Design Board",
+            };
+
+            var designRefernce = new ReferenceInputModel
+            {
+                CustomerId = new Guid("cb2bd817-98cd-4cf3-a80a-53ea0cd9c200").ToString(),
+                ImageUrl = "https://test.test",
+                DesignBoardId = "de2bd817-98cd-4cf3-a80a-53ea0cd9c200",
+            };
+
+            await this.designBoardServce.AddDesignBoard(designBoard);
+
+            var result = await this.designBoardServce.AddDesignReference(designRefernce);
+
+            Assert.Equal("DesignReference created successfully!", result);
         }
 
         // GetDesignBoardReferences(string id)
+        [Fact]
+        private async Task GetDesignBoardReferences_ShouldWorkFine()
+        {
+            var context = ContextInitializer.InitializeContext();
+            await this.SeedData(context);
+
+            this.designBoardServce = new DesignBoardService(context);
+
+            var result = await this.designBoardServce.GetDesignBoardReferences("bb2bd817-98cd-4cf3-a80a-53ea0cd9c330");
+
+            Assert.Equal(1, result.Count);
+        }
+
         // GetCurrentDesignBoard(string id)
+        [Fact]
+        private async Task GetCurrentDesignBoard_ShouldWorkFine()
+        {
+            var context = ContextInitializer.InitializeContext();
+            await this.SeedData(context);
+
+            this.designBoardServce = new DesignBoardService(context);
+
+            var result = await this.designBoardServce.GetCurrentDesignBoard("bb2bd817-98cd-4cf3-a80a-53ea0cd9c330");
+
+            Assert.Equal("Test Design Board", result.Name);
+        }
     }
 }

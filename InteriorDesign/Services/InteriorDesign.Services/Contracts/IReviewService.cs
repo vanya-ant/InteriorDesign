@@ -6,7 +6,7 @@
 
     public interface IReviewService
     {
-        Task CreateReview(ReviewCreateModel model);
+        Task<string> CreateReview(ReviewCreateModel model);
 
         Task DeleteReview(string id);
     }

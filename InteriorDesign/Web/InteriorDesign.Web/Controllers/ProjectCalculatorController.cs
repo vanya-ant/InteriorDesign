@@ -26,7 +26,10 @@
         [ValidateAntiForgeryToken]
         public ActionResult ProjectCalculatorCalculate(ProjectCalculatorInputModel model)
         {
-            model.Result = this.service.Calculate(model);
+            if (this.ModelState.IsValid)
+            {
+                model.Result = this.service.Calculate(model);
+            }
 
             return this.RedirectToAction("ProjectCalculator", model);
         }
