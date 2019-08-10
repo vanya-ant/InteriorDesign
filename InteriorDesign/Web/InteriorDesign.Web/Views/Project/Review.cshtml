@@ -13,11 +13,15 @@
         {
             @await Html.PartialAsync("Project", project)
 
-            <form method="post" asp-controller="Project" asp-action="Review">
-                <input name="Id" value="@project.Id" type="hidden" />
-                <input name="review-body" class="form-control col-6" value="Add project review" runat="server" />
-                <button class="btn btn-color-brown" type="submit">Add Review</button>
-            </form>
+          <div class="row">
+              <div class="col-md-6">
+                  <form method="post" asp-controller="Project" asp-action="Review">
+                      <input name="Id" value="@project.Id" type="hidden" />
+                      <input name="review-body" class="form-control col-6" value="Add project review" runat="server" />
+                      <button class="btn btn-color-brown" type="submit">Add Review</button>
+                  </form>
+              </div>
+          </div>
         }
     }
     else

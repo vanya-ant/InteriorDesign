@@ -210,7 +210,10 @@
                 Review = this.Request.Form["review-body"].ToString(),
             };
 
-            await this.reviewService.CreateReview(model);
+            if (this.ModelState.IsValid)
+            {
+                await this.reviewService.CreateReview(model);
+            }
 
             return this.RedirectToAction("Review", "Project", new { id = model.ProjectId });
         }
