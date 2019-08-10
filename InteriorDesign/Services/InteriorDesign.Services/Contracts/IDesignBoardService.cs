@@ -9,9 +9,9 @@
 
     public interface IDesignBoardService
     {
-        Task AddDesignBoard(DesignBoardCreateInputModel model);
+        Task<string> AddDesignBoard(DesignBoardCreateInputModel model);
 
-        Task AddDesignReference(ReferenceInputModel model);
+        Task<string> AddDesignReference(ReferenceInputModel model);
 
         Task<IList<DesignReference>> GetDesignBoardReferences(string id);
 

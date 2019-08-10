@@ -18,7 +18,7 @@
             this.context = context;
         }
 
-        public async Task AddDesignBoard(DesignBoardCreateInputModel model)
+        public async Task<string> AddDesignBoard(DesignBoardCreateInputModel model)
         {
             var designBoard = new DesignBoard
             {
@@ -30,9 +30,11 @@
             this.context.DesignBoards.Add(designBoard);
 
             await this.context.SaveChangesAsync();
+
+            return "DesignBoard created successfully!";
         }
 
-        public async Task AddDesignReference(ReferenceInputModel model)
+        public async Task<string> AddDesignReference(ReferenceInputModel model)
         {
             var reference = new DesignReference
             {
@@ -45,6 +47,8 @@
             this.context.DesignReferences.Add(reference);
 
             await this.context.SaveChangesAsync();
+
+            return "DesignReference created successfully!";
         }
 
         public async Task<IList<DesignReference>> GetDesignBoardReferences(string id)

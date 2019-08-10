@@ -76,6 +76,24 @@
                 Review = "First Review",
             };
 
+            var projectFile = new ProjectFileCreateModel
+            {
+                File = new Mock<IFormFile>().Object,
+                IsApproved = false,
+                IsPublic = true,
+                Name = "TestProjectFile",
+                ProjectId = project.Id,
+            };
+
+            var projectFileResult = new ProjectFile
+            {
+                Id = new Guid("ab2bd817-98cd-4cf3-a80a-53ea0cd9c200").ToString(),
+                IsApproved = projectFile.IsApproved,
+                IsPublic = projectFile.IsPublic,
+                Name = "TestProjectFile.jpg",
+                ProjectId = project.Id,
+            };
+
             var designBoard = new DesignBoard
             {
                 ProjectId = project.Id,
@@ -92,6 +110,7 @@
                 DesignBoardId = "de2bd817-98cd-4cf3-a80a-53ea0cd9c200",
             };
 
+            project.ProjectFiles.Add(projectFileResult);
             project.ProjectReviews.Add(revew);
             project.DesignBoards.Add(designBoard);
             project.DesignBoards[0].DesignReferences.Add(designRefernce);
@@ -107,7 +126,7 @@
             await context.SaveChangesAsync();
         }
 
-        // GetCurrentProject(string id)
+        // GetCurrentProjectFile(string id)
         [Fact]
         private async Task GetCurrentProject_ShouldWorkFine()
         {
@@ -118,13 +137,26 @@
 
             this.projectFileService = new ProjectFileService(cloudinary, context);
 
-            var result = await this.projectFileService.GetCurrentProject("bb2bd817-98cd-4cf3-a80a-53ea0cd9c200");
+            var result = await this.projectFileService.GetCurrentProjectFile("ab2bd817-98cd-4cf3-a80a-53ea0cd9c200");
 
-            Assert.Equal("Test", result.Name);
+            Assert.Equal("TestProjectFile.jpg", result.Name);
             Assert.True(result.IsPublic);
+            Assert.False(result.IsApproved);
         }
 
-        // GetCurrentProjectFile(string id)
-        // DeleteProjectFile(string id)
+        [Fact]
+        private async Task GetCurrentProject_ShouldReturnNull()
+        {
+            var context = ContextInitializer.InitializeContext();
+            await this.SeedData(context);
+
+            var cloudinary = new Mock<CloudinaryService>().Object;
+
+            this.projectFileService = new ProjectFileService(cloudinary, context);
+
+            var result = await this.projectFileService.GetCurrentProjectFile("ab3bd817-98cd-4cf3-a80a-53ea0cd9c200");
+
+            Assert.Null(result);
+        }
     }
 }
