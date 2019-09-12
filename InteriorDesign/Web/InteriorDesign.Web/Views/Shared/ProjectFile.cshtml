@@ -4,11 +4,23 @@
     <div class="image-holder">
         <h4>@Model.Name</h4>
         <hr />
-        <a class="img-fluid">
-            <img id="img" class="img-thumbnail" src="@Model.Url" onclick="window.open(this.src)">
-        </a>
+
+        @if (Model.Url.EndsWith("jpg") || Model.Url.EndsWith("png"))
+        {
+            <a class="img-fluid">
+                <img id="img" class="img-thumbnail" src="@Model.Url" onclick="window.open(this.src)">
+            </a>
+        }
+        else
+        {
+            <a href="@Model.Url">
+                <picture class="far fa-file-pdf fa-8x" id="pdf" src="@Model.Url" />
+            </a>
+        }
+
     </div>
     <div>
+
         @if (Model.IsApproved)
         {
             <ul class="glyphicon glyphicon-thumbs-up"> Approved</ul>
@@ -25,7 +37,7 @@
             <button class="btn btn-danger" type="submit" Onclick="ConfirmDelete()">Delete File</button>
         </form>
     }
-    @if (this.User.IsInRole("Customer") && this.Model.IsApproved == false)
+    @if (this.User.IsInRole("Customer") && this.Model.IsApproved == false && !this.User.IsInRole("Designer"))
     {
         <form method="post" asp-action="Approve" asp-controller="ProjectFile">
             <input name="Id" value="@Model.Id" type="hidden" />
@@ -39,6 +51,11 @@
         var x = confirm("Are you sure you want to delete file");
 
         return x;
+    }
+
+    function openPdf() {
+        var src = "@Model.Url"
+        onclick.window.open(src)
     }
 
 </script>

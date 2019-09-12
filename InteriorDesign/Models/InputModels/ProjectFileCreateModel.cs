@@ -14,8 +14,7 @@
         public string Name { get; set; }
 
         [Required]
-        [FileExtensions(Extensions = "png|jpg|pdf", ErrorMessage = "Please select a jpg/png/pdf file.")]
-        [MaxFileSize(10 * 1024 * 1024, ErrorMessage = "Maximum allowed file size is {0} bytes")]
+        [UploadValidationAttribute]
         public IFormFile File { get; set; }
 
         public DateTime AddedOn { get; set; } = DateTime.UtcNow;
