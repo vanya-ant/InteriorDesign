@@ -18,6 +18,7 @@
     using InteriorDesign.Services.Messaging;
     using InteriorDesign.Web.Middlewares;
     using InteriorDesign.Web.ViewModels;
+    using InteriorDesignML.Model.DataModels;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
@@ -113,6 +114,9 @@
                 });
 
             services.AddSingleton(this.configuration);
+
+            services.AddPredictionEnginePool<ModelInput, ModelOutput>()
+                  .FromFile(@"C:\Users\Asus\Desktop\InteriorDesign\InteriorDesign\InteriorDesignML.Model\MLModel.zip");
 
             // Identity stores
             services.AddTransient<IUserStore<ApplicationUser>, ApplicationUserStore>();

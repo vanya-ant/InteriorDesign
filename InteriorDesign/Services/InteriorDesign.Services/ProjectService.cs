@@ -21,7 +21,7 @@
 
         public async Task<IList<ProjectFile>> GetCurrentProjectFiles(string id)
         {
-            var result = this.context.ProjectFiles.Where(x => x.ProjectId == id).ToList();
+            var result = this.context.ProjectFiles.Where(x => x.ProjectId == id).OrderBy(x => x.Url).ToList();
 
             return result;
         }
