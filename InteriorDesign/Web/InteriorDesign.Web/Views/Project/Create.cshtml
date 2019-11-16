@@ -16,7 +16,7 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="ProjectName">Name</label>
-                    <input type="text" name="projectName" id="projectName" runat="server" value="Project Name..." />
+                    <input type="text" name="projectName" id="projectName" runat="server" onfocus="this.value=''" value="Project Name..." />
                 </div>
                 <div class="form-group">
                     <asp:DropDownList ID="customer" runat="server" AutoPostBack="True">

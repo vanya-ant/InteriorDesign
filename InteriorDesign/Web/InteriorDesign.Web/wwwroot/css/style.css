@@ -1752,73 +1752,74 @@ li.comment ol.comment-sub {
 
 @media (min-width: 992px) and (max-width: 1024px) {
 
-.navbar-right{
-	float:none !important;
-}
+    .navbar-right{
+	    float:none !important;
+    }
 
 }
 
 
 @media (min-width: 992px) {
 	
-#main-menu.collapse { 
+    #main-menu.collapse { 
 	display: block !important;
-}
+    }
 
 } 
 
 
-
 @media (max-width: 992px) {
 
-.navbar-right{
-	float:none !important;
-	margin-right:0px !important;
-}
+    .navbar-right{
+	    float:none !important;
+	    margin-right:0px !important;
+    }
 
-.clear-toggle{
-	display:block;
-}
+    .clear-toggle{
+	    display:block;
+    }
 
-.navbar-toggle {
-	display: block !important;
-}
+    .logo-nav {
+        display: none;
+    }
 
-#main-menu ul li { 
-	display: block;
-	text-align: left;
-    background-color: #ac6c20;
-	border-bottom:1px solid #9EE1FC;
-}
+    .navbar-toggle {
+	    display: block !important;
+    }
 
-#main-menu ul li:last-child {
-	border-bottom:none;
+    #main-menu ul li { 
+	    display: block;
+	    text-align: left;
+        background-color: #ac6c20;
+	    border-bottom:1px solid #9EE1FC;
+    }
 
-}
+    #main-menu ul li:last-child {
+	    border-bottom:none;
 
-#main-menu ul li a {
-	line-height: 35px;
-	padding: 5px 10px;
-    background-color: #ac6c20;
-}
+    }
 
-#main-menu ul li.active > a {
-	box-shadow: none !important;
-    background-color: #ac6c20;
-}
+    #main-menu ul li a {
+        line-height: 35px;
+        padding: 5px 10px;
+        background-color: #ac6c20;
+    }
 
-#main-menu ul li:hover ul {
-	border-top: solid 2px #f32b1a; 
-	top: 40px;
-    background-color: #ac6c20;
-}
+    #main-menu ul li.active > a {
+	    box-shadow: none !important;
+        background-color: #ac6c20;
+    }
 
-#main-menu ul li ul li a {
-	padding: 10px 30px;
-    background-color: #ac6c20;
-}
+    #main-menu ul li:hover ul {
+	    border-top: solid 2px #f32b1a; 
+	    top: 40px;
+        background-color: #ac6c20;
+    }
 
-
+    #main-menu ul li ul li a {
+	    padding: 10px 30px;
+        background-color: #ac6c20;
+    }
 }
 
 @media (max-width: 560px) {
