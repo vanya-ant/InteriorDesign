@@ -9,13 +9,9 @@
     using InteriorDesign.Models.InputModels;
     using InteriorDesign.Models.ViewModels;
     using InteriorDesign.Services.Contracts;
-    using InteriorDesign.Web.Areas.Administration.ViewModels;
-    using InteriorDesignML.Model.DataModels;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.Extensions.ML;
-    using Microsoft.ML;
 
     public class ProjectController : BaseController
     {
@@ -24,16 +20,14 @@
         private readonly IAdminService adminService;
         private readonly IReviewService reviewService;
         private readonly IDesignBoardService designBoardService;
-        private readonly PredictionEnginePool<ModelInput, ModelOutput> predictionEngine;
 
-        public ProjectController(UserManager<ApplicationUser> userManager, IProjectService projectService, IAdminService adminService, IReviewService reviewService, IDesignBoardService designBoardService, PredictionEnginePool<ModelInput, ModelOutput> predictionEngine)
+        public ProjectController(UserManager<ApplicationUser> userManager, IProjectService projectService, IAdminService adminService, IReviewService reviewService, IDesignBoardService designBoardService)
         {
             this.userManager = userManager;
             this.projectService = projectService;
             this.adminService = adminService;
             this.reviewService = reviewService;
             this.designBoardService = designBoardService;
-            this.predictionEngine = predictionEngine;
         }
 
         [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
@@ -215,23 +209,9 @@
                 Review = this.Request.Form["review-body"].ToString(),
             };
 
-            MLContext mlContext = new MLContext();
-            ITransformer mlModel = mlContext.Model.Load(@"C:\Users\Asus\Desktop\InteriorDesign\InteriorDesign\InteriorDesignML.Model\MLModel.zip", out var modelInputSchema);
-            var predEngine = mlContext.Model.CreatePredictionEngine<ModelInput, ModelOutput>(mlModel);
-
-            var result = new ModelOutput();
-            var input = new ModelInput();
-
-            input.Amazing_work__Thank_you_ = model.Review;
-
-            ModelOutput prediction = predEngine.Predict(input);
-
             if (this.ModelState.IsValid)
             {
-                if (prediction.Score > 0.015)
-                {
-                    await this.reviewService.CreateReview(model);
-                }
+                 await this.reviewService.CreateReview(model);
             }
 
             return this.RedirectToAction("Review", "Project", new { id = model.ProjectId });

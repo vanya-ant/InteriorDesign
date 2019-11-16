@@ -23,7 +23,6 @@
     <PackageReference Include="HtmlAgilityPack" Version="1.11.12" />
     <PackageReference Include="Microsoft.AspNetCore.All" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.Extensions.ML" Version="0.15.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
     <PackageReference Include="BuildBundlerMinifier" Version="2.9.406" />
     <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.0.76" />
@@ -36,7 +35,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\InteriorDesign.Data.Models\InteriorDesign.Data.Models.csproj" />
     <ProjectReference Include="..\..\Data\InteriorDesign.Data\InteriorDesign.Data.csproj" />
-    <ProjectReference Include="..\..\InteriorDesignML.Model\InteriorDesignML.Model.csproj" />
     <ProjectReference Include="..\..\Services\InteriorDesign.Services.Data\InteriorDesign.Services.Data.csproj" />
     <ProjectReference Include="..\..\Services\InteriorDesign.Services.Mapping\InteriorDesign.Services.Mapping.csproj" />
     <ProjectReference Include="..\..\Services\InteriorDesign.Services.Messaging\InteriorDesign.Services.Messaging.csproj" />
