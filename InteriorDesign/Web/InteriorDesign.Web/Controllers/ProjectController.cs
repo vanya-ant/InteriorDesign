@@ -50,24 +50,21 @@
         [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
         [HttpPost("/Project/Create")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateProject(ProjectCreateInputModel model)
+        public async Task<IActionResult> CreateProject(AllUsersViewModel model)
         {
-            if (this.ModelState.IsValid)
+            string projectName = this.Request.Form["projectName"].ToString();
+            string customerEmail = this.Request.Form["Customer"].ToString();
+            string designerEmail = this.Request.Form["Designer"].ToString();
+
+            var project = new ProjectCreateInputModel
             {
-                string projectName = this.Request.Form["projectName"].ToString();
-                string customerEmail = this.Request.Form["customer"].ToString();
-                string designerEmail = this.Request.Form["designer"].ToString();
+                Name = projectName,
+                Customer = await this.userManager.FindByNameAsync(customerEmail),
+                Designer = await this.userManager.FindByNameAsync(designerEmail),
+                IsPublic = model.IsPublic,
+            };
 
-                var project = new ProjectCreateInputModel
-                {
-                    Name = projectName,
-                    Customer = await this.userManager.FindByNameAsync(customerEmail),
-                    Designer = await this.userManager.FindByNameAsync(designerEmail),
-                    IsPublic = true,
-                };
-
-                await this.adminService.CreateProject(project);
-            }
+            await this.adminService.CreateProject(project);
 
             return this.Redirect("/Home/IndexLoggedin");
         }

@@ -31,9 +31,9 @@
                     </asp:DropDownList>
                 </div>
                 <div class="form-group">
-                    <asp:CheckBox id="isPublic" runat="server" AutoPostBack="True" OnCheckedChanged="IsPublicSet">
+                    <asp:CheckBox id="isPublic" runat="server" AutoPostBack="True">
                         <label asp-for="IsPublic" class="checkbox"></label>
-                        <input type="checkbox" ID="isPublic" value="@Model.IsPublic" />
+                        @Html.CheckBoxFor(x => x.IsPublic)
                     </asp:CheckBox>
                 </div>
                 <div class="form-group">
