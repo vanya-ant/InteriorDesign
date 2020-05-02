@@ -14,7 +14,7 @@
         public string Name { get; set; }
 
         [Required]
-        [FileExtensions(Extensions = "jpg,png,png", ErrorMessage = "Please select a jpg/png/pdf file.")]
+        [FileUploadValidationAttribute(ErrorMessage = "Please select a jpg/png/pdf file.")]
         [MaxFileSize(10 * 1024 * 1024, ErrorMessage = "Maximum allowed file size is {0} bytes")]
         public IFormFile File { get; set; }
 
