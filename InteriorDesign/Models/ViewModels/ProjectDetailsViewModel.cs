@@ -14,5 +14,7 @@
         public List<ProjectFileViewModel> ProjectFiles { get; set; }
 
         public IList<ProjectReview> ProjectReviews { get; set; }
+
+        public string Status { get; set; }
     }
 }

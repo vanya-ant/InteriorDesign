@@ -106,6 +106,7 @@
                      Id = designBoard.Id,
                      Name = designBoard.Name,
                      DesignReferences = await this.designBoardService.GetDesignBoardReferences(designBoard.Id),
+                     ProjectStatus = project.Status.ToString(),
                 };
 
                 resultDesignBoards.Add(board);
@@ -118,6 +119,7 @@
                 DesignBoards = resultDesignBoards,
                 Name = project.Name,
                 Id = id,
+                Status = project.Status.ToString(),
             };
 
             return this.View(result);

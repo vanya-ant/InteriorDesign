@@ -11,5 +11,7 @@
         public string Name { get; set; }
 
         public ICollection<DesignReference> DesignReferences { get; set; }
+
+        public string ProjectStatus { get; set; }
     }
 }

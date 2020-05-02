@@ -15,18 +15,20 @@
     @Model.Name
 </div>
 <br />
+<br />
 <div>
     @if (Model.DesignBoards.Any())
     {
         foreach (var designBoard in Model.DesignBoards)
         {
             @await Html.PartialAsync("DesignBoard", designBoard);
+            <br />
         }
     }
     <br />
 </div>
 <div>
-    @if (this.User.IsInRole("Customer"))
+    @if (this.User.IsInRole("Customer") && Model.Status == "InProgress")
     {
         <a class="btn btn-default" href="/DesignBoard/Create?id=@Model.Id">Create DesignBoard</a>
     }
